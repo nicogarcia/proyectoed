@@ -1,3 +1,5 @@
+import javax.swing.text.* ;
+
 
 public interface PositionList <E> {
 	
