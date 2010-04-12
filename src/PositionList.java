@@ -7,7 +7,7 @@ public interface PositionList<E> {
 	public boolean isEmpty();
 
 	/** Returns the first node in the list. */
-	public Position<E> first();
+	public Position<E> first() throws EmptyListException;
 
 	/** Returns the last node in the list. */
 	public Position<E> last();
@@ -15,7 +15,7 @@ public interface PositionList<E> {
 	/** Returns the node after a given node in the list. */
 	public Position<E> next(Position<E> p) throws InvalidPositionException,
 			BoundaryViolationException;
-	
+
 	/** Inserts an element at the front of the list, returning new position. */
 	public void addFirst(E e);
 
