@@ -1,11 +1,21 @@
-public class Lista implements PositionList {
+public class Lista<E> implements PositionList<E> {
 
 	/**
 	 * @param args
 	 */
-	private Node head;
-	private Node tail; 
-	private Node current;
-	private long size;
+	private Position<E> head;
+	private Position<E> tail;
+	private Position<E> current;
+	private int size;
+
+	public boolean isEmpty() {
+		return size == 0;
+	}
+
+	public Position<E> last() throws EmptyListException {
+		if (isEmpty())
+			throw new EmptyListException("Lista::last():: La lista esta vacía");
+		return tail;
+	}
 
 }
