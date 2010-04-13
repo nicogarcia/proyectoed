@@ -30,13 +30,5 @@ public class Lista<E> implements PositionList<E> {
 			throw new EmptyListException("Lista::last():: La lista esta vac�a");
 		return tail;
 	}
-	
-	public void nico() {
-		
-	}
-	
-	public void sergio(){
-		
-	}
 
 }
