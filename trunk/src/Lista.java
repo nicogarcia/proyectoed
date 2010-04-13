@@ -9,7 +9,7 @@ public class Lista<E> implements PositionList<E> {
 	private int size;
 
 	/**
-	 * Devuelve el tamaño de la lista
+	 * Devuelve el tamaï¿½o de la lista
 	 */
 	public int size() {
 		return size;
@@ -27,8 +27,12 @@ public class Lista<E> implements PositionList<E> {
 
 	public Position<E> last() throws EmptyListException {
 		if (isEmpty())
-			throw new EmptyListException("Lista::last():: La lista esta vacía");
+			throw new EmptyListException("Lista::last():: La lista esta vacï¿½a");
 		return tail;
+	}
+	
+	public void sergio(){
+		
 	}
 
 }
