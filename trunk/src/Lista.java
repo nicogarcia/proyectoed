@@ -31,6 +31,10 @@ public class Lista<E> implements PositionList<E> {
 		return tail;
 	}
 	
+	public void nico() {
+		
+	}
+	
 	public void sergio(){
 		
 	}
