@@ -1,4 +1,4 @@
-public interface PositionList<E> {
+public interface PositionList<E> extends Iterable<E> {
 
 	/** Returns the number of elements in this list. */
 	public int size();
@@ -9,8 +9,9 @@ public interface PositionList<E> {
 	/** Returns the first node in the list. */
 	public Position<E> first() throws EmptyListException;
 
-	/** Returns the last node in the list. */
-	public Position<E> last();
+	/** Returns the last node in the list. 
+	 * @throws EmptyListException */
+	public Position<E> last() throws EmptyListException;
 
 	/** Returns the node after a given node in the list. */
 	public Position<E> next(Position<E> p) throws InvalidPositionException,
