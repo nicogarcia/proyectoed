@@ -1,5 +1,7 @@
-public interface PositionList<E> extends Iterable<E> {
+import Excepciones.*;
 
+public interface PositionList<E> {
+	//TODO cambiar el idioma de los javadocs
 	/** Returns the number of elements in this list. */
 	public int size();
 
