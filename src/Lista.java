@@ -1,11 +1,12 @@
+import Excepciones.*;
+
 public class Lista<E> implements PositionList<E> {
 
 	/**
 	 * @param args
 	 */
-	private Position<E> head;
-	private Position<E> tail;
-	private Position<E> current;
+	private Node<E> head;
+	private Node<E> tail;
 	private int size;
 
 	/**
@@ -31,4 +32,126 @@ public class Lista<E> implements PositionList<E> {
 		return tail;
 	}
 
+	public Position<E> next(Position<E> p) throws InvalidPositionException,
+			BoundaryViolationException {
+		Node<E> nodo = checkposition(p);
+		if (nodo == tail)
+			throw new BoundaryViolationException(
+					"Lista::next():: La posicion recibida es la ultima de la lista.");
+		Node<E> next = nodo.getNext();
+		return next;
+	}
+
+	private Node<E> checkposition(Position<E> p)
+			throws InvalidPositionException {
+		if (p == null)
+			throw new InvalidPositionException(
+					"Lista::checkposition():: La posicion pasada es nula.");
+		try {
+			Node<E> temp = (Node<E>) p;
+			return temp;
+		} catch (ClassCastException e) {
+			throw new InvalidPositionException(
+					"Lista::checkposition():: La posicion es de tipo incorrecto.");
+		}
+	}
+
+	public Position<E> prev(Position<E> p) throws BoundaryViolationException,
+			InvalidPositionException {
+		Node<E> nodo = checkposition(p);
+		if (nodo == head)
+			throw new BoundaryViolationException(
+					"Lista::prev():: La posicion recibida es la primera de la lista.");
+		Node<E> aux = head;
+		while (aux.getNext() != nodo)
+			aux = aux.getNext();
+		return aux;
+	}
+
+	public void addFirst(E e) {
+		Node<E> nuevo = new Node<E>(e, head);
+		head = nuevo;
+		if (isEmpty())
+			tail = nuevo;
+		size++;
+	}
+
+	public void addLast(E e) {
+		Node<E> nuevo = new Node<E>(e, null);
+		tail.setNext(nuevo);
+		tail = nuevo;
+		if (isEmpty())
+			head = nuevo;
+		size++;
+	}
+
+	public void addAfter(Position<E> p, E e) throws InvalidPositionException {
+		Node<E> nodo = checkposition(p);
+		Node<E> nuevo = new Node<E>(e, nodo.getNext());
+		if (nodo == tail)
+			tail = nuevo;
+		nodo.setNext(nuevo);
+		size++;
+	}
+
+	public void addBefore(Position<E> p, E e) throws InvalidPositionException {
+		Node<E> nodo = checkposition(p);
+		Node<E> nuevo = new Node<E>(e, nodo);
+		if (nodo == head)
+			head = nuevo;
+		else {
+			try {
+				((Node<E>) prev(nodo)).setNext(nuevo);
+			} catch (BoundaryViolationException exc) {
+				System.out
+						.println("Lista::addBefore():: Esta excepcion no deberia llegar a dispararse.");
+			}
+		}
+		size++;
+	}
+
+	public E remove(Position<E> p) throws InvalidPositionException {
+		Node<E> nodo = checkposition(p);
+		if (tail == head) {
+			head = tail = null;
+		} else if (nodo == head) {
+			head = nodo.getNext();
+			//nodo.setNext(null);
+		} else
+			try {
+				if (nodo == tail) {
+					Node<E> anterior = (Node<E>) prev(nodo);
+					tail = anterior;
+					anterior.setNext(null);
+				} else {
+					Node<E> anterior = (Node<E>) prev(nodo);
+					anterior.setNext(nodo.getNext());
+				}
+			} catch (BoundaryViolationException e) {
+				System.out
+						.println("Lista::remove():: La excepcion no deberia haberse disparado.");
+			}
+		size--;
+		return nodo.element();
+	}
+
+	public E set(Position<E> p, E e) throws InvalidPositionException {
+		Node<E> nodo = checkposition(p);
+		E ret = nodo.element();
+		nodo.setElement(e);
+		return ret;
+	}
+	//TODO Borrar este metodo! xq no lo piden!
+	public String toString() {
+		String ret = "[";
+		Node<E> nodo = head;
+		ret += nodo.element();
+		nodo = nodo.getNext();
+		while (nodo != null) {
+			ret += ", " + nodo.element();
+			nodo = nodo.getNext();
+		}
+		ret += "]";
+		return ret;
+	}
 }
