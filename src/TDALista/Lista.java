@@ -1,28 +1,17 @@
 package TDALista;
-<<<<<<< .mine
-import java.util.Iterator;
-
-=======
 import Excepciones.*;
 
->>>>>>> .r21
 public class Lista<E> implements PositionList<E> {
 
 	/**
 	 * @param args
 	 */
-<<<<<<< .mine
 	private Node<E> head;
 	private Node<E> tail;
-	private Node<E> current;
-=======
-	private Node<E> head;
-	private Node<E> tail;
->>>>>>> .r21
 	private int size;
 
 	/**
-	 * Devuelve el tamaï¿½o de la lista
+	 * Devuelve el tamaño de la lista
 	 */
 	public int size() {
 		return size;
@@ -40,49 +29,9 @@ public class Lista<E> implements PositionList<E> {
 
 	public Position<E> last() throws EmptyListException {
 		if (isEmpty())
-			throw new EmptyListException(
-					"Lista::last():: La lista esta vacï¿½a");
+			throw new EmptyListException("Lista::last():: La lista esta vacía");
 		return tail;
 	}
-<<<<<<< .mine
-
-	public Node<E> valido(Position<E> p) throws InvalidPositionException {
-		// agregar mensaje!!
-		if (p == null)
-			throw new InvalidPositionException("agregar mensaje");
-		try {
-			Node<E> aux = (Node<E>) p;
-			return aux;
-		} catch (ClassCastException e) {
-			//agregar mensaje!!
-			throw new InvalidPositionException("agregar mensaje");
-		}
-
-	}
-
-	@Override
-	public void addAfter(Position<E> p, E e) throws InvalidPositionException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addBefore(Position<E> p, E e) throws InvalidPositionException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addFirst(E e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addLast(E e) {
-		// TODO Auto-generated method stub
-		
-=======
 
 	public Position<E> next(Position<E> p) throws InvalidPositionException,
 			BoundaryViolationException {
@@ -160,36 +109,8 @@ public class Lista<E> implements PositionList<E> {
 			}
 		}
 		size++;
->>>>>>> .r21
 	}
 
-<<<<<<< .mine
-	@Override
-	public Position<E> next(Position<E> p) throws InvalidPositionException,
-			BoundaryViolationException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public E remove(Position<E> p) throws InvalidPositionException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public E set(Position<E> p, E e) throws InvalidPositionException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-=======
 	public E remove(Position<E> p) throws InvalidPositionException {
 		Node<E> nodo = checkposition(p);
 		if (tail == head) {
@@ -234,5 +155,4 @@ public class Lista<E> implements PositionList<E> {
 		ret += "]";
 		return ret;
 	}
->>>>>>> .r21
 }

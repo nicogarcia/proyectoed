@@ -1,7 +1,7 @@
 package TDALista;
-/** Node of a singly linked list of strings. */
+
 public class Node<E> implements Position<E> {
-	private E element; // we assume elements are character strings
+	private E element; 
 	private Node<E> next;
 
 	/** Creates a node with the given element and next node. */
