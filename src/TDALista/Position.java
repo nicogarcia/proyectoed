@@ -1,5 +1,9 @@
 package TDALista;
+
 public interface Position<E> {
-	/** Return the element stored at this position. */
+	
+	/** 
+	 * Retorna el elemento almacenado en la posición.
+	 */
 	E element();
 }
