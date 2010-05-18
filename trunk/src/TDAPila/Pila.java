@@ -4,47 +4,74 @@ import Excepciones.EmptyStackException;
 
 public class Pila<E> implements Stack<E> {
 
+	//Atributos
 	private Node<E> head;
 	private int size;
 
-	// Constructor
+	/**
+	 * Crea una nueva pila vac√≠a.
+	 */
 	public Pila() {
 		head = null;
 		size = 0;
 	}
 
+	/**
+	 * Consulta si la pila est√° vac√≠a.	
+	 * 
+	 * @return true si la pila est√° vac√≠a, falso en caso contrario.
+	 */
 	public boolean isEmpty() {
 		return size == 0;
 	}
 
+	/**
+	 * Elimina y retorna el elemento en el tope de la pila.
+	 * 
+	 * @return El elemento al tope de la pila.
+	 */
 	public E pop() throws EmptyStackException {
 		if (isEmpty())
-			throw new EmptyStackException(
-					"Pila :: pop() :: La pila est· vacÌa.");
+			throw new EmptyStackException("Pila :: pop() :: La pila esta vacia.");
 		E toReturn = head.element();
 		head = head.getNext();
 		size--;
 		return toReturn;
 	}
 
+	/**
+	 * Inserta un elemento en el tope de la pila.
+	 * 
+	 * @param element Elemento a insertar.
+	 */
 	public void push(E element) {
 		Node<E> nuevo = new Node<E>(element, head);
 		head = nuevo;
 		size++;
 	}
 
+	/**
+	 * Retorna el tama√±o de la pila.
+	 * 
+	 * @return Tama√±o de la pila.
+	 */
 	public int size() {
 		return size;
 	}
 
+	/**
+	 * Inspecciona el elemento en el tope de la pila.
+	 * 
+	 * @return Elemento en el tope de la pila.
+	 */
 	public E top() throws EmptyStackException {
 		if (isEmpty())
 			throw new EmptyStackException(
-					"Pila :: top() :: La pila est· vacÌa.");
+					"Pila :: top() :: La pila esta vacia.");
 		return head.element();
 	}
 
-	// TODO ELIMINAR ESTE M…TODO DE PRUEBA
+	// TODO ELIMINAR ESTE METODO DE PRUEBA
 	public String toString() {
 		Node<E> n;
 		String st = "[ ";

@@ -2,32 +2,43 @@ package TDACola;
 
 import Excepciones.EmptyQueueException;
 
-public interface Queue<E> {  
-	 /** 
-	  * Returns the number of elements in the queue.
-	  * @return number of elements in the queue.
-	  */
-	  public int size();  
-	 /** 
-	  * Returns whether the queue is empty.
-	  * @return true if the queue is empty, false otherwise.
-	  */
-	  public boolean isEmpty(); 
-	 /**
-	  * Inspects the element at the front of the queue.
-	  * @return element at the front of the queue.
-	  * @exception EmptyQueueException if the queue is empty.
-	  */
-	  public E front() throws EmptyQueueException; 
-	 /** 
-	  * Inserts an element at the rear of the queue.
-	  * @param element new element to be inserted.
-	  */
-	  public void enqueue (E element); 
-	 /** 
-	  * Removes the element at the front of the queue.
-	  * @return element removed.
-	  * @exception EmptyQueueException if the queue is empty.
-	  */
-	  public E dequeue() throws EmptyQueueException; 
-	}
+public interface Queue<E> {
+	/**
+	 * Retorna el número de elementos en la cola.
+	 * 
+	 * @return número de elementos en la cola.
+	 */
+	public int size();
+
+	/**
+	 * Consulta si la lista está vacía.	
+	 * 
+	 * @return true si la cola está vacía, falso en caso contrario.
+	 */
+	public boolean isEmpty();
+
+	/**
+	 * Inspecciona el elemento al frente de la cola.
+	 * 
+	 * @return elemento al frente de la cola.
+	 * 
+	 * @exception EmptyQueueException si la cola está vacía. 
+	 */
+	public E front() throws EmptyQueueException;
+
+	/**
+	 * Inserta un elemento al final de la cola.
+	 * 
+	 * @param elemento nuevo que se desea insertar. 
+	 */
+	public void enqueue(E element);
+
+	/**
+	 * Remueve el elemento al frente de la cola.
+	 * 
+	 * @return elemento removido.
+	 * 
+	 * @exception EmptyQueueException si la cola está vacía.
+	 */
+	public E dequeue() throws EmptyQueueException;
+}
