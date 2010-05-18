@@ -3,22 +3,39 @@ package TDACola;
 import Excepciones.EmptyQueueException;
 
 public class Cola<E> implements Queue<E> {
+	
+	//Atributos
 	private int front, rear;
 	private E[] array;
 	public int capacity;
 
+	/**
+	 * Constructor con capacidad por defecto.
+	 */
 	public Cola() {
 		front = rear = 0;
 		capacity = 100;
 		array = (E[]) new Object[capacity];
 	}
 
+	/**
+	 * Constructor con capacidad determinada por el usuario.
+	 * 
+	 * @param capacity Capacidad inicial de la cola.
+	 */
 	public Cola(int capacity) {
 		front = rear = 0;
 		this.capacity = capacity;
 		array = (E[]) new Object[capacity];
 	}
 
+	/**
+	 * Remueve el elemento al frente de la cola.
+	 * 
+	 * @return elemento removido.
+	 * 
+	 * @exception EmptyQueueException si la cola esta vacia.
+	 */
 	public E dequeue() throws EmptyQueueException {
 		if (isEmpty())
 			throw new EmptyQueueException(
@@ -29,6 +46,11 @@ public class Cola<E> implements Queue<E> {
 		return ret;
 	}
 
+	/**
+	 * Inserta un elemento al final de la cola.
+	 * 
+	 * @param elemento nuevo que se desea insertar. 
+	 */
 	public void enqueue(E element) {
 		if (isArrayFull())
 			growArray(array);
@@ -36,6 +58,13 @@ public class Cola<E> implements Queue<E> {
 		rear = (rear + 1) % capacity;
 	}
 
+	/**
+	 * Inspecciona el elemento al frente de la cola.
+	 * 
+	 * @return elemento al frente de la cola.
+	 * 
+	 * @exception EmptyQueueException si la cola esta vacia. 
+	 */
 	public E front() throws EmptyQueueException {
 		if (isEmpty())
 			throw new EmptyQueueException("Cola::front():: La cola esta vacia.");
@@ -56,15 +85,25 @@ public class Cola<E> implements Queue<E> {
 		this.array = arrayNuevo;
 	}
 
-	// creado para mejorar la legibilidad
+	// Creado para mejorar la legibilidad
 	private boolean isArrayFull() {
 		return size() == capacity - 1;
 	}
 
+	/**
+	 * Consulta si la cola esta vacia.	
+	 * 
+	 * @return true si la cola esta vacia, falso en caso contrario.
+	 */
 	public boolean isEmpty() {
 		return front == rear;
 	}
 
+	/**
+	 * Retorna el número de elementos en la cola.
+	 * 
+	 * @return número de elementos en la cola.
+	 */
 	public int size() {
 		return (capacity - front + rear) % capacity;
 	}
