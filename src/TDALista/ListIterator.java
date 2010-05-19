@@ -1,5 +1,5 @@
 package TDALista;
-
+//TODO Insertar javadocs
 import java.util.Iterator;
 
 import Excepciones.*;
