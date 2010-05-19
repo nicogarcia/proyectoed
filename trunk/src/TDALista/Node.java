@@ -2,9 +2,8 @@ package TDALista;
 
 public class Node<E> implements Position<E> {
 	
-	//Atributos.
-	private E element;
-	private Node<E> next;
+	private E element; //Elemento almacenado en el nodo
+	private Node<E> next;//Nodo siguiente
 
 	/**
 	 * Crea un nodo con el elemento dado y el siguiente nodo.

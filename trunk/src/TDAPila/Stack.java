@@ -1,7 +1,7 @@
 package TDAPila;
 
 import Excepciones.EmptyStackException;
-
+//FIXME Hay que poner esto en las interfaces?
 /** 
  * Interface for a stack: a collection of objects that are inserted
  * and removed according to the last-in first-out principle.  This
@@ -14,31 +14,31 @@ import Excepciones.EmptyStackException;
 
 public interface Stack<E> {
 /**
- * Return the number of elements in the stack.
- * @return number of elements in the stack. 
+ * Devuelve el numero de elmentos de la pila
+ * @return numero de elementos de la pila. 
  */
  public int size();
 /** 
- * Return whether the stack is empty.
- * @return true if the stack is empty, false otherwise. 
+ * Devuelve si la pila esta vacia.
+ * @return Verdadero si la pila esta vacia, falso en caso contrario. 
  */
  public boolean isEmpty();
 /** 
- * Inspect the element at the top of the stack.
- * @return top element in the stack.  
- * @exception EmptyStackException if the stack is empty. 
+ * Devuelve el elemento que esta en el tope de la pila.
+ * @return Elemento almacenado en el tope de la pila.  
+ * @exception EmptyStackException si la pila esta vacia. 
  */
  public E top() 
    throws EmptyStackException;  
 /**
- * Insert an element at the top of the stack.
- * @param element to be inserted.
+ * Inserta un elemento en el tope de la pila.
+ * @param Elemento a insertar.
  */
  public void push (E element); 
 /** 
- * Remove the top element from the stack.
- * @return element removed.
- * @exception EmptyStackException if the stack is empty.
+ * Elimina el elemento que esta en el tope de la pila.
+ * @return Elemento eliminado.
+ * @exception EmptyStackException si la pila esta vacia.
  */
  public E pop()
    throws EmptyStackException; 

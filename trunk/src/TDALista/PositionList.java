@@ -1,41 +1,96 @@
 package TDALista;
+
 import Excepciones.*;
 
 public interface PositionList<E> extends Iterable<E> {
-	//TODO cambiar el idioma de los javadocs
-	/** Returns the number of elements in this list. */
+
+	/**
+	 * Devuelve el numero de elementos de la lista.
+	 * 
+	 * @return Tamaño de la lista
+	 */
 	public int size();
 
-	/** Returns whether the list is empty. */
+	/**
+	 * Devuelve si la lista esta vacia o no.
+	 * 
+	 * @return Verdadero si esta vacia o falso en caso contrario.
+	 */
 	public boolean isEmpty();
 
-	/** Returns the first node in the list. */
+	/**
+	 * Devuelve el primer nodo de la lista.
+	 * 
+	 * @return Primer nodo
+	 */
 	public Position<E> first() throws EmptyListException;
 
-	/** Returns the last node in the list. 
-	 * @throws EmptyListException */
+	/**
+	 * Retorna el ultimo nodo de la lista.
+	 * 
+	 * @throws EmptyListException
+	 *             si la lista esta vacia
+	 */
 	public Position<E> last() throws EmptyListException;
 
-	/** Returns the node after a given node in the list. */
+	/**
+	 * Devuelve el nodo siguiente a uno dado en la lista.
+	 * 
+	 * @param p
+	 *            Nodo de referencia
+	 * @return Nodo siguiente
+	 */
 	public Position<E> next(Position<E> p) throws InvalidPositionException,
 			BoundaryViolationException;
 
-	/** Inserts an element at the front of the list, returning new position. */
+	/**
+	 * Insrta un elemento al principio de la lista devolviendo una nueva
+	 * posicion.
+	 * 
+	 * @param e
+	 *            Elemento a insertar
+	 */
 	public void addFirst(E e);
 
-	/** Inserts and element at the back of the list, returning new position. */
+	/**
+	 * Inserta un elemento al final de la lista devolviendo una nueva posicion.
+	 * 
+	 * @param e
+	 *            Elemento a insertar
+	 */
 	public void addLast(E e);
 
-	/** Inserts an element after the given node in the list. */
+	/**
+	 * Inserta en la lista un elemento despues de un nodo dado.
+	 * 
+	 * @param e
+	 *            Elemento a insertar.
+	 * @param p
+	 *            Posicion de referencia.
+	 */
 	public void addAfter(Position<E> p, E e) throws InvalidPositionException;
 
-	/** Inserts an element before the given node in the list. */
+	/** Inserta en la lista un elemento antes de un nodo dado.
+	 * @param e
+	 * 	Elemento a insertar
+	 * @param p Posicion de referencia */
 	public void addBefore(Position<E> p, E e) throws InvalidPositionException;
 
-	/** Removes a node from the list, returning the element stored there. */
+	/**
+	 * Borra un nodo de la lista y devuelve el elemento que estaba en esa
+	 * posicion.
+	 * @param p Posicion del nodo a remover.
+	 * @return Elemento previamente almacenado en el nodo removido.
+	 */
 	public E remove(Position<E> p) throws InvalidPositionException;
 
-	/** Replaces the element stored at the given node, returning old element. */
+	/**
+	 * Reemplaza el elemento almacenado en un nodo dado devolviendo el elemento
+	 * viejo.
+	 * @param e Elemento nuevo.
+	 * @param p Posicion a la que se le cambiara el elemento.
+	 * @return Elemento previamente almacenado en el nodo.
+	 */
 	public E set(Position<E> p, E e) throws InvalidPositionException;
 
 }

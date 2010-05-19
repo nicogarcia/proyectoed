@@ -1,4 +1,5 @@
 package GeneralTree;
+//TODO Faltan javadocs
 
 import java.util.Iterator;
 
@@ -79,10 +80,11 @@ public class Arbol<E> implements GeneralTree<E> {
 	}
 
 	public E replace(Position<E> v, E e) throws InvalidPositionException {
-		// TODO Auto-generated method stub
-		return null;
+		TNode<E> nodo = checkPosition(v);
+		// TODO Consultar con Tincho (hecho por propia cuenta)
+		return nodo.setElement(e);
 	}
-
+	
 	public Position<E> root() throws EmptyTreeException {
 		if (isEmpty())
 			throw new EmptyTreeException(
