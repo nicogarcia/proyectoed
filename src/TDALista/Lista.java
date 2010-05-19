@@ -1,4 +1,7 @@
 package TDALista;
+
+import java.util.Iterator;
+
 import Excepciones.*;
 
 public class Lista<E> implements PositionList<E> {
@@ -7,66 +10,32 @@ public class Lista<E> implements PositionList<E> {
 	 * @param args
 	 */
 	private Node<E> head;
-	private Node<E> tail;
 	private int size;
+	private Node<E> tail;
 
-	/**
-	 * Devuelve el tamaño de la lista
-	 */
-	public int size() {
-		return size;
-	}
-
-	public boolean isEmpty() {
-		return size == 0;
-	}
-
-	public Position<E> first() throws EmptyListException {
-		if (isEmpty())
-			throw new EmptyListException("Lista:: first() :List is empty");
-		return head;
-	}
-
-	public Position<E> last() throws EmptyListException {
-		if (isEmpty())
-			throw new EmptyListException("Lista::last():: La lista esta vacía");
-		return tail;
-	}
-
-	public Position<E> next(Position<E> p) throws InvalidPositionException,
-			BoundaryViolationException {
-		Node<E> nodo = checkposition(p);
+	public void addAfter(Position<E> p, E e) throws InvalidPositionException {
+		Node<E> nodo = checkPosition(p);
+		Node<E> nuevo = new Node<E>(e, nodo.getNext());
 		if (nodo == tail)
-			throw new BoundaryViolationException(
-					"Lista::next():: La posicion recibida es la ultima de la lista.");
-		Node<E> next = nodo.getNext();
-		return next;
+			tail = nuevo;
+		nodo.setNext(nuevo);
+		size++;
 	}
 
-	private Node<E> checkposition(Position<E> p)
-			throws InvalidPositionException {
-		if (p == null)
-			throw new InvalidPositionException(
-					"Lista::checkposition():: La posicion pasada es nula.");
-		try {
-			Node<E> temp = (Node<E>) p;
-			return temp;
-		} catch (ClassCastException e) {
-			throw new InvalidPositionException(
-					"Lista::checkposition():: La posicion es de tipo incorrecto.");
-		}
-	}
-
-	public Position<E> prev(Position<E> p) throws BoundaryViolationException,
-			InvalidPositionException {
-		Node<E> nodo = checkposition(p);
+	public void addBefore(Position<E> p, E e) throws InvalidPositionException {
+		Node<E> nodo = checkPosition(p);
+		Node<E> nuevo = new Node<E>(e, nodo);
 		if (nodo == head)
-			throw new BoundaryViolationException(
-					"Lista::prev():: La posicion recibida es la primera de la lista.");
-		Node<E> aux = head;
-		while (aux.getNext() != nodo)
-			aux = aux.getNext();
-		return aux;
+			head = nuevo;
+		else {
+			try {
+				((Node<E>) prev(nodo)).setNext(nuevo);
+			} catch (BoundaryViolationException exc) {
+				System.out
+						.println("Lista::addBefore():: Esta excepcion no deberia llegar a dispararse.");
+			}
+		}
+		size++;
 	}
 
 	public void addFirst(E e) {
@@ -86,38 +55,93 @@ public class Lista<E> implements PositionList<E> {
 		size++;
 	}
 
-	public void addAfter(Position<E> p, E e) throws InvalidPositionException {
-		Node<E> nodo = checkposition(p);
-		Node<E> nuevo = new Node<E>(e, nodo.getNext());
-		if (nodo == tail)
-			tail = nuevo;
-		nodo.setNext(nuevo);
-		size++;
+	private Node<E> checkPosition(Position<E> p)
+			throws InvalidPositionException {
+		if (p == null)
+			throw new InvalidPositionException(
+					"Lista::checkposition():: La posicion pasada es nula.");
+		try {
+			Node<E> temp = (Node<E>) p;
+			return temp;
+		} catch (ClassCastException e) {
+			throw new InvalidPositionException(
+					"Lista::checkposition():: La posicion es de tipo incorrecto.");
+		}
 	}
 
-	public void addBefore(Position<E> p, E e) throws InvalidPositionException {
-		Node<E> nodo = checkposition(p);
-		Node<E> nuevo = new Node<E>(e, nodo);
-		if (nodo == head)
-			head = nuevo;
-		else {
-			try {
-				((Node<E>) prev(nodo)).setNext(nuevo);
-			} catch (BoundaryViolationException exc) {
-				System.out
-						.println("Lista::addBefore():: Esta excepcion no deberia llegar a dispararse.");
+	public Position<E> first() throws EmptyListException {
+		if (isEmpty())
+			throw new EmptyListException("Lista:: first() :List is empty");
+		return head;
+	}
+
+	public boolean isEmpty() {
+		return size == 0;
+	}
+
+	public Iterator<E> iterator() {
+		return new ListIterator<E>(this);
+	}
+
+	public Position<E> last() throws EmptyListException {
+		if (isEmpty())
+			throw new EmptyListException("Lista::last():: La lista esta vacï¿½a");
+		return tail;
+	}
+
+	public Position<E> next(Position<E> p) throws InvalidPositionException,
+			BoundaryViolationException {
+		Node<E> nodo = checkPosition(p);
+		if (nodo == tail)
+			throw new BoundaryViolationException(
+					"Lista::next():: La posicion recibida es la ultima de la lista.");
+		Node<E> next = nodo.getNext();
+		return next;
+	}
+
+	public Iterable<Position<E>> positions() {
+		PositionList<Position<E>> P = new Lista<Position<E>>();
+		try {
+			if (!isEmpty()) {
+				Position<E> p = first();
+				while (true) {
+					P.addLast(p);
+					if (p == last())
+						break;
+					p = next(p);
+				}
 			}
+		} catch (EmptyListException e) {
+			System.out.println("Esta excepcion no deberia dispararse");
+
+		} catch (InvalidPositionException e) {
+			System.out.println("Esta excepcion no deberia dispararse");
+
+		} catch (BoundaryViolationException e) {
+			System.out.println("Esta excepcion no deberia dispararse");
 		}
-		size++;
+		return P;
+	}
+
+	public Position<E> prev(Position<E> p) throws BoundaryViolationException,
+			InvalidPositionException {
+		Node<E> nodo = checkPosition(p);
+		if (nodo == head)
+			throw new BoundaryViolationException(
+					"Lista::prev():: La posicion recibida es la primera de la lista.");
+		Node<E> aux = head;
+		while (aux.getNext() != nodo)
+			aux = aux.getNext();
+		return aux;
 	}
 
 	public E remove(Position<E> p) throws InvalidPositionException {
-		Node<E> nodo = checkposition(p);
+		Node<E> nodo = checkPosition(p);
 		if (tail == head) {
 			head = tail = null;
 		} else if (nodo == head) {
 			head = nodo.getNext();
-			//nodo.setNext(null);
+			// nodo.setNext(null);
 		} else
 			try {
 				if (nodo == tail) {
@@ -137,12 +161,21 @@ public class Lista<E> implements PositionList<E> {
 	}
 
 	public E set(Position<E> p, E e) throws InvalidPositionException {
-		Node<E> nodo = checkposition(p);
+		Node<E> nodo = checkPosition(p);
 		E ret = nodo.element();
 		nodo.setElement(e);
 		return ret;
 	}
-	//TODO Borrar este metodo! xq no lo piden!
+
+	/**
+	 * Devuelve el tamaï¿½o de la lista
+	 */
+	public int size() {
+		return size;
+	}
+
+	// TODO Borrar este metodo! xq no lo piden!
+	
 	public String toString() {
 		String ret = "[";
 		Node<E> nodo = head;

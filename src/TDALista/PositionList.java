@@ -1,7 +1,7 @@
 package TDALista;
 import Excepciones.*;
 
-public interface PositionList<E> {
+public interface PositionList<E> extends Iterable<E> {
 	//TODO cambiar el idioma de los javadocs
 	/** Returns the number of elements in this list. */
 	public int size();

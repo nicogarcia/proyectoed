@@ -8,15 +8,35 @@ import TDALista.*;
 public class Arbol<E> implements GeneralTree<E> {
 
 	protected TNode<E> root;
+	protected int size;
 
 	public Arbol() {
-
+		root = null;
 	}
 
 	public Iterable<Position<E>> children(Position<E> v)
 			throws InvalidPositionException {
-		// TODO Auto-generated method stub
-		return null;
+		TNode<E> p = checkPosition(v);
+		// TODO PREGUNTAR SI VA UN p==null
+		Lista<Position<E>> lista = new Lista<Position<E>>();
+		for (TNode<E> h : p.getChildren()) {
+			lista.addLast(h);
+		}
+		return lista;
+	}
+
+	private TNode<E> checkPosition(Position<E> v)
+			throws InvalidPositionException {
+		if (v == null)
+			throw new InvalidPositionException(
+					"Arbol::checkposition():: La posicion es invalida.");
+		try {
+			TNode<E> nodo = (TNode<E>) v;
+			return nodo;
+		} catch (ClassCastException c) {
+			throw new InvalidPositionException(
+					"Arbol::checkposition():: El tipo de la posicion es invalido.");
+		}
 	}
 
 	public boolean isEmpty() {
@@ -24,34 +44,38 @@ public class Arbol<E> implements GeneralTree<E> {
 	}
 
 	public boolean isExternal(Position<E> v) throws InvalidPositionException {
-		// TODO Auto-generated method stub
-		return false;
+		TNode<E> nodo = checkPosition(v);
+		return (nodo.getChildren() == null);
 	}
 
 	public boolean isInternal(Position<E> v) throws InvalidPositionException {
-		// TODO Auto-generated method stub
-		return false;
+		TNode<E> nodo = checkPosition(v);
+		return (nodo.getChildren() != null);
+
 	}
 
 	public boolean isRoot(Position<E> v) throws InvalidPositionException {
-		TNode<E> nodo=checkposition(v);
-		
+		TNode<E> nodo = checkPosition(v);
+		return nodo == root;
 	}
 
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		Lista<E> lista = new Lista<E>();
+		for (Position<E> p : positions())
+			lista.addLast(p.element());
+		return new TreeIterator<E>(lista);
 	}
 
 	public Position<E> parent(Position<E> v) throws InvalidPositionException,
 			BoundaryViolationException {
-		// TODO Auto-generated method stub
-		return null;
+		TNode<E> nodo = checkPosition(v);
+		return nodo.getParent();
 	}
 
 	public Iterable<Position<E>> positions() {
-		// TODO Auto-generated method stub
-		return null;
+		Lista<Position<E>> lista = new Lista<Position<E>>();
+		preOrder(lista, root);
+		return lista;
 	}
 
 	public E replace(Position<E> v, E e) throws InvalidPositionException {
@@ -67,8 +91,18 @@ public class Arbol<E> implements GeneralTree<E> {
 	}
 
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
+	private void preOrder(Lista<Position<E>> l, TNode<E> n) {
+		l.addLast(n);
+		for (TNode<E> h : n.getChildren())
+			preOrder(l, h);
+	}
+
+	private void posOrder(Lista<Position<E>> l, TNode<E> n) {
+		for (TNode<E> h : n.getChildren())
+			preOrder(l, h);
+		l.addLast(n);
+	}
 }

@@ -12,6 +12,12 @@ public class TNode<E> implements Position<E> {
 		this.children = children;
 	}
 
+	// TODO AGREGAR ALGO AL MANUAL SOBRE ESTO
+	public TNode(TNode<E> parent) {
+		this(parent, null);
+	}
+
+	//
 	public E element() {
 		return element;
 	}
