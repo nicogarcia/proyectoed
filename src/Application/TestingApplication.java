@@ -7,7 +7,7 @@ public class TestingApplication {
 	
 	public static void main(String[] args) {
 		cargarArbol('A');
-		System.out.println(printPreOrder());
+		//System.out.println(printPreOrder());
 		agregarNodo('B', 'A');
 		agregarNodo('c', 'B');
 		agregarNodo('D', 'A');
