@@ -1,6 +1,6 @@
 package TDAMapeo;
 //FIXME COPIADO EN CLASE!
-public class NodoABB<E> {
+public class NodoABB<E> implements Position<E>{
 	protected NodoABB<E> padre;
 	protected E rotulo;
 	protected NodoABB<E> left, right;
@@ -10,7 +10,7 @@ public class NodoABB<E> {
 		rotulo = null;
 	}
 
-	public E getRotulo() {
+	public E element() {
 		return rotulo;
 	}
 
@@ -38,7 +38,7 @@ public class NodoABB<E> {
 		left = izquierdo;
 	}
 
-	public void setRotulo(E e) {
+	public void setElement(E e) {
 		rotulo = e;
 	}
 }
