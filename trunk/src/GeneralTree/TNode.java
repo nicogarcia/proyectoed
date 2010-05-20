@@ -3,8 +3,8 @@ package GeneralTree;
 import TDALista.*;
 
 public class TNode<E> implements Position<E> {
-	protected TNode<E> parent; //Nodo padre
-	protected PositionList<TNode<E>> children;//Lista de hijos
+	protected TNode<E> parent; // Nodo padre
+	protected PositionList<TNode<E>> children;// Lista de hijos
 	private E element;// Elemento que almacena el nodo
 
 	/**
@@ -15,9 +15,10 @@ public class TNode<E> implements Position<E> {
 	 * @param children
 	 *            Lista de hijos
 	 */
-	public TNode(TNode<E> parent, PositionList<TNode<E>> children) {
+	public TNode(TNode<E> parent, PositionList<TNode<E>> children,E element) {
 		this.parent = parent;
 		this.children = children;
+		this.element = element;
 	}
 
 	/**
@@ -26,17 +27,14 @@ public class TNode<E> implements Position<E> {
 	 * @param parent
 	 *            Nodo Padre
 	 */
-	public TNode(TNode<E> parent) {
-		this(parent, null);
+	public TNode(TNode<E> parent,E element) {
+		this(parent, null,element);
 	}
 
-	public void caca() {
-
-	}
-
-	// FIXME esta bien este javadoc?
 	/**
 	 * Devuelve el elemento que almacena el nodo
+	 * 
+	 * @return Elemento almacenado en el nodo
 	 */
 	public E element() {
 		return element;

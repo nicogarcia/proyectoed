@@ -41,7 +41,6 @@ public class ListIterator<E> implements Iterator<E> {
 		return toReturn;
 	}
 
-	// FIXME Hay que implementarla?
 	public void remove() {
 
 	}

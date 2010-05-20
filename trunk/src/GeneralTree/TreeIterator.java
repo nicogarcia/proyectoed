@@ -1,5 +1,5 @@
 package GeneralTree;
-
+//FIXME BORRARLA Y USAR LISTITERATOR
 import java.util.Iterator;
 
 import Excepciones.*;
@@ -43,7 +43,6 @@ public class TreeIterator<E> implements Iterator<E> {
 		return toReturn;
 	}
 
-	// FIXME Hay que implementarla?
 	public void remove() {
 
 	}

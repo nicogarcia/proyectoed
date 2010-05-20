@@ -1,4 +1,5 @@
 package GeneralTree;
+
 //TODO Faltan javadocs
 
 import java.util.Iterator;
@@ -11,14 +12,29 @@ public class Arbol<E> implements GeneralTree<E> {
 	protected TNode<E> root;
 	protected int size;
 
-	public Arbol() {
-		root = null;
+	public Arbol(E rotuloRaiz) {
+		root = new TNode<E>(null, rotuloRaiz);
+	}
+
+	public TNode<E> insertar(E rotulo, E rPadre) {
+		for (Position<E> pos : positions())
+			if (pos.element() == rPadre) {
+				try {
+					TNode<E> padre = checkPosition(pos);
+					TNode<E> nuevo = new TNode<E>(padre, rotulo);
+					padre.getChildren().addLast(nuevo);
+					return nuevo;
+				} catch (InvalidPositionException e) {
+					System.out
+							.println("Arbol::insertar():: Esta excepcion no deberia llegar a dispararse.");
+				}
+			}
+		return null;
 	}
 
 	public Iterable<Position<E>> children(Position<E> v)
 			throws InvalidPositionException {
 		TNode<E> p = checkPosition(v);
-		// TODO PREGUNTAR SI VA UN p==null
 		Lista<Position<E>> lista = new Lista<Position<E>>();
 		for (TNode<E> h : p.getChildren()) {
 			lista.addLast(h);
@@ -64,7 +80,7 @@ public class Arbol<E> implements GeneralTree<E> {
 		Lista<E> lista = new Lista<E>();
 		for (Position<E> p : positions())
 			lista.addLast(p.element());
-		return new TreeIterator<E>(lista);
+		return lista.iterator();
 	}
 
 	public Position<E> parent(Position<E> v) throws InvalidPositionException,
@@ -74,17 +90,26 @@ public class Arbol<E> implements GeneralTree<E> {
 	}
 
 	public Iterable<Position<E>> positions() {
+		return preOrderPositions();
+	}
+	//FIXME PREGUNTAR SI SE PUEDE HACER UN POSITIONPRE Y OTRO POSITIONPOS
+	public Iterable<Position<E>> preOrderPositions() {
 		Lista<Position<E>> lista = new Lista<Position<E>>();
 		preOrder(lista, root);
+		return lista;
+	}
+	
+	public Iterable<Position<E>> posOrderPositions() {
+		Lista<Position<E>> lista = new Lista<Position<E>>();
+		posOrder(lista, root);
 		return lista;
 	}
 
 	public E replace(Position<E> v, E e) throws InvalidPositionException {
 		TNode<E> nodo = checkPosition(v);
-		// TODO Consultar con Tincho (hecho por propia cuenta)
 		return nodo.setElement(e);
 	}
-	
+
 	public Position<E> root() throws EmptyTreeException {
 		if (isEmpty())
 			throw new EmptyTreeException(

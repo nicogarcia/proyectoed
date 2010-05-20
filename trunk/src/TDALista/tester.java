@@ -14,9 +14,11 @@ public class tester {
 		try {
 			Lista<String> lista = new Lista<String>();
 
+			lista.addLast("nico");
 			lista.addFirst("kaka");
 			lista.addFirst("hola");
-			lista.addLast("nico");
+			lista.addLast("coco");
+			
 
 			lista.addFirst("tincho");
 			lista.addAfter(lista.last(), "anteultimo");
@@ -28,7 +30,7 @@ public class tester {
 			System.out.println(lista.toString());
 		} catch (Exception e)
 		{
-			System.out.println("lpm!!");
+			System.out.println(e.getClass().toString());
 		}
 	}
 

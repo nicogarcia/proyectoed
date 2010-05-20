@@ -1,4 +1,5 @@
 package TDALista;
+
 //TODO Faltan javadocs
 import java.util.Iterator;
 
@@ -12,6 +13,11 @@ public class Lista<E> implements PositionList<E> {
 	private Node<E> head;
 	private int size;
 	private Node<E> tail;
+
+	public Lista() {
+		head = tail = null;
+		size = 0;
+	}
 
 	public void addAfter(Position<E> p, E e) throws InvalidPositionException {
 		Node<E> nodo = checkPosition(p);
@@ -48,10 +54,12 @@ public class Lista<E> implements PositionList<E> {
 
 	public void addLast(E e) {
 		Node<E> nuevo = new Node<E>(e, null);
-		tail.setNext(nuevo);
-		tail = nuevo;
 		if (isEmpty())
-			head = nuevo;
+			head = tail = nuevo;
+		else {
+			tail.setNext(nuevo);
+			tail = nuevo;
+		}
 		size++;
 	}
 
@@ -175,7 +183,7 @@ public class Lista<E> implements PositionList<E> {
 	}
 
 	// TODO Borrar este metodo! xq no lo piden!
-	
+
 	public String toString() {
 		String ret = "[";
 		Node<E> nodo = head;
