@@ -5,6 +5,7 @@ package GeneralTree;
 import java.util.Iterator;
 
 import Excepciones.*;
+import TDACola.Cola;
 import TDALista.*;
 
 public class Arbol<E> implements GeneralTree<E> {
@@ -92,13 +93,14 @@ public class Arbol<E> implements GeneralTree<E> {
 	public Iterable<Position<E>> positions() {
 		return preOrderPositions();
 	}
-	//FIXME PREGUNTAR SI SE PUEDE HACER UN POSITIONPRE Y OTRO POSITIONPOS
+
+	// FIXME PREGUNTAR SI SE PUEDE HACER UN POSITIONPRE Y OTRO POSITIONPOS
 	public Iterable<Position<E>> preOrderPositions() {
 		Lista<Position<E>> lista = new Lista<Position<E>>();
 		preOrder(lista, root);
 		return lista;
 	}
-	
+
 	public Iterable<Position<E>> posOrderPositions() {
 		Lista<Position<E>> lista = new Lista<Position<E>>();
 		posOrder(lista, root);
@@ -129,7 +131,34 @@ public class Arbol<E> implements GeneralTree<E> {
 
 	private void posOrder(Lista<Position<E>> l, TNode<E> n) {
 		for (TNode<E> h : n.getChildren())
-			preOrder(l, h);
+			posOrder(l, h);
 		l.addLast(n);
+	}
+
+	public Lista<E> listadoNiveles() {
+		Lista<E> lista = new Lista<E>();
+		Cola<TNode<E>> cola = new Cola<TNode<E>>();
+		try {
+			cola.enqueue(checkPosition(root()));
+			cola.enqueue(null);
+			while (!cola.isEmpty()) {
+				TNode<E> p = cola.dequeue();
+				if (p == null) {
+					if (!cola.isEmpty()) {
+						cola.enqueue(null);
+						lista.addLast(null);
+					}
+				} else {
+					lista.addLast(p.element());
+					for (TNode<E> h : p.getChildren())
+						cola.enqueue(h);
+				}
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage() + "  ::  "
+					+ e.getClass().toString());
+		}
+		return lista;
 	}
 }

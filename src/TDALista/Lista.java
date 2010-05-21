@@ -183,7 +183,7 @@ public class Lista<E> implements PositionList<E> {
 	}
 
 	// TODO Borrar este metodo! xq no lo piden!
-
+	// FIXME NO ANDA!!
 	public String toString() {
 		String ret = "[";
 		Node<E> nodo = head;

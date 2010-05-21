@@ -15,9 +15,10 @@ public class TNode<E> implements Position<E> {
 	 * @param children
 	 *            Lista de hijos
 	 */
-	public TNode(TNode<E> parent, PositionList<TNode<E>> children,E element) {
+	public TNode(TNode<E> parent, PositionList<TNode<E>> children, E element) {
 		this.parent = parent;
-		this.children = children;
+		if (children == null)
+			this.children = new Lista<TNode<E>>();
 		this.element = element;
 	}
 
@@ -27,8 +28,8 @@ public class TNode<E> implements Position<E> {
 	 * @param parent
 	 *            Nodo Padre
 	 */
-	public TNode(TNode<E> parent,E element) {
-		this(parent, null,element);
+	public TNode(TNode<E> parent, E element) {
+		this(parent, null, element);
 	}
 
 	/**
