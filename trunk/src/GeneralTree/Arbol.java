@@ -1,6 +1,6 @@
 package GeneralTree;
 
-//TODO Faltan javadocs
+//TODO Faltan javadocs. Agregar!
 
 import java.util.Iterator;
 
