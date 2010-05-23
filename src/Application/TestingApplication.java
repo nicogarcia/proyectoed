@@ -1,7 +1,14 @@
 package Application;
 
+import Excepciones.BoundaryViolationException;
+import Excepciones.EmptyListException;
+import Excepciones.EmptyTreeException;
+import Excepciones.InvalidPositionException;
 import GeneralTree.Arbol;
+import TDALista.Lista;
+import TDALista.Node;
 import TDALista.Position;
+import TDAPila.Pila;
 
 public class TestingApplication {
 
@@ -15,7 +22,17 @@ public class TestingApplication {
 		agregarNodo('F', 'E');
 		agregarNodo('G', 'E');
 		System.out.println(printNiveles());
-		// System.out.println(printPosOrder());
+		try {
+			System.out.println("Se eliminaron los siguientes elementos:"
+					+ eliminarNivel(3).toString());
+
+		} catch (EmptyTreeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println();
+		System.out.println(printNiveles());
+
 	}
 
 	private static Arbol<Character> miArbol;
@@ -57,4 +74,77 @@ public class TestingApplication {
 		return ret;
 	}
 
+	/**
+	 * 
+	 * @param c
+	 *            Caracter del nodo a eliminar.
+	 * @return El caracter del nodo eliminado, o null en caso de que no se haya
+	 *         encontrado ningún nodo con el caracter recibido.
+	 * @throws InvalidPositionException
+	 * @throws EmptyTreeException
+	 */
+	public static Character eliminarNodo(Character c)
+			throws InvalidPositionException, EmptyTreeException {
+		Character toReturn = null;
+		for (Position<Character> pos : miArbol.positions())
+			// Este for each busca la posición con el caracter recibido
+			if (pos.element() == c) {
+				toReturn = pos.element();
+				miArbol.removeNode(pos);
+			}
+		return toReturn;
+	}
+
+	/**
+	 * 
+	 * @param nivel
+	 *            Nivel que se desea eliminar.
+	 * @return Una pila con los rotulos de los nodos eliminados.
+	 * 
+	 * @throws EmptyTreeException
+	 */
+	// FIXME EN CASO DE QUE EL NIVEL SEA 1, LA RAIZ NO SE ELIMINA, PERO DEVUELVE
+	// UNA PILA CON EL ELEMENTO DE LA RAIZ COMO SI HUBIESE SIDO ELIMINADO
+	public static Pila<Character> eliminarNivel(int nivel)
+			throws EmptyTreeException {
+		Pila<Character> eliminados = new Pila<Character>();
+		int nivelActual = 1;
+		Lista<Character> listaNiveles = miArbol.listadoNiveles();
+		Position<Character> current;
+		if (!miArbol.isEmpty()) {
+			try {
+				current = listaNiveles.first();
+				while (nivelActual != nivel) // Me posiciono en la lista de
+				// niveles, donde empieza el
+				// nivel recibido.
+				{
+					if (current.element() == null)
+						nivelActual++;
+					current = listaNiveles.next(current);
+				}
+				while (nivelActual == nivel) {
+					eliminados.push(current.element());
+					eliminarNodo(current.element());
+					current = listaNiveles.next(current);
+					if (current.element() == null)
+						nivelActual++;
+				}
+
+			} catch (EmptyListException e1) {
+				System.out
+						.println("Esta excepción no debería dispararse, ya se verificó que el arbol "
+								+ "no está vacío.");
+			} catch (InvalidPositionException e) {
+				System.out.println("Esta excepción no debería dispararse.");
+			} catch (BoundaryViolationException e) {
+				System.out
+						.println("eliminarNivel :: El nivel que se quiere eliminar no existe.");
+			}
+
+		} else
+			throw new EmptyTreeException(
+					"No se puede eliminar ningún nivel, el árbol está vacío.");
+
+		return eliminados;
+	}
 }
