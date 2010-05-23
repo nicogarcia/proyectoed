@@ -161,4 +161,46 @@ public class Arbol<E> implements GeneralTree<E> {
 		}
 		return lista;
 	}
+
+	public E removeNode(Position<E> p) throws InvalidPositionException,
+			EmptyTreeException {
+		if (isEmpty())
+			throw new EmptyTreeException(
+					"Arbol :: eliminarNodo() :: El arbol está vacío.");
+		if (p == root())
+			throw new InvalidPositionException(
+					"Arbol :: eliminarNodo() :: No puedo eliminar la raíz del árbol.");
+		TNode<E> n = checkPosition(p);
+		E toReturn = n.element();
+		TNode<E> parent = n.getParent();
+		Lista<TNode<E>> brothers = (Lista<TNode<E>>) parent.getChildren();
+		Position<TNode<E>> c;
+		try {
+			c = brothers.first();
+			boolean flag = true;
+			while (flag) {
+				if (c.element() == n)
+					flag = false;
+				else
+					c = brothers.next(c);
+
+			}
+			for (TNode<E> node : n.getChildren()) {
+				node.setParent(parent);
+				brothers.addBefore(c, node);
+			}
+			brothers.remove(c);
+			n.setParent(null);
+			n.setChildren(null);
+			n.setElement(null);
+		} catch (EmptyListException e) {
+			System.out
+					.println("Arbol :: eliminarNodo() :: EmptyList :: Esta excepción debería dispararse nunca.");
+		} catch (BoundaryViolationException e) {
+			System.out
+					.println("Arbol :: eliminarNodo() :: Boundary :: Esta excepción no debería dispararse nunca.");
+		}
+
+		return toReturn;
+	}
 }
