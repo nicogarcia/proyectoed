@@ -114,7 +114,7 @@ public class TestingApplication {
 			throws EmptyTreeException, InvalidLevelException {
 		if (nivel == 1)
 			throw new InvalidLevelException(
-					"eliminarNivel() :: No se puede eliminar el primer nivel, porque la raíz no puede ser eliminada.");
+					"eliminarNivel() :: No se puede eliminar el primer nivel, porque la raï¿½z no puede ser eliminada.");
 		Pila<Character> eliminados = new Pila<Character>();
 		int nivelActual = 1;
 		Lista<Character> listaNiveles = miArbol.listadoNiveles();
@@ -172,10 +172,10 @@ public class TestingApplication {
 		Character AC;
 		boolean encontre = false;
 		while (!encontre) {
-			AC = ancestros1.top(); // Guardo el posible ancestro más cercano.
+			AC = ancestros1.top(); // Guardo el posible ancestro mï¿½s cercano.
 			if (ancestros1.pop() != ancestros2.pop())
 				encontre = true; // Cuando encuentra un ancestro distinto sale
-									// del while.
+			// del while.
 		}
 		while (nodo1 != miArbol.root()) {
 			nodo1 = nodo1.getParent();
@@ -188,6 +188,34 @@ public class TestingApplication {
 		}
 		return AC;
 
+	}
+
+	public Lista<Character> route(Character rotulo1, Character rotulo2) {
+		TNode<Character> nodo1 = miArbol.findNodoPiola(rotulo1, miArbol.root());
+		TNode<Character> nodo2 = miArbol.findNodoPiola(rotulo2, miArbol.root());
+		TNode<Character> ancestrocomun = ancestroComun(rotulo1, rotulo2);
+		Pila<Character> pila = new Pila<Character>();
+		while (nodo1.getParent() != ancestrocomun) {
+			pila.push(nodo1.element());
+			nodo1.setParent(nodo1.getParent());
+		}
+
+		pila.push(ancestrocomun.element());
+		Pila<Character> pila2 = new Pila<Character>();
+
+		while (nodo2.getParent() != ancestrocomun) {
+			pila2.push(nodo2.element());
+			nodo2.setParent(nodo2.getParent());
+		}
+		Lista<Character> lista = new Lista<Character>();
+
+		while (!pila.isEmpty())
+			lista.addFirst(pila.pop());
+
+		while (!pila2.isEmpty())
+			lista.addLast(pila2.pop());
+
+		return lista;
 	}
 
 }
