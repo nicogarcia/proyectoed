@@ -71,7 +71,7 @@ public class Pila<E> implements Stack<E> {
 		return head.element();
 	}
 
-	// TODO ELIMINAR ESTE METODO DE PRUEBA
+	// TODO ELIMINAR ESTE METODO DE PRUEBA que encima falla cdo esta vacia :P
 	public String toString() {
 		Node<E> n;
 		String st = "[ ";
