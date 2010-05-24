@@ -79,7 +79,7 @@ public class TestingApplication {
 	 * @param c
 	 *            Caracter del nodo a eliminar.
 	 * @return El caracter del nodo eliminado, o null en caso de que no se haya
-	 *         encontrado ningún nodo con el caracter recibido.
+	 *         encontrado ningï¿½n nodo con el caracter recibido.
 	 * @throws InvalidPositionException
 	 * @throws EmptyTreeException
 	 */
@@ -87,7 +87,7 @@ public class TestingApplication {
 			throws InvalidPositionException, EmptyTreeException {
 		Character toReturn = null;
 		for (Position<Character> pos : miArbol.positions())
-			// Este for each busca la posición con el caracter recibido
+			// Este for each busca la posiciï¿½n con el caracter recibido
 			if (pos.element() == c) {
 				toReturn = pos.element();
 				miArbol.removeNode(pos);
@@ -132,10 +132,10 @@ public class TestingApplication {
 
 			} catch (EmptyListException e1) {
 				System.out
-						.println("Esta excepción no debería dispararse, ya se verificó que el arbol "
-								+ "no está vacío.");
+						.println("Esta excepciï¿½n no deberï¿½a dispararse, ya se verificï¿½ que el arbol "
+								+ "no estï¿½ vacï¿½o.");
 			} catch (InvalidPositionException e) {
-				System.out.println("Esta excepción no debería dispararse.");
+				System.out.println("Esta excepciï¿½n no deberï¿½a dispararse.");
 			} catch (BoundaryViolationException e) {
 				System.out
 						.println("eliminarNivel :: El nivel que se quiere eliminar no existe.");
@@ -143,8 +143,16 @@ public class TestingApplication {
 
 		} else
 			throw new EmptyTreeException(
-					"No se puede eliminar ningún nivel, el árbol está vacío.");
+					"No se puede eliminar ningï¿½n nivel, el ï¿½rbol estï¿½ vacï¿½o.");
 
 		return eliminados;
+	}
+	
+	public String camino(Character r1,Character r2) {
+		String str="[ ";
+		
+		
+		
+		return str;
 	}
 }
