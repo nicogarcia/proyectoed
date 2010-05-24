@@ -24,7 +24,16 @@ public class TestingApplication {
 		agregarNodo('E', 'A');
 		agregarNodo('F', 'E');
 		agregarNodo('G', 'E');
-		System.out.println(printNiveles());
+		/*
+		 * System.out.println(printNiveles()); try {
+		 * System.out.println("Se eliminaron los siguientes elementos:" +
+		 * eliminarNivel(2).toString());
+		 * 
+		 * } catch (EmptyTreeException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); } catch (InvalidLevelException e) {
+		 * System.out.println(e.getMessage()); } System.out.println();
+		 * System.out.println(printNiveles());
+		 */
 
 		try {
 			System.out.println(ancestroComun('C', 'C'));
@@ -35,7 +44,6 @@ public class TestingApplication {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	private static Arbol<Character> miArbol;
@@ -155,10 +163,19 @@ public class TestingApplication {
 		return eliminados;
 	}
 
-	public String camino(Character r1, Character r2) {
-		String str = "[ ";
-
-		return str;
+	public static String camino(Character r1, Character r2) {
+		Lista<Character> lista;
+		try {
+			lista = route(r1, r2);
+			return lista.toString();
+		} catch (InvalidPositionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (EmptyTreeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public static Character ancestroComun(Character rot1, Character rot2)
@@ -173,7 +190,7 @@ public class TestingApplication {
 		boolean encontre = false;
 		try {
 			while (!encontre && !ancestros1.isEmpty() && !ancestros2.isEmpty())
-			// Si encontró un ancestro distinto o se vació una pila termina.
+			// Si encontrï¿½ un ancestro distinto o se vaciï¿½ una pila termina.
 			{
 				if (ancestros1.top() == ancestros2.top())
 					AC = ancestros1.top(); // Guardo el posible ancestro mas
@@ -186,7 +203,7 @@ public class TestingApplication {
 			}
 		} catch (EmptyStackException e) {
 			System.out
-					.println("Esta excepción no debería llegar a dispararse (el bucle no se ejecuta si una pila está vacíai.");
+					.println("Esta excepciï¿½n no deberï¿½a llegar a dispararse (el bucle no se ejecuta si una pila estï¿½ vacï¿½ai.");
 		}
 		while (nodo1 != miArbol.root()) {
 			nodo1 = nodo1.getParent();
@@ -201,34 +218,37 @@ public class TestingApplication {
 
 	}
 
-	public Lista<Character> route(Character rotulo1, Character rotulo2)
+	public static Lista<Character> route(Character rotulo1, Character rotulo2)
 			throws InvalidPositionException, EmptyTreeException {
 		TNode<Character> nodo1 = (TNode<Character>) miArbol.findNodoPiola(
 				rotulo1, miArbol.root());
 		TNode<Character> nodo2 = (TNode<Character>) miArbol.findNodoPiola(
 				rotulo2, miArbol.root());
+				
 		Character ancestrocomun = ancestroComun(rotulo1, rotulo2);
+		System.out.println(ancestrocomun);
 		Pila<Character> pila = new Pila<Character>();
-		while (nodo1.getParent().element() != ancestrocomun) {
+		while (!nodo1.element().equals(ancestrocomun)) {
 			pila.push(nodo1.element());
-			nodo1.setParent(nodo1.getParent());
+			nodo1 = nodo1.getParent();
 		}
 
 		pila.push(ancestrocomun);
 		Pila<Character> pila2 = new Pila<Character>();
 
-		while (nodo2.getParent().element() != ancestrocomun) {
+		while (!nodo2.element().equals(ancestrocomun)) {
 			pila2.push(nodo2.element());
-			nodo2.setParent(nodo2.getParent());
+			nodo2 = nodo2.getParent();
 		}
+
 		Lista<Character> lista = new Lista<Character>();
 		try {
 			while (!pila.isEmpty())
 				lista.addFirst(pila.pop());
 
 			while (!pila2.isEmpty())
-
 				lista.addLast(pila2.pop());
+
 		} catch (EmptyStackException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
