@@ -166,10 +166,10 @@ public class Arbol<E> implements GeneralTree<E> {
 			EmptyTreeException {
 		if (isEmpty())
 			throw new EmptyTreeException(
-					"Arbol :: eliminarNodo() :: El arbol está vacío.");
+					"Arbol :: eliminarNodo() :: El arbol estï¿½ vacï¿½o.");
 		if (p == root())
 			throw new InvalidPositionException(
-					"Arbol :: eliminarNodo() :: No puedo eliminar la raíz del árbol.");
+					"Arbol :: eliminarNodo() :: No puedo eliminar la raï¿½z del ï¿½rbol.");
 		TNode<E> n = checkPosition(p);
 		E toReturn = n.element();
 		TNode<E> parent = n.getParent();
@@ -195,12 +195,23 @@ public class Arbol<E> implements GeneralTree<E> {
 			n.setElement(null);
 		} catch (EmptyListException e) {
 			System.out
-					.println("Arbol :: eliminarNodo() :: EmptyList :: Esta excepción debería dispararse nunca.");
+					.println("Arbol :: eliminarNodo() :: EmptyList :: Esta excepciï¿½n deberï¿½a dispararse nunca.");
 		} catch (BoundaryViolationException e) {
 			System.out
-					.println("Arbol :: eliminarNodo() :: Boundary :: Esta excepción no debería dispararse nunca.");
+					.println("Arbol :: eliminarNodo() :: Boundary :: Esta excepciï¿½n no deberï¿½a dispararse nunca.");
 		}
 
 		return toReturn;
 	}
+	
+	public Position<E> findNodo(E rotulo){
+		Lista<Position<E>> lista=new Lista<Position<E>>();
+		preOrder(lista, root);
+		for(Position<E> pos:lista)
+			if(pos.element().equals(rotulo))
+				return pos;
+		return null;
+	}
+	
+	public Cola<E> 
 }
