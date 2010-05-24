@@ -36,7 +36,7 @@ public class TestingApplication {
 		 */
 
 		try {
-			System.out.println(ancestroComun('C', 'C'));
+			System.out.println(ancestroComun('G', 'F'));
 		} catch (InvalidPositionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,6 +44,7 @@ public class TestingApplication {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(camino('C','G'));
 	}
 
 	private static Arbol<Character> miArbol;
@@ -226,7 +227,7 @@ public class TestingApplication {
 				rotulo2, miArbol.root());
 				
 		Character ancestrocomun = ancestroComun(rotulo1, rotulo2);
-		System.out.println(ancestrocomun);
+		
 		Pila<Character> pila = new Pila<Character>();
 		while (!nodo1.element().equals(ancestrocomun)) {
 			pila.push(nodo1.element());

@@ -242,7 +242,7 @@ public class Arbol<E> implements GeneralTree<E> {
 			else
 				return findNodoPiola(rotulo, nodo);
 		}
-		return null;
+		return ini;
 	}
 
 }
