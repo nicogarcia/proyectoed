@@ -234,8 +234,9 @@ public class Arbol<E> implements GeneralTree<E> {
 		return null;
 	}
 
-	public Position<E> findNodoPiola(E rotulo, TNode<E> inicio) {
-		for (TNode<E> nodo : inicio.getChildren()) {
+	public Position<E> findNodoPiola(E rotulo, Position<E> inicio) throws InvalidPositionException {
+		TNode<E> ini = checkPosition(inicio);
+		for (TNode<E> nodo : ini.getChildren()) {
 			if (nodo.element().equals(rotulo))
 				return (Position<E>) nodo;
 			else

@@ -2,6 +2,7 @@ package Application;
 
 import Excepciones.BoundaryViolationException;
 import Excepciones.EmptyListException;
+import Excepciones.EmptyStackException;
 import Excepciones.EmptyTreeException;
 import Excepciones.InvalidLevelException;
 import Excepciones.InvalidPositionException;
@@ -162,20 +163,23 @@ public class TestingApplication {
 		return str;
 	}
 
-	public Character ancestroComun(Character rot1, Character rot2) {
-		TNode<Character> nodo1 = miArbol.findNodo(rot1);
-		TNode<Character> nodo2 = miArbol.findNodo(rot2);
+	public Character ancestroComun(Character rot1, Character rot2) throws InvalidPositionException, EmptyTreeException {
+		TNode<Character> nodo1 = (TNode<Character>)miArbol.findNodoPiola(rot1, miArbol.root());
+		TNode<Character> nodo2 = (TNode<Character>) miArbol.findNodoPiola(rot2, miArbol.root());
 		Pila<Character> ancestros1 = miArbol.ancestros(nodo1);
 		Pila<Character> ancestros2 = miArbol.ancestros(nodo2);
 		Lista<Character> camino1 = new Lista<Character>();
 		Lista<Character> camino2 = new Lista<Character>();
-		Character AC;
+		Character AC = null;
 		boolean encontre = false;
+		try{
 		while (!encontre) {
-			AC = ancestros1.top(); // Guardo el posible ancestro mï¿½s cercano.
+			AC = ancestros1.top(); // Guardo el posible ancestro mas cercano.
 			if (ancestros1.pop() != ancestros2.pop())
-				encontre = true; // Cuando encuentra un ancestro distinto sale
-			// del while.
+				encontre = true; // Cuando encuentra un ancestro distinto sale del while.
+		}
+		}catch (EmptyStackException e){
+			System.out.println("Esta excepción no debería llegar a dispararse.");
 		}
 		while (nodo1 != miArbol.root()) {
 			nodo1 = nodo1.getParent();
@@ -184,36 +188,41 @@ public class TestingApplication {
 
 		while (nodo2 != miArbol.root()) {
 			nodo2 = nodo2.getParent();
-			camino1.addLast(nodo2.element());
+			camino2.addLast(nodo2.element());
 		}
 		return AC;
 
 	}
 
-	public Lista<Character> route(Character rotulo1, Character rotulo2) {
-		TNode<Character> nodo1 = miArbol.findNodoPiola(rotulo1, miArbol.root());
-		TNode<Character> nodo2 = miArbol.findNodoPiola(rotulo2, miArbol.root());
-		TNode<Character> ancestrocomun = ancestroComun(rotulo1, rotulo2);
+	public Lista<Character> route(Character rotulo1, Character rotulo2) throws InvalidPositionException, EmptyTreeException {
+		TNode<Character> nodo1 = (TNode<Character>) miArbol.findNodoPiola(rotulo1, miArbol.root());
+		TNode<Character> nodo2 = (TNode<Character>) miArbol.findNodoPiola(rotulo2, miArbol.root());
+		Character ancestrocomun = ancestroComun(rotulo1, rotulo2);
 		Pila<Character> pila = new Pila<Character>();
-		while (nodo1.getParent() != ancestrocomun) {
+		while (nodo1.getParent().element() != ancestrocomun) {
 			pila.push(nodo1.element());
 			nodo1.setParent(nodo1.getParent());
 		}
 
-		pila.push(ancestrocomun.element());
+		pila.push(ancestrocomun);
 		Pila<Character> pila2 = new Pila<Character>();
 
-		while (nodo2.getParent() != ancestrocomun) {
+		while (nodo2.getParent().element() != ancestrocomun) {
 			pila2.push(nodo2.element());
 			nodo2.setParent(nodo2.getParent());
 		}
 		Lista<Character> lista = new Lista<Character>();
-
+		try {
 		while (!pila.isEmpty())
 			lista.addFirst(pila.pop());
 
 		while (!pila2.isEmpty())
-			lista.addLast(pila2.pop());
+			
+				lista.addLast(pila2.pop());
+		} catch (EmptyStackException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		}
 
 		return lista;
 	}
