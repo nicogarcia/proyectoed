@@ -7,6 +7,7 @@ import java.util.Iterator;
 import Excepciones.*;
 import TDACola.Cola;
 import TDALista.*;
+import TDAPila.Pila;
 
 public class Arbol<E> implements GeneralTree<E> {
 
@@ -204,6 +205,26 @@ public class Arbol<E> implements GeneralTree<E> {
 		return toReturn;
 	}
 	
+	/**
+	 * 
+	 * @param rotulo Rotulo del elemento del que se desea obtener los ancestros,
+	 * @return Una cola con los ancestros del nodo con el rótulo recibido,
+	 */
+	public Pila<E> ancestros (TNode<E> nodo){
+		Pila<E> pila = new Pila<E>();
+		try {
+			while (nodo!=root()){
+				nodo = nodo.getParent();
+				pila.push(nodo.element());
+			}
+		} catch (EmptyTreeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pila;			
+	}
+
+	
 	public Position<E> findNodo(E rotulo){
 		Lista<Position<E>> lista=new Lista<Position<E>>();
 		preOrder(lista, root);
@@ -213,5 +234,5 @@ public class Arbol<E> implements GeneralTree<E> {
 		return null;
 	}
 	
-	public Cola<E> 
+	
 }

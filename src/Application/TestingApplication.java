@@ -3,8 +3,10 @@ package Application;
 import Excepciones.BoundaryViolationException;
 import Excepciones.EmptyListException;
 import Excepciones.EmptyTreeException;
+import Excepciones.InvalidLevelException;
 import Excepciones.InvalidPositionException;
 import GeneralTree.Arbol;
+import GeneralTree.TNode;
 import TDALista.Lista;
 import TDALista.Node;
 import TDALista.Position;
@@ -24,11 +26,13 @@ public class TestingApplication {
 		System.out.println(printNiveles());
 		try {
 			System.out.println("Se eliminaron los siguientes elementos:"
-					+ eliminarNivel(3).toString());
+					+ eliminarNivel(2).toString());
 
 		} catch (EmptyTreeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (InvalidLevelException e) {
+			System.out.println(e.getMessage());
 		}
 		System.out.println();
 		System.out.println(printNiveles());
@@ -102,11 +106,15 @@ public class TestingApplication {
 	 * @return Una pila con los rotulos de los nodos eliminados.
 	 * 
 	 * @throws EmptyTreeException
+	 * @throws InvalidLevelException
 	 */
 	// FIXME EN CASO DE QUE EL NIVEL SEA 1, LA RAIZ NO SE ELIMINA, PERO DEVUELVE
 	// UNA PILA CON EL ELEMENTO DE LA RAIZ COMO SI HUBIESE SIDO ELIMINADO
 	public static Pila<Character> eliminarNivel(int nivel)
-			throws EmptyTreeException {
+			throws EmptyTreeException, InvalidLevelException {
+		if (nivel == 1)
+			throw new InvalidLevelException(
+					"eliminarNivel() :: No se puede eliminar el primer nivel, porque la raíz no puede ser eliminada.");
 		Pila<Character> eliminados = new Pila<Character>();
 		int nivelActual = 1;
 		Lista<Character> listaNiveles = miArbol.listadoNiveles();
@@ -137,8 +145,8 @@ public class TestingApplication {
 			} catch (InvalidPositionException e) {
 				System.out.println("Esta excepciï¿½n no deberï¿½a dispararse.");
 			} catch (BoundaryViolationException e) {
-				System.out
-						.println("eliminarNivel :: El nivel que se quiere eliminar no existe.");
+				throw new InvalidLevelException(
+						"eliminarNivel :: El nivel que se desea eliminar no existe.");
 			}
 
 		} else
@@ -147,12 +155,39 @@ public class TestingApplication {
 
 		return eliminados;
 	}
-	
-	public String camino(Character r1,Character r2) {
-		String str="[ ";
-		
-		
-		
+
+	public String camino(Character r1, Character r2) {
+		String str = "[ ";
+
 		return str;
 	}
+
+	public Character ancestroComun(Character rot1, Character rot2) {
+		TNode<Character> nodo1 = miArbol.findNodo(rot1);
+		TNode<Character> nodo2 = miArbol.findNodo(rot2);
+		Pila<Character> ancestros1 = miArbol.ancestros(nodo1);
+		Pila<Character> ancestros2 = miArbol.ancestros(nodo2);
+		Lista<Character> camino1 = new Lista<Character>();
+		Lista<Character> camino2 = new Lista<Character>();
+		Character AC;
+		boolean encontre = false;
+		while (!encontre) {
+			AC = ancestros1.top(); // Guardo el posible ancestro más cercano.
+			if (ancestros1.pop() != ancestros2.pop())
+				encontre = true; // Cuando encuentra un ancestro distinto sale
+									// del while.
+		}
+		while (nodo1 != miArbol.root()) {
+			nodo1 = nodo1.getParent();
+			camino1.addLast(nodo1.element());
+		}
+
+		while (nodo2 != miArbol.root()) {
+			nodo2 = nodo2.getParent();
+			camino1.addLast(nodo2.element());
+		}
+		return AC;
+
+	}
+
 }
