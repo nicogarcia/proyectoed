@@ -212,15 +212,12 @@ public class Arbol<E> implements GeneralTree<E> {
 	 */
 	public Pila<E> ancestros (TNode<E> nodo){
 		Pila<E> pila = new Pila<E>();
-		try {
-			while (nodo!=root()){
-				nodo = nodo.getParent();
+		
+			while (nodo!=null){
 				pila.push(nodo.element());
+				nodo = nodo.getParent();
 			}
-		} catch (EmptyTreeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		return pila;			
 	}
 
@@ -234,6 +231,7 @@ public class Arbol<E> implements GeneralTree<E> {
 		return null;
 	}
 
+	//FIXME cambiar nombre
 	public Position<E> findNodoPiola(E rotulo, Position<E> inicio) throws InvalidPositionException {
 		TNode<E> ini = checkPosition(inicio);
 		for (TNode<E> nodo : ini.getChildren()) {
