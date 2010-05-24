@@ -208,7 +208,7 @@ public class Arbol<E> implements GeneralTree<E> {
 	/**
 	 * 
 	 * @param rotulo Rotulo del elemento del que se desea obtener los ancestros,
-	 * @return Una cola con los ancestros del nodo con el rótulo recibido,
+	 * @return Una cola con los ancestros del nodo con el rï¿½tulo recibido,
 	 */
 	public Pila<E> ancestros (TNode<E> nodo){
 		Pila<E> pila = new Pila<E>();
@@ -233,6 +233,15 @@ public class Arbol<E> implements GeneralTree<E> {
 				return pos;
 		return null;
 	}
-	
-	
+
+	public Position<E> findNodoPiola(E rotulo, TNode<E> inicio) {
+		for (TNode<E> nodo : inicio.getChildren()) {
+			if (nodo.element().equals(rotulo))
+				return (Position<E>) nodo;
+			else
+				return findNodoPiola(rotulo, nodo);
+		}
+		return null;
+	}
+
 }
