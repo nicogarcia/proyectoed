@@ -163,6 +163,16 @@ public class Arbol<E> implements GeneralTree<E> {
 		return lista;
 	}
 
+
+	public int contarNiveles() {
+		int cant=1;
+		for(E el:listadoNiveles())
+			if (el==null)
+				cant++;
+
+		return cant;
+	}
+
 	public E removeNode(Position<E> p) throws InvalidPositionException,
 			EmptyTreeException {
 		if (isEmpty())
@@ -204,35 +214,36 @@ public class Arbol<E> implements GeneralTree<E> {
 
 		return toReturn;
 	}
-	
+
 	/**
 	 * 
-	 * @param rotulo Rotulo del elemento del que se desea obtener los ancestros,
+	 * @param rotulo
+	 *            Rotulo del elemento del que se desea obtener los ancestros,
 	 * @return Una cola con los ancestros del nodo con el r�tulo recibido,
 	 */
-	public Pila<E> ancestros (TNode<E> nodo){
+	public Pila<E> ancestros(TNode<E> nodo) {
 		Pila<E> pila = new Pila<E>();
-		
-			while (nodo!=null){
-				pila.push(nodo.element());
-				nodo = nodo.getParent();
-			}
-		
-		return pila;			
+
+		while (nodo != null) {
+			pila.push(nodo.element());
+			nodo = nodo.getParent();
+		}
+
+		return pila;
 	}
 
-	
-	public Position<E> findNodo(E rotulo){
-		Lista<Position<E>> lista=new Lista<Position<E>>();
+	public Position<E> findNodo(E rotulo) {
+		Lista<Position<E>> lista = new Lista<Position<E>>();
 		preOrder(lista, root);
-		for(Position<E> pos:lista)
-			if(pos.element().equals(rotulo))
+		for (Position<E> pos : lista)
+			if (pos.element().equals(rotulo))
 				return pos;
 		return null;
 	}
 
-	//FIXME cambiar nombre
-	public Position<E> findNodoPiola(E rotulo, Position<E> inicio) throws InvalidPositionException {
+	// FIXME cambiar nombre
+	public Position<E> findNodoPiola(E rotulo, Position<E> inicio)
+			throws InvalidPositionException {
 		TNode<E> ini = checkPosition(inicio);
 		for (TNode<E> nodo : ini.getChildren()) {
 			if (nodo.element().equals(rotulo))

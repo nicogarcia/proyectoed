@@ -1,6 +1,9 @@
 package TDAMapeo;
+
+import TDALista.Position;
+
 //FIXME COPIADO EN CLASE!
-public class NodoABB<E> implements Position<E>{
+public class NodoABB<E> implements Position<E> {
 	protected NodoABB<E> padre;
 	protected E rotulo;
 	protected NodoABB<E> left, right;
@@ -40,5 +43,13 @@ public class NodoABB<E> implements Position<E>{
 
 	public void setElement(E e) {
 		rotulo = e;
+	}
+
+	public boolean hasLeft() {
+		return left != null;
+	}
+
+	public boolean hasRight() {
+		return right != null;
 	}
 }

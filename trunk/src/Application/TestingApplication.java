@@ -1,5 +1,10 @@
 package Application;
 
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.geom.Dimension2D;
+import java.awt.geom.Point2D;
+
 import Excepciones.BoundaryViolationException;
 import Excepciones.EmptyListException;
 import Excepciones.EmptyStackException;
@@ -15,42 +20,12 @@ import TDAPila.Pila;
 
 public class TestingApplication {
 
-	public static void main(String[] args) {
-		cargarArbol('A');
-		// System.out.println(printPreOrder());
-		agregarNodo('B', 'A');
-		agregarNodo('C', 'B');
-		agregarNodo('D', 'A');
-		agregarNodo('E', 'A');
-		agregarNodo('F', 'E');
-		agregarNodo('G', 'E');
-		/*
-		 * System.out.println(printNiveles()); try {
-		 * System.out.println("Se eliminaron los siguientes elementos:" +
-		 * eliminarNivel(2).toString());
-		 * 
-		 * } catch (EmptyTreeException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } catch (InvalidLevelException e) {
-		 * System.out.println(e.getMessage()); } System.out.println();
-		 * System.out.println(printNiveles());
-		 */
-
-		try {
-			System.out.println(ancestroComun('G', 'F'));
-		} catch (InvalidPositionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EmptyTreeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(camino('C','G'));
-	}
-
-	private static Arbol<Character> miArbol;
+	protected static Arbol<Character> miArbol;
+	protected static boolean started = false;
 
 	public static void cargarArbol(Character rotuloRaiz) {
 		miArbol = new Arbol<Character>(rotuloRaiz);
+		started = true;
 	}
 
 	public static void agregarNodo(Character rotulo, Character rPadre) {
@@ -124,39 +99,26 @@ public class TestingApplication {
 			throw new InvalidLevelException(
 					"eliminarNivel() :: No se puede eliminar el primer nivel, porque la ra�z no puede ser eliminada.");
 		Pila<Character> eliminados = new Pila<Character>();
-		int nivelActual = 1;
-		Lista<Character> listaNiveles = miArbol.listadoNiveles();
-		Position<Character> current;
 		if (!miArbol.isEmpty()) {
 			try {
-				current = listaNiveles.first();
-				while (nivelActual != nivel) // Me posiciono en la lista de
-				// niveles, donde empieza el
-				// nivel recibido.
-				{
-					if (current.element() == null)
+				int nivelActual = 1;
+				for (Position<Character> pos : miArbol.listadoNiveles()
+						.positions()) {
+					if (pos.element() == null)
 						nivelActual++;
-					current = listaNiveles.next(current);
-				}
-				while (nivelActual == nivel) {
-					eliminados.push(current.element());
-					eliminarNodo(current.element());
-					current = listaNiveles.next(current);
-					if (current.element() == null)
-						nivelActual++;
+					if (nivelActual == nivel && pos.element() != null) {
+						eliminados.push(pos.element());
+						eliminarNodo(pos.element());
+					}
 				}
 
-			} catch (EmptyListException e1) {
-				System.out
-						.println("Esta excepci�n no deber�a dispararse, ya se verific� que el arbol "
-								+ "no est� vac�o.");
+				if (nivelActual < nivel) // No se llego nunca al nivel que se
+					// deseaba eliminar.
+					throw new InvalidLevelException(
+							"TestingApplication :: eliminarNivel() :: El nivel que se desea eliminar no existe.");
 			} catch (InvalidPositionException e) {
 				System.out.println("Esta excepci�n no deber�a dispararse.");
-			} catch (BoundaryViolationException e) {
-				throw new InvalidLevelException(
-						"eliminarNivel :: El nivel que se desea eliminar no existe.");
 			}
-
 		} else
 			throw new EmptyTreeException(
 					"No se puede eliminar ning�n nivel, el �rbol est� vac�o.");
@@ -195,10 +157,10 @@ public class TestingApplication {
 			{
 				if (ancestros1.top() == ancestros2.top())
 					AC = ancestros1.top(); // Guardo el posible ancestro mas
-											// cercano.
+				// cercano.
 				else
 					encontre = true; // Cuando encuentra un ancestro distinto
-										// sale del while.
+				// sale del while.
 				ancestros1.pop();
 				ancestros2.pop();
 			}
@@ -221,13 +183,11 @@ public class TestingApplication {
 
 	public static Lista<Character> route(Character rotulo1, Character rotulo2)
 			throws InvalidPositionException, EmptyTreeException {
-		TNode<Character> nodo1 = (TNode<Character>) miArbol.findNodoPiola(
-				rotulo1, miArbol.root());
-		TNode<Character> nodo2 = (TNode<Character>) miArbol.findNodoPiola(
-				rotulo2, miArbol.root());
-				
+		TNode<Character> nodo1 = (TNode<Character>) miArbol.findNodo(rotulo1);
+		TNode<Character> nodo2 = (TNode<Character>) miArbol.findNodo(rotulo2);
+
 		Character ancestrocomun = ancestroComun(rotulo1, rotulo2);
-		
+
 		Pila<Character> pila = new Pila<Character>();
 		while (!nodo1.element().equals(ancestrocomun)) {
 			pila.push(nodo1.element());
@@ -258,4 +218,26 @@ public class TestingApplication {
 		return lista;
 	}
 
+	// TODO MIRAR LAS EXCEPCIONES
+	public static void calcularCentros(int ancho, Point2D position,
+			TNode<Character> inicio) throws InvalidPositionException {
+		int dif = 100;
+		int i = 0;
+		// establece el centro del nodo
+		Point2D center = new Point((int) position.getX() + ancho / 2,
+				(int) position.getY());
+		inicio.setCorner(center);
+
+		if (miArbol.isInternal(inicio)) {
+			for (TNode<Character> nodo : inicio.getChildren()) {
+				Point2D newpos = new Point2D.Double(position.getX()
+						+ (ancho / inicio.getChildren().size()) * i, position
+						.getY()
+						+ dif);
+				i++;
+				calcularCentros(ancho / inicio.getChildren().size(), newpos,
+						nodo);
+			}
+		}
+	}
 }

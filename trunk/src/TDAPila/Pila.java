@@ -4,7 +4,7 @@ import Excepciones.EmptyStackException;
 
 public class Pila<E> implements Stack<E> {
 
-	//Atributos
+	// Atributos
 	private Node<E> head;
 	private int size;
 
@@ -17,7 +17,7 @@ public class Pila<E> implements Stack<E> {
 	}
 
 	/**
-	 * Consulta si la pila está vacía.	
+	 * Consulta si la pila está vacía.
 	 * 
 	 * @return true si la pila está vacía, falso en caso contrario.
 	 */
@@ -32,7 +32,8 @@ public class Pila<E> implements Stack<E> {
 	 */
 	public E pop() throws EmptyStackException {
 		if (isEmpty())
-			throw new EmptyStackException("Pila :: pop() :: La pila esta vacia.");
+			throw new EmptyStackException(
+					"Pila :: pop() :: La pila esta vacia.");
 		E toReturn = head.element();
 		head = head.getNext();
 		size--;
@@ -42,7 +43,8 @@ public class Pila<E> implements Stack<E> {
 	/**
 	 * Inserta un elemento en el tope de la pila.
 	 * 
-	 * @param element Elemento a insertar.
+	 * @param element
+	 *            Elemento a insertar.
 	 */
 	public void push(E element) {
 		Node<E> nuevo = new Node<E>(element, head);
@@ -74,14 +76,17 @@ public class Pila<E> implements Stack<E> {
 	// TODO ELIMINAR ESTE METODO DE PRUEBA que encima falla cdo esta vacia :P
 	public String toString() {
 		Node<E> n;
-		String st = "[ ";
-		n = head.getNext();
-		st += head.element();
-		while (n != null) {
-			st += ", " + n.element();
-			n = n.getNext();
+		if (isEmpty())
+			return "[ ]";
+		else {
+			String st = "[ ";
+			n = head.getNext();
+			st += head.element();
+			while (n != null) {
+				st += ", " + n.element();
+				n = n.getNext();
+			}
+			return st + " ]";
 		}
-		return st + " ]";
 	}
-
 }
