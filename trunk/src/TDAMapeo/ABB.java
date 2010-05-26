@@ -18,13 +18,13 @@ public class ABB<K, V> {
 	protected int size;
 
 	public ABB(Comparator<K> comp) {
-		size = 1;
+		size = 0;
 		this.comp = comp;
 		raiz = new NodoABB<Entry<K, V>>();
 	}
 
 	public boolean isEmpty() {
-		return raiz == null;
+		return size == 0;
 	}
 
 	public int size() {
@@ -120,8 +120,9 @@ public class ABB<K, V> {
 		Position<Entry<K, V>> keypos;
 		try {
 			keypos = treeSearch(key, raiz);
+			System.out.println(keypos.element().toString());
 			// TODO En el libro aca hay un actionPos=keypos
-			if (isInternal(keypos))
+			//if (isInternal(keypos))
 				return entry(keypos);
 		} catch (InvalidPositionException e) {
 			// TODO Auto-generated catch block
@@ -147,16 +148,17 @@ public class ABB<K, V> {
 	public Position<Entry<K, V>> treeSearch(K key, Position<Entry<K, V>> pos)
 			throws InvalidPositionException {
 		if (isExternal(pos))
-			return null;
+			return pos;
 		else {
 			K curKey = key(pos);
 			int comparador = comp.compare(key, curKey);
 			if (comparador < 0)
-				treeSearch(key, left(pos));
+				return treeSearch(key, left(pos));
 			else if (comparador > 0)
-				treeSearch(key, right(pos));
+				return treeSearch(key, right(pos));
 			return pos;
 		}
+
 	}
 
 	private Position<Entry<K, V>> right(Position<Entry<K, V>> pos)
@@ -196,7 +198,10 @@ public class ABB<K, V> {
 	}
 
 	public V remove(K key) throws ItemNotFoundException {
-		return remove(key, raiz).element().getValue();
+		V value = remove(key, raiz).element().getValue();
+		if (value!=null)
+			size--;		
+		return value;
 	}
 
 	protected NodoABB<Entry<K, V>> remove(K key, NodoABB<Entry<K, V>> nodo)
@@ -215,7 +220,7 @@ public class ABB<K, V> {
 			nodo.setRight(removeMin(nodo.getRight()));
 		} else
 			nodo = (nodo.getLeft() != null) ? nodo.getLeft() : nodo.getRight();
-		size--;
+		
 		return nodo;
 	}
 
