@@ -15,6 +15,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.Window;
 
 import javax.swing.JFrame;
@@ -49,6 +50,9 @@ public class VentanaPila extends javax.swing.JDialog {
 		if (owner instanceof NewJFrame)
 			mpdPila = new Canvas() {
 				public void paint(Graphics e) {
+					Graphics2D g = (Graphics2D) e;
+					g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+							RenderingHints.VALUE_ANTIALIAS_ON);
 					// TODO REVISAR!
 					setIgnoreRepaint(true);
 					//********************

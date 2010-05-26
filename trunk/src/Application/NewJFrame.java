@@ -18,6 +18,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
@@ -121,6 +122,9 @@ public class NewJFrame extends javax.swing.JFrame {
 		jScrollPane2 = new javax.swing.JScrollPane();
 		mpdRecorrido = new Canvas() {
 			public void paint(Graphics e) {
+				Graphics2D g = (Graphics2D) e;
+				g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+						RenderingHints.VALUE_ANTIALIAS_ON);
 				graficarRecorrido((Graphics2D) e);
 			}
 		};
@@ -128,6 +132,9 @@ public class NewJFrame extends javax.swing.JFrame {
 		jScrollPane1 = new javax.swing.JScrollPane();
 		mpdArbol = new Canvas() {
 			public void paint(Graphics e) {
+				Graphics2D g = (Graphics2D) e;
+				g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+						RenderingHints.VALUE_ANTIALIAS_ON);
 				if (radioNiveles.isSelected())
 					graficarNiveles((Graphics2D) e);
 				else
@@ -964,7 +971,7 @@ public class NewJFrame extends javax.swing.JFrame {
 		 */
 
 		TestingApplication.cargarArbol('A');
-		//FIXME ESTO TIENE QUE QDAR DESP DE CARGAR LA RAIZ
+		// FIXME ESTO TIENE QUE QDAR DESP DE CARGAR LA RAIZ
 		arbol = TestingApplication.miArbol;
 		TestingApplication.agregarNodo('B', 'A');
 		TestingApplication.agregarNodo('C', 'B');
@@ -1029,8 +1036,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
 	private void btnDeleteLevelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDeleteLevelActionPerformed
 		try {
-			pila_temp = TestingApplication.eliminarNivel((Integer) cbNiveles
-					.getSelectedItem());
+			pila_a_pintar = TestingApplication
+					.eliminarNivel((Integer) cbNiveles.getSelectedItem());
 			// TODO Revisar! Recalcula los centros de los nodos
 			TestingApplication.calcularCentros(mpdArbol.getWidth(),
 					new Point2D.Double(0, 20), (TNode<Character>) arbol.root());
@@ -1071,16 +1078,17 @@ public class NewJFrame extends javax.swing.JFrame {
 
 	public void graficarPila(Graphics2D e) {
 		e.drawImage(background, 0, 0, null);
-		if (pila_temp != null) {
+		if (pila_a_pintar != null) {
 			try {
+				pila_temp = new Pila<Character>();
 				Dimension2D size = new Dimension(48, 48);
 				int dist_nodos = 56;
 				int i = 0; // indice de nodo actual para el for
 				int margen_derecho = 20, margen_superior = 20;
 
-				while (!pila_temp.isEmpty()) {
-					Character rotulo = pila_temp.pop();
-					// pila_a_pintar.push(rotulo);
+				while (!pila_a_pintar.isEmpty()) {
+					Character rotulo = pila_a_pintar.pop();
+					pila_temp.push(rotulo);
 					Point2D loc = new Point2D.Double(margen_derecho,
 							margen_superior + dist_nodos * i);
 					i++;
@@ -1098,6 +1106,8 @@ public class NewJFrame extends javax.swing.JFrame {
 				if (i * dist_nodos + margen_derecho > getHeight())
 					setSize(getWidth(), i * dist_nodos + margen_superior);
 
+				while (!pila_temp.isEmpty())
+					pila_a_pintar.push(pila_temp.pop());
 			} catch (EmptyStackException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -1107,7 +1117,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
 	public void graficarRecorrido(Graphics2D e) {
 		e.drawImage(background, 0, 0, null);
-		if (arbol!=null && !arbol.isEmpty()) {
+		if (arbol != null && !arbol.isEmpty()) {
 			Dimension2D size = new Dimension(48, 48);
 			PositionList<Position<Character>> lista;
 			if (NewJFrame.selectedPreorder)
@@ -1146,7 +1156,7 @@ public class NewJFrame extends javax.swing.JFrame {
 	public void graficarArbol(Graphics2D e) {
 		e.drawImage(background, 0, 0, null);
 		// TODO PRESTAR ATENCION CDO SE CAMBIEN LOS STATIC DE TESTING APP
-		if (arbol!=null && !arbol.isEmpty() ) {
+		if (arbol != null && !arbol.isEmpty()) {
 			Dimension2D size = new Dimension(48, 48);
 			try {
 				Line2D arco;
