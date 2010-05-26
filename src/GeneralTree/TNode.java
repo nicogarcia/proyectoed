@@ -1,11 +1,16 @@
 package GeneralTree;
 
+import java.awt.geom.Point2D;
+
 import TDALista.*;
 
 public class TNode<E> implements Position<E> {
 	protected TNode<E> parent; // Nodo padre
 	protected PositionList<TNode<E>> children;// Lista de hijos
 	private E element;// Elemento que almacena el nodo
+	private Point2D corner; // Este atributo se utiliza para graficar el arbol,
+
+	// no afecta el funcionamiento del TDAArbol
 
 	/**
 	 * Constructor Crea un nodo con un padre y una lista de hijos
@@ -20,6 +25,7 @@ public class TNode<E> implements Position<E> {
 		if (children == null)
 			this.children = new Lista<TNode<E>>();
 		this.element = element;
+		corner = null;
 	}
 
 	/**
@@ -90,5 +96,14 @@ public class TNode<E> implements Position<E> {
 		E toReturn = element();
 		element = e;
 		return toReturn;
+	}
+
+	// TODO JAVADOCAR
+	public Point2D getCorner() {
+		return corner;
+	}
+
+	public void setCorner(Point2D corner) {
+		this.corner = corner;
 	}
 }

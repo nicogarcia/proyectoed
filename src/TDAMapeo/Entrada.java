@@ -1,4 +1,5 @@
 package TDAMapeo;
+
 import java.util.Map.Entry;
 
 //FIXME COPIADO EN CLASE!
@@ -26,4 +27,7 @@ public class Entrada<K, V> implements Entry<K, V> {
 		return temp;
 	}
 
+	public String toString() {
+		return "[ " + key + " - " + value + " ]";
+	}
 }

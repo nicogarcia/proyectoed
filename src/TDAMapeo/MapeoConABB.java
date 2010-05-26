@@ -1,10 +1,13 @@
 package TDAMapeo;
-import java.util.Collection;
+
 import java.util.Comparator;
-import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
+
+import Excepciones.InvalidKeyException;
+import Excepciones.ItemNotFoundException;
+
 //FIXME COPIADO EN CLASE!
-public class MapeoConABB<K, V> implements Map<K, V> {
+public class MapeoConABB<K, V> implements Mapeo<K, V> {
 	protected ABB<K, V> abb;
 
 	// constructor
@@ -17,69 +20,50 @@ public class MapeoConABB<K, V> implements Map<K, V> {
 	}
 
 	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-
+	public Iterable<Entry<K, V>> entries() {
+		return abb.entries();
 	}
 
+	// TODO PREGUNTAR SOBRE EL TRY
 	@Override
-	public boolean containsKey(Object arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean containsValue(Object arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Set<java.util.Map.Entry<K, V>> entrySet() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public V get(Object arg0) {
-		// TODO Auto-generated method stub
-		return null;
+	public V get(K key) {
+		try {
+			return abb.find(key).getValue();
+		} catch (InvalidKeyException e) {
+			return null;
+		}
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return abb.isEmpty();
 	}
 
 	@Override
-	public Set<K> keySet() {
-		// TODO Auto-generated method stub
-		return null;
+	public Iterable<K> keys() {
+		return abb.keys();
 	}
 
 	@Override
-	public void putAll(Map<? extends K, ? extends V> arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public V remove(Object arg0) {
-		// TODO Auto-generated method stub
-		return null;
+	public V remove(K key) {
+		try {
+			return abb.remove(key);
+		} catch (ItemNotFoundException e) {
+			return null;
+		}
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return abb.size();
 	}
 
 	@Override
-	public Collection<V> values() {
-		// TODO Auto-generated method stub
-		return null;
+	public Iterable<V> values() {
+		return abb.values();
 	}
 
+	public String toString() {
+		return abb.toString();
+	}
 }
