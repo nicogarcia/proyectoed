@@ -30,8 +30,9 @@ public class tester {
 		mapeo.put(10, "E");
 		System.out.println(mapeo.toString());
 		System.out.println(mapeo.size());
-		System.out.println(mapeo.get(23).toString());
-		mapeo.put(16,"*");
+		System.out.println(mapeo.get(2).toString());
+		mapeo.remove(16);
 		System.out.println(mapeo.toString());
+		System.out.println(mapeo.size());
 	}
 }
