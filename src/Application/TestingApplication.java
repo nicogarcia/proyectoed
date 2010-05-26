@@ -1,12 +1,9 @@
 package Application;
 
-import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
+import java.util.Comparator;
 
-import Excepciones.BoundaryViolationException;
-import Excepciones.EmptyListException;
 import Excepciones.EmptyStackException;
 import Excepciones.EmptyTreeException;
 import Excepciones.InvalidLevelException;
@@ -14,25 +11,42 @@ import Excepciones.InvalidPositionException;
 import GeneralTree.Arbol;
 import GeneralTree.TNode;
 import TDALista.Lista;
-import TDALista.Node;
 import TDALista.Position;
+import TDAMapeo.Mapeo;
+import TDAMapeo.MapeoConABB;
 import TDAPila.Pila;
 
 public class TestingApplication {
 
 	protected static Arbol<Character> miArbol;
-	protected static boolean started = false;
+	protected static Mapeo<Character, Integer> mapeo;
+	protected static Comparator<Character> comp;
 
 	public static void cargarArbol(Character rotuloRaiz) {
 		miArbol = new Arbol<Character>(rotuloRaiz);
-		started = true;
+		comp = new Comparator<Character>() {
+			public int compare(Character c1, Character c2) {
+				return c1 - c2;
+			}
+		};
 	}
 
 	public static void agregarNodo(Character rotulo, Character rPadre) {
 		miArbol.insertar(rotulo, rPadre);
 	}
 
-	// FIXME MODIFICAR PARA HACER EL DIBUJITO DE NICO
+	public static void actualizarMapeo() {
+		mapeo = new MapeoConABB<Character, Integer>(comp);
+		for (Position<Character> pos : miArbol.positions()) {
+			try {
+				mapeo.put(pos.element(), miArbol.height(pos));
+			} catch (InvalidPositionException e) {
+				System.out
+						.println("Esta excepcion no deberia llegar a dispararse.");
+			}
+		}
+	}
+
 	public static String printPreOrder() {
 		String ret = "[ ";
 		for (Position<Character> pos : miArbol.preOrderPositions())

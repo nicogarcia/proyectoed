@@ -87,7 +87,7 @@
           <SubComponents>
             <Component class="java.awt.Canvas" name="mpdPila">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new MiPanelDeDibujoArbol()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new  Canvas() {&#xa;&#x9;&#x9;&#x9;&#x9;public void paint(Graphics e) {&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;Graphics2D g = (Graphics2D) e;&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;RenderingHints.VALUE_ANTIALIAS_ON);&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;// TODO REVISAR!&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;//setIgnoreRepaint(true);&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;//********************&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;((NewJFrame) owner).graficarPila((Graphics2D) e);&#xa;&#x9;&#x9;&#x9;&#x9;}&#xa;&#x9;&#x9;&#x9;}"/>
               </AuxValues>
             </Component>
           </SubComponents>

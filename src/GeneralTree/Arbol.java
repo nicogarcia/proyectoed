@@ -4,6 +4,8 @@ package GeneralTree;
 
 import java.util.Iterator;
 
+import sun.font.EAttribute;
+
 import Excepciones.*;
 import TDACola.Cola;
 import TDALista.*;
@@ -64,7 +66,7 @@ public class Arbol<E> implements GeneralTree<E> {
 
 	public boolean isExternal(Position<E> v) throws InvalidPositionException {
 		TNode<E> nodo = checkPosition(v);
-		return (nodo.getChildren() == null);
+		return (nodo.getChildren().isEmpty());
 	}
 
 	public boolean isInternal(Position<E> v) throws InvalidPositionException {
@@ -163,11 +165,10 @@ public class Arbol<E> implements GeneralTree<E> {
 		return lista;
 	}
 
-
 	public int contarNiveles() {
-		int cant=1;
-		for(E el:listadoNiveles())
-			if (el==null)
+		int cant = 1;
+		for (E el : listadoNiveles())
+			if (el == null)
 				cant++;
 
 		return cant;
@@ -252,6 +253,15 @@ public class Arbol<E> implements GeneralTree<E> {
 				return findNodoPiola(rotulo, nodo);
 		}
 		return ini;
+	}
+
+	public int height(Position<E> nodo) throws InvalidPositionException {
+		if (isExternal(nodo))
+			return 0;
+		int h = 0;
+		for (Position<E> pos : children(nodo))
+			h = Math.max(h, height(pos));
+		return 1+h;
 	}
 
 }
