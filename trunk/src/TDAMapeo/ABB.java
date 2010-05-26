@@ -120,7 +120,6 @@ public class ABB<K, V> {
 		Position<Entry<K, V>> keypos;
 		try {
 			keypos = treeSearch(key, raiz);
-			System.out.println(keypos.element().toString());
 			// TODO En el libro aca hay un actionPos=keypos
 			//if (isInternal(keypos))
 				return entry(keypos);

@@ -397,11 +397,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel7" alignment="0" pref="161" max="32767" attributes="0"/>
+                          <Component id="lblAltura" alignment="0" pref="161" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                              <Component id="cbHasta1" pref="62" max="32767" attributes="1"/>
+                              <Component id="cbAltura" pref="62" max="32767" attributes="1"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -414,29 +414,32 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbHasta1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbAltura" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="jLabel7" pref="35" max="32767" attributes="0"/>
+                      <Component id="lblAltura" pref="35" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JComboBox" name="cbHasta1">
+            <Component class="javax.swing.JComboBox" name="cbAltura">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbAlturaItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Rotulo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
+            <Component class="javax.swing.JLabel" name="lblAltura">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Altura: "/>
@@ -577,7 +580,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new MiPanelDeDibujoArbol()"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Canvas() {&#xa;    public void paint(Graphics e) {&#xa;        Graphics2D g = (Graphics2D) e;&#xa;        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,&#xa;            RenderingHints.VALUE_ANTIALIAS_ON);&#xa;        graficarRecorrido((Graphics2D) e);&#xa;    }&#xa;}"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -641,7 +644,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new MiPanelDeDibujoArbol()"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Canvas() {&#xa;&#x9;&#x9;&#x9;public void paint(Graphics e) {&#xa;&#x9;&#x9;&#x9;&#x9;Graphics2D g = (Graphics2D) e;&#xa;&#x9;&#x9;&#x9;&#x9;g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;RenderingHints.VALUE_ANTIALIAS_ON);&#xa;&#x9;&#x9;&#x9;&#x9;if (radioNiveles.isSelected())&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;graficarNiveles((Graphics2D) e);&#xa;&#x9;&#x9;&#x9;&#x9;else&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;graficarArbol((Graphics2D) e);&#xa;&#x9;&#x9;&#x9;}&#xa;&#x9;&#x9;}"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
