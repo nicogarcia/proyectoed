@@ -702,6 +702,9 @@
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
                     <Container class="javax.swing.JPanel" name="mpdRecorrido">
+                      <Properties>
+                        <Property name="opaque" type="boolean" value="false"/>
+                      </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    public void paint(Graphics e) {&#xa;        Graphics2D g = (Graphics2D) e;&#xa;        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,&#xa;            RenderingHints.VALUE_ANTIALIAS_ON);&#xa;        graficarRecorrido((Graphics2D) e);&#xa;    }&#xa;}"/>
                       </AuxValues>
@@ -783,7 +786,7 @@
                         <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="mpdArbolMouseMoved"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    public void paint(Graphics e) {&#xa;        Graphics2D g = (Graphics2D) e;&#xa;        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,&#xa;            RenderingHints.VALUE_ANTIALIAS_ON);&#xa;        if (radioNiveles.isSelected())&#xa;        graficarNiveles((Graphics2D) e);&#xa;        else&#xa;        graficarArbol((Graphics2D) e);&#xa;    }&#xa;}"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    public void paintComponent(Graphics e) {&#xa;        //super.paintComponent(e);&#xa;        Graphics2D g = (Graphics2D) e;&#xa;        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,&#xa;            RenderingHints.VALUE_ANTIALIAS_ON);&#xa;        if (radioNiveles.isSelected())&#xa;        graficarNiveles((Graphics2D) e);&#xa;        else&#xa;        graficarArbol((Graphics2D) e);&#xa;    }&#xa;}"/>
                       </AuxValues>
 
                       <Layout>
