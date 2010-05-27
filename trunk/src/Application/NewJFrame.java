@@ -165,10 +165,15 @@ public class NewJFrame extends javax.swing.JFrame {
 				Graphics2D g = (Graphics2D) e;
 				g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 						RenderingHints.VALUE_ANTIALIAS_ON);
-				if (radioNiveles.isSelected())
+				if (radioNiveles.isSelected()) {
+					mpdArbol.setPreferredSize(new Dimension(
+							mpdArbol.getWidth(), niveles * 56 + 20));
 					graficarNiveles((Graphics2D) e);
-				else
+				} else {
+					mpdArbol.setPreferredSize(new Dimension(
+							mpdArbol.getWidth(), niveles * 56 + 20));
 					graficarArbol((Graphics2D) e);
+				}
 			}
 		};
 		radioNiveles = new javax.swing.JRadioButton();
@@ -731,7 +736,7 @@ public class NewJFrame extends javax.swing.JFrame {
 		scrollRecorrido
 				.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 		scrollRecorrido.setOpaque(false);
-		
+
 		mpdRecorrido.setOpaque(false);
 
 		javax.swing.GroupLayout mpdRecorridoLayout = new javax.swing.GroupLayout(
@@ -1515,10 +1520,14 @@ public class NewJFrame extends javax.swing.JFrame {
 						+ size.getWidth() / 2 - 5), (int) (loc.getY()
 						+ size.getHeight() / 2 + 5));
 			}
-			//TODO REVISAR LA CUENTA
+			// TODO REVISAR LA CUENTA
 			if (i * dist_nodos + margen_derecho > mpdRecorrido.getWidth()) {
 				mpdRecorrido.setPreferredSize(new Dimension(i * dist_nodos
 						+ margen_derecho, mpdRecorrido.getHeight()));
+				mpdRecorrido.updateUI();
+				mpdRecorrido.validate();
+				scrollArbol.updateUI();
+				scrollArbol.validate();
 			}
 		}
 	}
@@ -1527,9 +1536,10 @@ public class NewJFrame extends javax.swing.JFrame {
 		// TODO PRESTAR ATENCION CDO SE CAMBIEN LOS STATIC DE TESTING APP
 		e.drawImage(background2, 0, 0, null);
 		if (arbol != null) {
-			if (niveles > 4)
-				mpdArbol.setPreferredSize(new Dimension(mpdArbol.getWidth(),
-						niveles * 100 + 20));
+			mpdArbol.setPreferredSize(new Dimension(mpdArbol.getWidth(),
+					niveles * 100 + 20));
+			mpdArbol.updateUI();
+			mpdArbol.validate();
 			Dimension2D size = new Dimension(48, 48);
 			try {
 				Line2D arco;
@@ -1706,6 +1716,10 @@ public class NewJFrame extends javax.swing.JFrame {
 				}
 
 			}
+				mpdArbol.setPreferredSize(new Dimension(mpdArbol.getWidth(),
+						niveles * 56 + 20));
+				mpdArbol.updateUI();
+				mpdArbol.validate();
 		}
 
 	}
