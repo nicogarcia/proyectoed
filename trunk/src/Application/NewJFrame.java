@@ -1142,6 +1142,7 @@ public class NewJFrame extends javax.swing.JFrame {
 					System.out
 							.println("Esta excepcion no deberia llegar a dispararse.");
 				}
+				break;
 			}
 		}
 	}// GEN-LAST:event_ctxDeleteNodeActionPerformed
@@ -1716,10 +1717,10 @@ public class NewJFrame extends javax.swing.JFrame {
 				}
 
 			}
-				mpdArbol.setPreferredSize(new Dimension(mpdArbol.getWidth(),
-						niveles * 56 + 20));
-				mpdArbol.updateUI();
-				mpdArbol.validate();
+			mpdArbol.setPreferredSize(new Dimension(mpdArbol.getWidth(),
+					niveles * 56 + 20));
+			mpdArbol.updateUI();
+			mpdArbol.validate();
 		}
 
 	}
