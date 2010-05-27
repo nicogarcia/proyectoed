@@ -58,6 +58,8 @@ public class NewJFrame extends javax.swing.JFrame {
 		try {
 			background = ImageIO.read(getClass().getResource(
 					"/images/fondo_gris.jpg"));
+			background2 = ImageIO.read(getClass().getResource(
+			"/images/black.jpg"));
 			initComponents();
 			green = ImageIO.read(getClass().getResource(
 					"/images/green_node.png"));
@@ -108,6 +110,74 @@ public class NewJFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed"
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+
+		clickDerecho = new javax.swing.JPopupMenu();
+		ctxAddSon = new javax.swing.JMenuItem();
+		ctxDeleteNode = new javax.swing.JMenuItem();
+		panelDeFondo = new javax.swing.JPanel() {
+			public void paint(Graphics e) {
+				e.drawImage(background, 0, 0, null);
+				setOpaque(false);
+				super.paint(e);
+			}
+		};
+		panelOperaciones = new javax.swing.JPanel();
+		btnLoadTree = new javax.swing.JButton();
+		panelAdd = new javax.swing.JPanel();
+		btnAddNode = new javax.swing.JButton();
+		cbPadres = new javax.swing.JComboBox();
+		txtRotulo = new javax.swing.JTextField();
+		lblRotulo = new javax.swing.JLabel();
+		lblPadre = new javax.swing.JLabel();
+		panelEliminar = new javax.swing.JPanel();
+		btnDeleteLevel = new javax.swing.JButton();
+		cbNiveles = new javax.swing.JComboBox();
+		lblNivel = new javax.swing.JLabel();
+		panelAncCam = new javax.swing.JPanel();
+		cbDesde = new javax.swing.JComboBox();
+		cbHasta = new javax.swing.JComboBox();
+		lblDesde = new javax.swing.JLabel();
+		lblHasta = new javax.swing.JLabel();
+		panelMostrarAC = new javax.swing.JPanel();
+		chkCamino = new javax.swing.JCheckBox();
+		chkAncestro = new javax.swing.JCheckBox();
+		btnEliminarArbol = new javax.swing.JButton();
+		jPanel10 = new javax.swing.JPanel();
+		cbAltura = new javax.swing.JComboBox();
+		jLabel6 = new javax.swing.JLabel();
+		lblAltura = new javax.swing.JLabel();
+		panelGraficos = new javax.swing.JPanel();
+		panelRecorridos = new javax.swing.JPanel();
+		panelTipoRecorrido = new javax.swing.JPanel();
+		radioPre = new javax.swing.JRadioButton();
+		radioPos = new javax.swing.JRadioButton();
+		scrollRecorrido = new javax.swing.JScrollPane();
+		mpdRecorrido = new javax.swing.JPanel() {
+			public void paint(Graphics e) {
+				Graphics2D g = (Graphics2D) e;
+				
+				g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+						RenderingHints.VALUE_ANTIALIAS_ON);
+				graficarRecorrido((Graphics2D) e);
+			}
+		};
+		panelArbol = new javax.swing.JPanel();
+		scrollArbol = new javax.swing.JScrollPane();
+		mpdArbol = new javax.swing.JPanel() {
+			public void paint(Graphics e) {
+				Graphics2D g = (Graphics2D) e;
+				
+				g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+						RenderingHints.VALUE_ANTIALIAS_ON);
+				if (radioNiveles.isSelected())
+					graficarNiveles((Graphics2D) e);
+				else
+					graficarArbol((Graphics2D) e);
+			}
+		};
+		radioNiveles = new javax.swing.JRadioButton();
+		radioArbol = new javax.swing.JRadioButton();
 
         clickDerecho = new javax.swing.JPopupMenu();
         ctxAddSon = new javax.swing.JMenuItem();
@@ -174,6 +244,7 @@ public class NewJFrame extends javax.swing.JFrame {
         };
         radioNiveles = new javax.swing.JRadioButton();
         radioArbol = new javax.swing.JRadioButton();
+
 
         ctxAddSon.setText("Agregar hijo");
         ctxAddSon.addActionListener(new java.awt.event.ActionListener() {
@@ -1031,6 +1102,7 @@ public class NewJFrame extends javax.swing.JFrame {
 	}
 
 	public void graficarPila(Graphics2D e) {
+		e.drawImage(background2, 0, 0, null);
 		if (pila_a_pintar != null) {
 			try {
 				pila_temp = new Pila<Character>();
@@ -1072,6 +1144,7 @@ public class NewJFrame extends javax.swing.JFrame {
 	}
 
 	public void graficarRecorrido(Graphics2D e) {
+		e.drawImage(background2, 0, 0, null);
 		if (arbol != null && !arbol.isEmpty()) {
 			Dimension2D size = new Dimension(48, 48);
 			PositionList<Position<Character>> lista;
@@ -1113,6 +1186,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
 	public void graficarArbol(Graphics2D e) {
 		// TODO PRESTAR ATENCION CDO SE CAMBIEN LOS STATIC DE TESTING APP
+		e.drawImage(background2, 0, 0, null);
 		if (arbol != null) {
 			if (niveles > 4)
 				mpdArbol.setSize(mpdArbol.getWidth(), niveles * 100 + 20);
@@ -1340,7 +1414,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtRotulo;
     // End of variables declaration//GEN-END:variables
 	private static Image green, black, orange, blue, gray, yellow, red, flecha,
-			background;
+			background, background2;
 	private Pila<Character> pila_temp;
 	private Pila<Character> pila_a_pintar;
 	private static Arbol<Character> arbol;
