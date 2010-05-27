@@ -15,7 +15,7 @@ import TDAPila.Pila;
  * genericos de tipo E.
  * 
  * @param <E>
- *            Objeto genérico.
+ *            Objeto genï¿½rico.
  * @author Martin Schiaffino [93718]
  * @author Nicolas Garcia [9307]
  */
@@ -64,11 +64,11 @@ public class Arbol<E> implements GeneralTree<E> {
 	}
 
 	/**
-	 * Retorna una colección iterable de hijos de la posición recibida.
+	 * Retorna una colecciï¿½n iterable de hijos de la posiciï¿½n recibida.
 	 * 
 	 * @param v
-	 *            Posición padre de los hijos de la lista.
-	 * @return Una colección iterable de hijos.
+	 *            Posiciï¿½n padre de los hijos de la lista.
+	 * @return Una colecciï¿½n iterable de hijos.
 	 * @throws InvalidPositionException
 	 *             the invalid position exception
 	 */
@@ -235,19 +235,19 @@ public class Arbol<E> implements GeneralTree<E> {
 	}
 
 	/**
-	 * Getter del tamaño.
+	 * Getter del tamaï¿½o.
 	 * 
-	 * @return Tamaño del arbol.
+	 * @return Tamaï¿½o del arbol.
 	 */
 	public int size() {
 		return size;
 	}
 
 	/**
-	 * Añade a una lista las positions recorriendo en pre-orden.
+	 * Aï¿½ade a una lista las positions recorriendo en pre-orden.
 	 * 
 	 * @param l
-	 *            Lista a la cual se añaden las positions.
+	 *            Lista a la cual se aï¿½aden las positions.
 	 * 
 	 * @param n
 	 *            Raiz del arbol (cuando es llamado).
@@ -261,10 +261,10 @@ public class Arbol<E> implements GeneralTree<E> {
 	}
 
 	/**
-	 * Añade a una lista las positions recorriendo en pos-orden.
+	 * Aï¿½ade a una lista las positions recorriendo en pos-orden.
 	 * 
 	 * @param l
-	 *            Lista a la cual se añaden las positions.
+	 *            Lista a la cual se aï¿½aden las positions.
 	 * 
 	 * @param n
 	 *            Raiz del arbol (cuando es llamado).

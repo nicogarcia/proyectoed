@@ -21,7 +21,7 @@
             <Property name="text" type="java.lang.String" value="Borrar nodo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ctxDeleteNodeActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ctxDeleteNodeMouseClicked"/>
           </Events>
         </MenuItem>
       </SubComponents>
@@ -762,9 +762,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Mostrar altura"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAlturaActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
