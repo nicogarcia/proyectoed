@@ -109,542 +109,941 @@ public class NewJFrame extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed"
 	// <editor-fold defaultstate="collapsed"
 	// <editor-fold defaultstate="collapsed"
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+	// desc="Generated Code">//GEN-BEGIN:initComponents
+	private void initComponents() {
 
-        clickDerecho = new javax.swing.JPopupMenu();
-        ctxAddSon = new javax.swing.JMenuItem();
-        ctxDeleteNode = new javax.swing.JMenuItem();
-        panelDeFondo = new javax.swing.JPanel() {
-            public void paint(Graphics e) {
-                e.drawImage(background, 0, 0, null);
-                setOpaque(false);
-                super.paint(e);
-            }
-        };
-        panelOperaciones = new javax.swing.JPanel();
-        btnLoadTree = new javax.swing.JButton();
-        panelAdd = new javax.swing.JPanel();
-        btnAddNode = new javax.swing.JButton();
-        cbPadres = new javax.swing.JComboBox();
-        txtRotulo = new javax.swing.JTextField();
-        lblRotulo = new javax.swing.JLabel();
-        lblPadre = new javax.swing.JLabel();
-        panelEliminar = new javax.swing.JPanel();
-        btnDeleteLevel = new javax.swing.JButton();
-        cbNiveles = new javax.swing.JComboBox();
-        lblNivel = new javax.swing.JLabel();
-        panelAncCam = new javax.swing.JPanel();
-        cbDesde = new javax.swing.JComboBox();
-        cbHasta = new javax.swing.JComboBox();
-        lblDesde = new javax.swing.JLabel();
-        lblHasta = new javax.swing.JLabel();
-        panelMostrarAC = new javax.swing.JPanel();
-        chkCamino = new javax.swing.JCheckBox();
-        chkAncestro = new javax.swing.JCheckBox();
-        btnEliminarArbol = new javax.swing.JButton();
-        panelGraficos = new javax.swing.JPanel();
-        panelRecorridos = new javax.swing.JPanel();
-        panelTipoRecorrido = new javax.swing.JPanel();
-        radioPre = new javax.swing.JRadioButton();
-        radioPos = new javax.swing.JRadioButton();
-        scrollRecorrido = new javax.swing.JScrollPane();
-        mpdRecorrido = new javax.swing.JPanel() {
-            public void paint(Graphics e) {
-                Graphics2D g = (Graphics2D) e;
-                g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
-                graficarRecorrido((Graphics2D) e);
-            }
-        };
-        panelArbol = new javax.swing.JPanel();
-        scrollArbol = new javax.swing.JScrollPane();
-        mpdArbol = new javax.swing.JPanel() {
-            public void paintComponent(Graphics e) {
-                //super.paintComponent(e);
-                Graphics2D g = (Graphics2D) e;
-                g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
-                if (radioNiveles.isSelected())
-                graficarNiveles((Graphics2D) e);
-                else
-                graficarArbol((Graphics2D) e);
-            }
-        };
-        radioNiveles = new javax.swing.JRadioButton();
-        radioArbol = new javax.swing.JRadioButton();
-        chkAltura = new javax.swing.JCheckBox();
+		clickDerecho = new javax.swing.JPopupMenu();
+		ctxAddSon = new javax.swing.JMenuItem();
+		ctxDeleteNode = new javax.swing.JMenuItem();
+		panelDeFondo = new javax.swing.JPanel() {
+			public void paint(Graphics e) {
+				e.drawImage(background, 0, 0, null);
+				setOpaque(false);
+				super.paint(e);
+			}
+		};
+		panelOperaciones = new javax.swing.JPanel();
+		btnLoadTree = new javax.swing.JButton();
+		panelAdd = new javax.swing.JPanel();
+		btnAddNode = new javax.swing.JButton();
+		cbPadres = new javax.swing.JComboBox();
+		txtRotulo = new javax.swing.JTextField();
+		lblRotulo = new javax.swing.JLabel();
+		lblPadre = new javax.swing.JLabel();
+		panelEliminar = new javax.swing.JPanel();
+		btnDeleteLevel = new javax.swing.JButton();
+		cbNiveles = new javax.swing.JComboBox();
+		lblNivel = new javax.swing.JLabel();
+		panelAncCam = new javax.swing.JPanel();
+		cbDesde = new javax.swing.JComboBox();
+		cbHasta = new javax.swing.JComboBox();
+		lblDesde = new javax.swing.JLabel();
+		lblHasta = new javax.swing.JLabel();
+		panelMostrarAC = new javax.swing.JPanel();
+		chkCamino = new javax.swing.JCheckBox();
+		chkAncestro = new javax.swing.JCheckBox();
+		btnEliminarArbol = new javax.swing.JButton();
+		panelGraficos = new javax.swing.JPanel();
+		panelRecorridos = new javax.swing.JPanel();
+		panelTipoRecorrido = new javax.swing.JPanel();
+		radioPre = new javax.swing.JRadioButton();
+		radioPos = new javax.swing.JRadioButton();
+		scrollRecorrido = new javax.swing.JScrollPane();
+		mpdRecorrido = new javax.swing.JPanel() {
+			public void paint(Graphics e) {
+				Graphics2D g = (Graphics2D) e;
+				g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+						RenderingHints.VALUE_ANTIALIAS_ON);
+				graficarRecorrido((Graphics2D) e);
+			}
+		};
+		panelArbol = new javax.swing.JPanel();
+		scrollArbol = new javax.swing.JScrollPane();
+		mpdArbol = new javax.swing.JPanel() {
+			public void paintComponent(Graphics e) {
+				// super.paintComponent(e);
+				Graphics2D g = (Graphics2D) e;
+				g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+						RenderingHints.VALUE_ANTIALIAS_ON);
+				if (radioNiveles.isSelected()) {
+					mpdArbol.setPreferredSize(new Dimension(
+							mpdArbol.getWidth(), niveles * 56 + 20));
+					graficarNiveles((Graphics2D) e);
+				} else {
+					mpdArbol.setPreferredSize(new Dimension(
+							mpdArbol.getWidth(), niveles * 56 + 20));
+					graficarArbol((Graphics2D) e);
+				}
+			}
+		};
+		radioNiveles = new javax.swing.JRadioButton();
+		radioArbol = new javax.swing.JRadioButton();
+		chkAltura = new javax.swing.JCheckBox();
 
-        ctxAddSon.setText("Agregar hijo");
-        ctxAddSon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ctxAddSonActionPerformed(evt);
-            }
-        });
-        clickDerecho.add(ctxAddSon);
+		ctxAddSon.setText("Agregar hijo");
+		ctxAddSon.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				ctxAddSonActionPerformed(evt);
+			}
+		});
+		clickDerecho.add(ctxAddSon);
 
-        ctxDeleteNode.setText("Borrar nodo");
-        ctxDeleteNode.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ctxDeleteNodeMouseClicked(evt);
-            }
-        });
-        clickDerecho.add(ctxDeleteNode);
+		ctxDeleteNode.setText("Borrar nodo");
+		ctxDeleteNode.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				ctxDeleteNodeActionPerformed(evt);
+			}
+		});
+		clickDerecho.add(ctxDeleteNode);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelDeFondo.setOpaque(false);
+		panelDeFondo.setOpaque(false);
 
-        panelOperaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        panelOperaciones.setOpaque(false);
+		panelOperaciones.setBorder(new javax.swing.border.LineBorder(
+				new java.awt.Color(0, 0, 0), 1, true));
+		panelOperaciones.setOpaque(false);
 
-        btnLoadTree.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
-        btnLoadTree.setText("Cargar Arbol");
-        btnLoadTree.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoadTreeActionPerformed(evt);
-            }
-        });
+		btnLoadTree.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
+		btnLoadTree.setText("Cargar Arbol");
+		btnLoadTree.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				btnLoadTreeActionPerformed(evt);
+			}
+		});
 
-        panelAdd.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar Nodo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
-        panelAdd.setOpaque(false);
-        panelAdd.setPreferredSize(new java.awt.Dimension(17, 153));
+		panelAdd.setBorder(javax.swing.BorderFactory.createTitledBorder(null,
+				"Agregar Nodo",
+				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+				javax.swing.border.TitledBorder.DEFAULT_POSITION,
+				new java.awt.Font("Dialog", 1, 12))); // NOI18N
+		panelAdd.setOpaque(false);
+		panelAdd.setPreferredSize(new java.awt.Dimension(17, 153));
 
-        btnAddNode.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
-        btnAddNode.setText("Agregar");
-        btnAddNode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddNodeActionPerformed(evt);
-            }
-        });
+		btnAddNode.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
+		btnAddNode.setText("Agregar");
+		btnAddNode.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				btnAddNodeActionPerformed(evt);
+			}
+		});
 
-        cbPadres.setOpaque(false);
+		cbPadres.setOpaque(false);
 
-        txtRotulo.setOpaque(false);
+		txtRotulo.setOpaque(false);
 
-        lblRotulo.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        lblRotulo.setText("Rotulo");
+		lblRotulo.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		lblRotulo.setText("Rotulo");
 
-        lblPadre.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        lblPadre.setText("Padre");
+		lblPadre.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		lblPadre.setText("Padre");
 
-        javax.swing.GroupLayout panelAddLayout = new javax.swing.GroupLayout(panelAdd);
-        panelAdd.setLayout(panelAddLayout);
-        panelAddLayout.setHorizontalGroup(
-            panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAddLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAddNode, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                    .addGroup(panelAddLayout.createSequentialGroup()
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRotulo)
-                            .addComponent(lblPadre))
-                        .addGap(85, 85, 85)
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtRotulo, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                            .addComponent(cbPadres, 0, 78, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        panelAddLayout.setVerticalGroup(
-            panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAddLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRotulo)
-                    .addComponent(txtRotulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPadre)
-                    .addComponent(cbPadres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAddNode)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+		javax.swing.GroupLayout panelAddLayout = new javax.swing.GroupLayout(
+				panelAdd);
+		panelAdd.setLayout(panelAddLayout);
+		panelAddLayout
+				.setHorizontalGroup(panelAddLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelAddLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												panelAddLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addComponent(
+																btnAddNode,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																209,
+																Short.MAX_VALUE)
+														.addGroup(
+																panelAddLayout
+																		.createSequentialGroup()
+																		.addGroup(
+																				panelAddLayout
+																						.createParallelGroup(
+																								javax.swing.GroupLayout.Alignment.LEADING)
+																						.addComponent(
+																								lblRotulo)
+																						.addComponent(
+																								lblPadre))
+																		.addGap(
+																				85,
+																				85,
+																				85)
+																		.addGroup(
+																				panelAddLayout
+																						.createParallelGroup(
+																								javax.swing.GroupLayout.Alignment.TRAILING)
+																						.addComponent(
+																								txtRotulo,
+																								javax.swing.GroupLayout.DEFAULT_SIZE,
+																								78,
+																								Short.MAX_VALUE)
+																						.addComponent(
+																								cbPadres,
+																								0,
+																								78,
+																								Short.MAX_VALUE))))
+										.addContainerGap()));
+		panelAddLayout
+				.setVerticalGroup(panelAddLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelAddLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												panelAddLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(lblRotulo)
+														.addComponent(
+																txtRotulo,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE))
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addGroup(
+												panelAddLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(lblPadre)
+														.addComponent(
+																cbPadres,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE))
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+										.addComponent(btnAddNode)
+										.addContainerGap(19, Short.MAX_VALUE)));
 
-        panelEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Eliminar Nivel", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
-        panelEliminar.setOpaque(false);
-        panelEliminar.setPreferredSize(new java.awt.Dimension(174, 98));
+		panelEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder(
+				null, "Eliminar Nivel",
+				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+				javax.swing.border.TitledBorder.DEFAULT_POSITION,
+				new java.awt.Font("Dialog", 1, 12))); // NOI18N
+		panelEliminar.setOpaque(false);
+		panelEliminar.setPreferredSize(new java.awt.Dimension(174, 98));
 
-        btnDeleteLevel.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
-        btnDeleteLevel.setText("Eliminar");
-        btnDeleteLevel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteLevelActionPerformed(evt);
-            }
-        });
+		btnDeleteLevel.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
+		btnDeleteLevel.setText("Eliminar");
+		btnDeleteLevel.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				btnDeleteLevelActionPerformed(evt);
+			}
+		});
 
-        cbNiveles.setOpaque(false);
+		cbNiveles.setOpaque(false);
 
-        lblNivel.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        lblNivel.setText("Nivel");
+		lblNivel.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		lblNivel.setText("Nivel");
 
-        javax.swing.GroupLayout panelEliminarLayout = new javax.swing.GroupLayout(panelEliminar);
-        panelEliminar.setLayout(panelEliminarLayout);
-        panelEliminarLayout.setHorizontalGroup(
-            panelEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEliminarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDeleteLevel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                    .addGroup(panelEliminarLayout.createSequentialGroup()
-                        .addComponent(lblNivel, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                        .addGap(26, 26, 26)
-                        .addComponent(cbNiveles, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        panelEliminarLayout.setVerticalGroup(
-            panelEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEliminarLayout.createSequentialGroup()
-                .addGroup(panelEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbNiveles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNivel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDeleteLevel, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+		javax.swing.GroupLayout panelEliminarLayout = new javax.swing.GroupLayout(
+				panelEliminar);
+		panelEliminar.setLayout(panelEliminarLayout);
+		panelEliminarLayout
+				.setHorizontalGroup(panelEliminarLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								javax.swing.GroupLayout.Alignment.TRAILING,
+								panelEliminarLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												panelEliminarLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING)
+														.addComponent(
+																btnDeleteLevel,
+																javax.swing.GroupLayout.Alignment.LEADING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																209,
+																Short.MAX_VALUE)
+														.addGroup(
+																panelEliminarLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				lblNivel,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				129,
+																				Short.MAX_VALUE)
+																		.addGap(
+																				26,
+																				26,
+																				26)
+																		.addComponent(
+																				cbNiveles,
+																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				54,
+																				javax.swing.GroupLayout.PREFERRED_SIZE)))
+										.addContainerGap()));
+		panelEliminarLayout
+				.setVerticalGroup(panelEliminarLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelEliminarLayout
+										.createSequentialGroup()
+										.addGroup(
+												panelEliminarLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(
+																cbNiveles,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(lblNivel))
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(
+												btnDeleteLevel,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												31, Short.MAX_VALUE)
+										.addContainerGap()));
 
-        panelAncCam.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ancestro - Camino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
-        panelAncCam.setOpaque(false);
+		panelAncCam.setBorder(javax.swing.BorderFactory.createTitledBorder(
+				null, "Ancestro - Camino",
+				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+				javax.swing.border.TitledBorder.DEFAULT_POSITION,
+				new java.awt.Font("Dialog", 1, 12))); // NOI18N
+		panelAncCam.setOpaque(false);
 
-        cbDesde.setOpaque(false);
+		cbDesde.setOpaque(false);
 
-        cbHasta.setOpaque(false);
+		cbHasta.setOpaque(false);
 
-        lblDesde.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        lblDesde.setText("Desde");
+		lblDesde.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		lblDesde.setText("Desde");
 
-        lblHasta.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        lblHasta.setText("Hasta");
+		lblHasta.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		lblHasta.setText("Hasta");
 
-        panelMostrarAC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mostrar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 11))); // NOI18N
-        panelMostrarAC.setOpaque(false);
+		panelMostrarAC.setBorder(javax.swing.BorderFactory.createTitledBorder(
+				null, "Mostrar",
+				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+				javax.swing.border.TitledBorder.DEFAULT_POSITION,
+				new java.awt.Font("Dialog", 1, 11))); // NOI18N
+		panelMostrarAC.setOpaque(false);
 
-        chkCamino.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        chkCamino.setText("Marcar camino");
-        chkCamino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCaminoActionPerformed(evt);
-            }
-        });
+		chkCamino.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		chkCamino.setText("Marcar camino");
+		chkCamino.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				chkCaminoActionPerformed(evt);
+			}
+		});
 
-        chkAncestro.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        chkAncestro.setText("Ancestro comun");
-        chkAncestro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAncestroActionPerformed(evt);
-            }
-        });
+		chkAncestro.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		chkAncestro.setText("Ancestro comun");
+		chkAncestro.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				chkAncestroActionPerformed(evt);
+			}
+		});
 
-        javax.swing.GroupLayout panelMostrarACLayout = new javax.swing.GroupLayout(panelMostrarAC);
-        panelMostrarAC.setLayout(panelMostrarACLayout);
-        panelMostrarACLayout.setHorizontalGroup(
-            panelMostrarACLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMostrarACLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelMostrarACLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkAncestro)
-                    .addComponent(chkCamino))
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
-        panelMostrarACLayout.setVerticalGroup(
-            panelMostrarACLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMostrarACLayout.createSequentialGroup()
-                .addComponent(chkAncestro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(chkCamino))
-        );
+		javax.swing.GroupLayout panelMostrarACLayout = new javax.swing.GroupLayout(
+				panelMostrarAC);
+		panelMostrarAC.setLayout(panelMostrarACLayout);
+		panelMostrarACLayout
+				.setHorizontalGroup(panelMostrarACLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelMostrarACLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												panelMostrarACLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addComponent(
+																chkAncestro)
+														.addComponent(chkCamino))
+										.addContainerGap(48, Short.MAX_VALUE)));
+		panelMostrarACLayout
+				.setVerticalGroup(panelMostrarACLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelMostrarACLayout
+										.createSequentialGroup()
+										.addComponent(chkAncestro)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+												15, Short.MAX_VALUE)
+										.addComponent(chkCamino)));
 
-        javax.swing.GroupLayout panelAncCamLayout = new javax.swing.GroupLayout(panelAncCam);
-        panelAncCam.setLayout(panelAncCamLayout);
-        panelAncCamLayout.setHorizontalGroup(
-            panelAncCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAncCamLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelAncCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAncCamLayout.createSequentialGroup()
-                        .addGroup(panelAncCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDesde)
-                            .addComponent(lblHasta))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                        .addGroup(panelAncCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cbHasta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbDesde, 0, 53, Short.MAX_VALUE)))
-                    .addComponent(panelMostrarAC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        panelAncCamLayout.setVerticalGroup(
-            panelAncCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAncCamLayout.createSequentialGroup()
-                .addGroup(panelAncCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDesde)
-                    .addComponent(cbDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelAncCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHasta)
-                    .addComponent(cbHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(panelMostrarAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+		javax.swing.GroupLayout panelAncCamLayout = new javax.swing.GroupLayout(
+				panelAncCam);
+		panelAncCam.setLayout(panelAncCamLayout);
+		panelAncCamLayout
+				.setHorizontalGroup(panelAncCamLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelAncCamLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												panelAncCamLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																panelAncCamLayout
+																		.createSequentialGroup()
+																		.addGroup(
+																				panelAncCamLayout
+																						.createParallelGroup(
+																								javax.swing.GroupLayout.Alignment.LEADING)
+																						.addComponent(
+																								lblDesde)
+																						.addComponent(
+																								lblHasta))
+																		.addPreferredGap(
+																				javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+																				111,
+																				Short.MAX_VALUE)
+																		.addGroup(
+																				panelAncCamLayout
+																						.createParallelGroup(
+																								javax.swing.GroupLayout.Alignment.TRAILING,
+																								false)
+																						.addComponent(
+																								cbHasta,
+																								0,
+																								javax.swing.GroupLayout.DEFAULT_SIZE,
+																								Short.MAX_VALUE)
+																						.addComponent(
+																								cbDesde,
+																								0,
+																								53,
+																								Short.MAX_VALUE)))
+														.addComponent(
+																panelMostrarAC,
+																javax.swing.GroupLayout.Alignment.TRAILING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE))
+										.addContainerGap()));
+		panelAncCamLayout
+				.setVerticalGroup(panelAncCamLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelAncCamLayout
+										.createSequentialGroup()
+										.addGroup(
+												panelAncCamLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(lblDesde)
+														.addComponent(
+																cbDesde,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE))
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+										.addGroup(
+												panelAncCamLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(lblHasta)
+														.addComponent(
+																cbHasta,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE))
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+												58, Short.MAX_VALUE)
+										.addComponent(
+												panelMostrarAC,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addContainerGap()));
 
-        btnEliminarArbol.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
-        btnEliminarArbol.setText("Eliminar Arbol");
+		btnEliminarArbol.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
+		btnEliminarArbol.setText("Eliminar Arbol");
 
-        javax.swing.GroupLayout panelOperacionesLayout = new javax.swing.GroupLayout(panelOperaciones);
-        panelOperaciones.setLayout(panelOperacionesLayout);
-        panelOperacionesLayout.setHorizontalGroup(
-            panelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelOperacionesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelAncCam, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminarArbol, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                    .addComponent(btnLoadTree, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                    .addComponent(panelAdd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                    .addComponent(panelEliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        panelOperacionesLayout.setVerticalGroup(
-            panelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelOperacionesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnLoadTree, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEliminarArbol, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelAncCam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
-        );
+		javax.swing.GroupLayout panelOperacionesLayout = new javax.swing.GroupLayout(
+				panelOperaciones);
+		panelOperaciones.setLayout(panelOperacionesLayout);
+		panelOperacionesLayout
+				.setHorizontalGroup(panelOperacionesLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelOperacionesLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												panelOperacionesLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING)
+														.addComponent(
+																panelAncCam,
+																javax.swing.GroupLayout.Alignment.LEADING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE)
+														.addComponent(
+																btnEliminarArbol,
+																javax.swing.GroupLayout.Alignment.LEADING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																245,
+																Short.MAX_VALUE)
+														.addComponent(
+																btnLoadTree,
+																javax.swing.GroupLayout.Alignment.LEADING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																245,
+																Short.MAX_VALUE)
+														.addComponent(
+																panelAdd,
+																javax.swing.GroupLayout.Alignment.LEADING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																245,
+																Short.MAX_VALUE)
+														.addComponent(
+																panelEliminar,
+																javax.swing.GroupLayout.Alignment.LEADING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																245,
+																Short.MAX_VALUE))
+										.addContainerGap()));
+		panelOperacionesLayout
+				.setVerticalGroup(panelOperacionesLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelOperacionesLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addComponent(
+												btnLoadTree,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												31,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(
+												btnEliminarArbol,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												28,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+										.addComponent(
+												panelAdd,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(
+												panelEliminar,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												101,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(
+												panelAncCam,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addContainerGap(84, Short.MAX_VALUE)));
 
-        panelGraficos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        panelGraficos.setOpaque(false);
+		panelGraficos.setBorder(new javax.swing.border.LineBorder(
+				new java.awt.Color(0, 0, 0), 1, true));
+		panelGraficos.setOpaque(false);
 
-        panelRecorridos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Grafico de recorrido", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
-        panelRecorridos.setOpaque(false);
+		panelRecorridos.setBorder(javax.swing.BorderFactory.createTitledBorder(
+				null, "Grafico de recorrido",
+				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+				javax.swing.border.TitledBorder.DEFAULT_POSITION,
+				new java.awt.Font("Dialog", 1, 12))); // NOI18N
+		panelRecorridos.setOpaque(false);
 
-        panelTipoRecorrido.setOpaque(false);
+		panelTipoRecorrido.setOpaque(false);
 
-        radioPre.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        radioPre.setSelected(true);
-        radioPre.setText("Pre-orden");
-        radioPre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioPreActionPerformed(evt);
-            }
-        });
+		radioPre.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		radioPre.setSelected(true);
+		radioPre.setText("Pre-orden");
+		radioPre.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				radioPreActionPerformed(evt);
+			}
+		});
 
-        radioPos.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        radioPos.setText("Pos-orden");
-        radioPos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioPosActionPerformed(evt);
-            }
-        });
+		radioPos.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		radioPos.setText("Pos-orden");
+		radioPos.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				radioPosActionPerformed(evt);
+			}
+		});
 
-        javax.swing.GroupLayout panelTipoRecorridoLayout = new javax.swing.GroupLayout(panelTipoRecorrido);
-        panelTipoRecorrido.setLayout(panelTipoRecorridoLayout);
-        panelTipoRecorridoLayout.setHorizontalGroup(
-            panelTipoRecorridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTipoRecorridoLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(radioPre)
-                .addContainerGap())
-            .addGroup(panelTipoRecorridoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(radioPos)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelTipoRecorridoLayout.setVerticalGroup(
-            panelTipoRecorridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTipoRecorridoLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(radioPre, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radioPos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
-        );
+		javax.swing.GroupLayout panelTipoRecorridoLayout = new javax.swing.GroupLayout(
+				panelTipoRecorrido);
+		panelTipoRecorrido.setLayout(panelTipoRecorridoLayout);
+		panelTipoRecorridoLayout.setHorizontalGroup(panelTipoRecorridoLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(
+						javax.swing.GroupLayout.Alignment.TRAILING,
+						panelTipoRecorridoLayout.createSequentialGroup()
+								.addContainerGap(14, Short.MAX_VALUE)
+								.addComponent(radioPre).addContainerGap())
+				.addGroup(
+						panelTipoRecorridoLayout.createSequentialGroup()
+								.addContainerGap().addComponent(radioPos)
+								.addContainerGap(
+										javax.swing.GroupLayout.DEFAULT_SIZE,
+										Short.MAX_VALUE)));
+		panelTipoRecorridoLayout
+				.setVerticalGroup(panelTipoRecorridoLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								javax.swing.GroupLayout.Alignment.TRAILING,
+								panelTipoRecorridoLayout
+										.createSequentialGroup()
+										.addGap(12, 12, 12)
+										.addComponent(
+												radioPre,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												22, Short.MAX_VALUE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(
+												radioPos,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE).addGap(18, 18,
+												18)));
 
-        scrollRecorrido.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        scrollRecorrido.setOpaque(false);
+		scrollRecorrido
+				.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+		scrollRecorrido.setOpaque(false);
 
-        mpdRecorrido.setOpaque(false);
+		mpdRecorrido.setOpaque(false);
 
-        javax.swing.GroupLayout mpdRecorridoLayout = new javax.swing.GroupLayout(mpdRecorrido);
-        mpdRecorrido.setLayout(mpdRecorridoLayout);
-        mpdRecorridoLayout.setHorizontalGroup(
-            mpdRecorridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
-        );
-        mpdRecorridoLayout.setVerticalGroup(
-            mpdRecorridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+		javax.swing.GroupLayout mpdRecorridoLayout = new javax.swing.GroupLayout(
+				mpdRecorrido);
+		mpdRecorrido.setLayout(mpdRecorridoLayout);
+		mpdRecorridoLayout.setHorizontalGroup(mpdRecorridoLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGap(0, 570, Short.MAX_VALUE));
+		mpdRecorridoLayout.setVerticalGroup(mpdRecorridoLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGap(0, 100, Short.MAX_VALUE));
 
-        scrollRecorrido.setViewportView(mpdRecorrido);
+		scrollRecorrido.setViewportView(mpdRecorrido);
 
-        javax.swing.GroupLayout panelRecorridosLayout = new javax.swing.GroupLayout(panelRecorridos);
-        panelRecorridos.setLayout(panelRecorridosLayout);
-        panelRecorridosLayout.setHorizontalGroup(
-            panelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRecorridosLayout.createSequentialGroup()
-                .addComponent(panelTipoRecorrido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollRecorrido, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelRecorridosLayout.setVerticalGroup(
-            panelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRecorridosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelRecorridosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(panelTipoRecorrido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrollRecorrido, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+		javax.swing.GroupLayout panelRecorridosLayout = new javax.swing.GroupLayout(
+				panelRecorridos);
+		panelRecorridos.setLayout(panelRecorridosLayout);
+		panelRecorridosLayout
+				.setHorizontalGroup(panelRecorridosLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelRecorridosLayout
+										.createSequentialGroup()
+										.addComponent(
+												panelTipoRecorrido,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(
+												scrollRecorrido,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												548, Short.MAX_VALUE)
+										.addContainerGap()));
+		panelRecorridosLayout
+				.setVerticalGroup(panelRecorridosLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelRecorridosLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												panelRecorridosLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.CENTER)
+														.addComponent(
+																panelTipoRecorrido,
+																javax.swing.GroupLayout.PREFERRED_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(
+																scrollRecorrido,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																86,
+																Short.MAX_VALUE))
+										.addContainerGap()));
 
-        panelArbol.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Grafico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
-        panelArbol.setOpaque(false);
+		panelArbol.setBorder(javax.swing.BorderFactory.createTitledBorder(null,
+				"Grafico",
+				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+				javax.swing.border.TitledBorder.DEFAULT_POSITION,
+				new java.awt.Font("Dialog", 1, 12))); // NOI18N
+		panelArbol.setOpaque(false);
 
-        scrollArbol.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollArbol.setAutoscrolls(true);
-        scrollArbol.setOpaque(false);
+		scrollArbol
+				.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollArbol.setAutoscrolls(true);
+		scrollArbol.setOpaque(false);
 
-        mpdArbol.setAutoscrolls(true);
-        mpdArbol.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mpdArbolMouseClicked(evt);
-            }
-        });
-        mpdArbol.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                mpdArbolMouseMoved(evt);
-            }
-        });
+		mpdArbol.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				mpdArbolMouseClicked(evt);
+			}
+		});
+		mpdArbol
+				.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+					public void mouseMoved(java.awt.event.MouseEvent evt) {
+						mpdArbolMouseMoved(evt);
+					}
+				});
 
-        javax.swing.GroupLayout mpdArbolLayout = new javax.swing.GroupLayout(mpdArbol);
-        mpdArbol.setLayout(mpdArbolLayout);
-        mpdArbolLayout.setHorizontalGroup(
-            mpdArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
-        );
-        mpdArbolLayout.setVerticalGroup(
-            mpdArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
-        );
+		javax.swing.GroupLayout mpdArbolLayout = new javax.swing.GroupLayout(
+				mpdArbol);
+		mpdArbol.setLayout(mpdArbolLayout);
+		mpdArbolLayout.setHorizontalGroup(mpdArbolLayout.createParallelGroup(
+				javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 685,
+				Short.MAX_VALUE));
+		mpdArbolLayout.setVerticalGroup(mpdArbolLayout.createParallelGroup(
+				javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 412,
+				Short.MAX_VALUE));
 
-        scrollArbol.setViewportView(mpdArbol);
+		scrollArbol.setViewportView(mpdArbol);
 
-        radioNiveles.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        radioNiveles.setText("Mostrar Niveles");
-        radioNiveles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioNivelesActionPerformed(evt);
-            }
-        });
+		radioNiveles.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		radioNiveles.setText("Mostrar Niveles");
+		radioNiveles.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				radioNivelesActionPerformed(evt);
+			}
+		});
 
-        radioArbol.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        radioArbol.setSelected(true);
-        radioArbol.setText("Mostrar Arbol");
-        radioArbol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioArbolActionPerformed(evt);
-            }
-        });
+		radioArbol.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
+		radioArbol.setSelected(true);
+		radioArbol.setText("Mostrar Arbol");
+		radioArbol.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				radioArbolActionPerformed(evt);
+			}
+		});
 
-        chkAltura.setFont(new java.awt.Font("DejaVu Sans", 1, 12));
-        chkAltura.setText("Mostrar altura");
+		chkAltura.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
+		chkAltura.setText("Mostrar altura");
 
-        javax.swing.GroupLayout panelArbolLayout = new javax.swing.GroupLayout(panelArbol);
-        panelArbol.setLayout(panelArbolLayout);
-        panelArbolLayout.setHorizontalGroup(
-            panelArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelArbolLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelArbolLayout.createSequentialGroup()
-                        .addComponent(scrollArbol, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
-                        .addGap(34, 34, 34))
-                    .addGroup(panelArbolLayout.createSequentialGroup()
-                        .addComponent(chkAltura)
-                        .addGap(71, 71, 71)
-                        .addComponent(radioArbol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(radioNiveles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(226, 226, 226))))
-        );
-        panelArbolLayout.setVerticalGroup(
-            panelArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelArbolLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrollArbol, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioArbol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(radioNiveles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(chkAltura))
-                .addContainerGap())
-        );
+		javax.swing.GroupLayout panelArbolLayout = new javax.swing.GroupLayout(
+				panelArbol);
+		panelArbol.setLayout(panelArbolLayout);
+		panelArbolLayout
+				.setHorizontalGroup(panelArbolLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelArbolLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												panelArbolLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.LEADING)
+														.addGroup(
+																panelArbolLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				scrollArbol,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				664,
+																				Short.MAX_VALUE)
+																		.addGap(
+																				34,
+																				34,
+																				34))
+														.addGroup(
+																panelArbolLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				chkAltura)
+																		.addGap(
+																				71,
+																				71,
+																				71)
+																		.addComponent(
+																				radioArbol,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				Short.MAX_VALUE)
+																		.addGap(
+																				18,
+																				18,
+																				18)
+																		.addComponent(
+																				radioNiveles,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				Short.MAX_VALUE)
+																		.addGap(
+																				226,
+																				226,
+																				226)))));
+		panelArbolLayout
+				.setVerticalGroup(panelArbolLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								javax.swing.GroupLayout.Alignment.TRAILING,
+								panelArbolLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addComponent(
+												scrollArbol,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												414, Short.MAX_VALUE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addGroup(
+												panelArbolLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.BASELINE)
+														.addComponent(
+																radioArbol,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE)
+														.addComponent(
+																radioNiveles,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE)
+														.addComponent(chkAltura))
+										.addContainerGap()));
 
-        javax.swing.GroupLayout panelGraficosLayout = new javax.swing.GroupLayout(panelGraficos);
-        panelGraficos.setLayout(panelGraficosLayout);
-        panelGraficosLayout.setHorizontalGroup(
-            panelGraficosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelGraficosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelGraficosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelArbol, javax.swing.GroupLayout.Alignment.LEADING, 0, 699, Short.MAX_VALUE)
-                    .addComponent(panelRecorridos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        panelGraficosLayout.setVerticalGroup(
-            panelGraficosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelGraficosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelArbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelRecorridos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+		javax.swing.GroupLayout panelGraficosLayout = new javax.swing.GroupLayout(
+				panelGraficos);
+		panelGraficos.setLayout(panelGraficosLayout);
+		panelGraficosLayout
+				.setHorizontalGroup(panelGraficosLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelGraficosLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												panelGraficosLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING)
+														.addComponent(
+																panelArbol,
+																javax.swing.GroupLayout.Alignment.LEADING,
+																0, 699,
+																Short.MAX_VALUE)
+														.addComponent(
+																panelRecorridos,
+																javax.swing.GroupLayout.Alignment.LEADING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE))
+										.addContainerGap()));
+		panelGraficosLayout
+				.setVerticalGroup(panelGraficosLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								panelGraficosLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addComponent(
+												panelArbol,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(
+												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+										.addComponent(
+												panelRecorridos,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
+												javax.swing.GroupLayout.DEFAULT_SIZE,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addContainerGap()));
 
-        javax.swing.GroupLayout panelDeFondoLayout = new javax.swing.GroupLayout(panelDeFondo);
-        panelDeFondo.setLayout(panelDeFondoLayout);
-        panelDeFondoLayout.setHorizontalGroup(
-            panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDeFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelGraficos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelDeFondoLayout.setVerticalGroup(
-            panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelOperaciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelGraficos, javax.swing.GroupLayout.Alignment.LEADING, 0, 685, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+		javax.swing.GroupLayout panelDeFondoLayout = new javax.swing.GroupLayout(
+				panelDeFondo);
+		panelDeFondo.setLayout(panelDeFondoLayout);
+		panelDeFondoLayout.setHorizontalGroup(panelDeFondoLayout
+				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(
+						panelDeFondoLayout.createSequentialGroup()
+								.addContainerGap().addComponent(
+										panelOperaciones,
+										javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addGap(18, 18, 18).addComponent(panelGraficos,
+										javax.swing.GroupLayout.DEFAULT_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE,
+										Short.MAX_VALUE).addContainerGap()));
+		panelDeFondoLayout
+				.setVerticalGroup(panelDeFondoLayout
+						.createParallelGroup(
+								javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(
+								javax.swing.GroupLayout.Alignment.TRAILING,
+								panelDeFondoLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												panelDeFondoLayout
+														.createParallelGroup(
+																javax.swing.GroupLayout.Alignment.TRAILING)
+														.addComponent(
+																panelOperaciones,
+																javax.swing.GroupLayout.Alignment.LEADING,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE)
+														.addComponent(
+																panelGraficos,
+																javax.swing.GroupLayout.Alignment.LEADING,
+																0, 685,
+																Short.MAX_VALUE))
+										.addContainerGap()));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelDeFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelDeFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
+				getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(layout.createParallelGroup(
+				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
+				panelDeFondo, javax.swing.GroupLayout.DEFAULT_SIZE,
+				javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+		layout.setVerticalGroup(layout.createParallelGroup(
+				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
+				panelDeFondo, javax.swing.GroupLayout.DEFAULT_SIZE,
+				javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+		pack();
+	}// </editor-fold>//GEN-END:initComponents
 
 	private void mpdArbolMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_mpdArbolMouseClicked
 		// Entra si el click es el derecho
@@ -1352,46 +1751,46 @@ public class NewJFrame extends javax.swing.JFrame {
 
 	}
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddNode;
-    private javax.swing.JButton btnDeleteLevel;
-    private javax.swing.JButton btnEliminarArbol;
-    private javax.swing.JButton btnLoadTree;
-    private javax.swing.JComboBox cbDesde;
-    private javax.swing.JComboBox cbHasta;
-    private javax.swing.JComboBox cbNiveles;
-    private javax.swing.JComboBox cbPadres;
-    private javax.swing.JCheckBox chkAltura;
-    private javax.swing.JCheckBox chkAncestro;
-    private javax.swing.JCheckBox chkCamino;
-    private javax.swing.JPopupMenu clickDerecho;
-    private javax.swing.JMenuItem ctxAddSon;
-    private javax.swing.JMenuItem ctxDeleteNode;
-    private javax.swing.JLabel lblDesde;
-    private javax.swing.JLabel lblHasta;
-    private javax.swing.JLabel lblNivel;
-    private javax.swing.JLabel lblPadre;
-    private javax.swing.JLabel lblRotulo;
-    private javax.swing.JPanel mpdArbol;
-    private javax.swing.JPanel mpdRecorrido;
-    private javax.swing.JPanel panelAdd;
-    private javax.swing.JPanel panelAncCam;
-    private javax.swing.JPanel panelArbol;
-    private javax.swing.JPanel panelDeFondo;
-    private javax.swing.JPanel panelEliminar;
-    private javax.swing.JPanel panelGraficos;
-    private javax.swing.JPanel panelMostrarAC;
-    private javax.swing.JPanel panelOperaciones;
-    private javax.swing.JPanel panelRecorridos;
-    private javax.swing.JPanel panelTipoRecorrido;
-    private javax.swing.JRadioButton radioArbol;
-    private javax.swing.JRadioButton radioNiveles;
-    private javax.swing.JRadioButton radioPos;
-    private javax.swing.JRadioButton radioPre;
-    private javax.swing.JScrollPane scrollArbol;
-    private javax.swing.JScrollPane scrollRecorrido;
-    private javax.swing.JTextField txtRotulo;
-    // End of variables declaration//GEN-END:variables
+	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private javax.swing.JButton btnAddNode;
+	private javax.swing.JButton btnDeleteLevel;
+	private javax.swing.JButton btnEliminarArbol;
+	private javax.swing.JButton btnLoadTree;
+	private javax.swing.JComboBox cbDesde;
+	private javax.swing.JComboBox cbHasta;
+	private javax.swing.JComboBox cbNiveles;
+	private javax.swing.JComboBox cbPadres;
+	private javax.swing.JCheckBox chkAltura;
+	private javax.swing.JCheckBox chkAncestro;
+	private javax.swing.JCheckBox chkCamino;
+	private javax.swing.JPopupMenu clickDerecho;
+	private javax.swing.JMenuItem ctxAddSon;
+	private javax.swing.JMenuItem ctxDeleteNode;
+	private javax.swing.JLabel lblDesde;
+	private javax.swing.JLabel lblHasta;
+	private javax.swing.JLabel lblNivel;
+	private javax.swing.JLabel lblPadre;
+	private javax.swing.JLabel lblRotulo;
+	private javax.swing.JPanel mpdArbol;
+	private javax.swing.JPanel mpdRecorrido;
+	private javax.swing.JPanel panelAdd;
+	private javax.swing.JPanel panelAncCam;
+	private javax.swing.JPanel panelArbol;
+	private javax.swing.JPanel panelDeFondo;
+	private javax.swing.JPanel panelEliminar;
+	private javax.swing.JPanel panelGraficos;
+	private javax.swing.JPanel panelMostrarAC;
+	private javax.swing.JPanel panelOperaciones;
+	private javax.swing.JPanel panelRecorridos;
+	private javax.swing.JPanel panelTipoRecorrido;
+	private javax.swing.JRadioButton radioArbol;
+	private javax.swing.JRadioButton radioNiveles;
+	private javax.swing.JRadioButton radioPos;
+	private javax.swing.JRadioButton radioPre;
+	private javax.swing.JScrollPane scrollArbol;
+	private javax.swing.JScrollPane scrollRecorrido;
+	private javax.swing.JTextField txtRotulo;
+	// End of variables declaration//GEN-END:variables
 	private static Image green, black, orange, blue, gray, yellow, red, flecha,
 			background, background2;
 	private Pila<Character> pila_temp;
