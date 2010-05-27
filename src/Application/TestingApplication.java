@@ -35,6 +35,17 @@ public class TestingApplication {
 		miArbol.insertar(rotulo, rPadre);
 	}
 
+	public static void borrarNodo(Position<Character> pos) {
+		try {
+			if (!miArbol.isEmpty())
+				miArbol.removeNode(pos);
+		} catch (InvalidPositionException e) {
+			System.out.println(e.getMessage());
+		} catch (EmptyTreeException e) {
+			System.out.println("Esta excepcion no deberia dispararse.");
+		}
+	}
+
 	public static void actualizarMapeo() {
 		mapeo = new MapeoConABB<Character, Integer>(comp);
 		for (Position<Character> pos : miArbol.positions()) {
