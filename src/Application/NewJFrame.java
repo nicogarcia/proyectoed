@@ -731,7 +731,7 @@ public class NewJFrame extends javax.swing.JFrame {
 		scrollRecorrido
 				.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 		scrollRecorrido.setOpaque(false);
-
+		
 		mpdRecorrido.setOpaque(false);
 
 		javax.swing.GroupLayout mpdRecorridoLayout = new javax.swing.GroupLayout(
@@ -1143,9 +1143,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
 	private void ctxAddSonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ctxAddSonActionPerformed
 		// se genera la ventana para ingresar el caracter
-		String response = JOptionPane.showInputDialog(null,
-				"Rotulo de la raiz", "Ingrese el rotulo de la raiz",
-				JOptionPane.QUESTION_MESSAGE);
+		String response = JOptionPane.showInputDialog(null, "Agregar hijo",
+				"Ingrese el nuevo rotulo:", JOptionPane.QUESTION_MESSAGE);
 		// si la entrada es correcta
 		if (response != null) {
 			Character para_agregar = response.charAt(0);
@@ -1208,25 +1207,23 @@ public class NewJFrame extends javax.swing.JFrame {
 				dibujarNodo(green, last_draw, last_char.toString(), e);
 			}
 			try {
-				if (chkAltura.isSelected()) {
-					// verifica si el puntero esta en un nuevo nodo
-					for (Position<Character> pos : arbol.positions()) {
-						TNode<Character> nodo = (TNode<Character>) pos;
-						elipse = new Ellipse2D.Double(nodo.getCorner().getX(),
-								nodo.getCorner().getY(), 48, 48);
-						// si el puntero esta en un nodo
-						if (elipse.contains(point)) {
-							// dibuja el nodo resaltado y guarda su posicion y
-							// caracter
-							String str = ((Integer) arbol.height(nodo))
-									.toString();
+				// verifica si el puntero esta en un nuevo nodo
+				for (Position<Character> pos : arbol.positions()) {
+					TNode<Character> nodo = (TNode<Character>) pos;
+					elipse = new Ellipse2D.Double(nodo.getCorner().getX(), nodo
+							.getCorner().getY(), 48, 48);
+					// si el puntero esta en un nodo
+					if (elipse.contains(point)) {
+						// dibuja el nodo resaltado y guarda su posicion y
+						// caracter
+						String str = ((Integer) arbol.height(nodo)).toString();
+						if (chkAltura.isSelected())
 							dibujarNodo(red, nodo.getCorner(), str, e);
-							last_char = nodo.element();
-							last_draw = nodo.getCorner();
-							dibuje = true;
-							// si esta en un nodo, termina
-							break;
-						}
+						last_char = nodo.element();
+						last_draw = nodo.getCorner();
+						dibuje = true;
+						// si esta en un nodo, termina
+						break;
 					}
 				}
 				// si no dibujo un nodo entonces el ultimo nodo dibujado es nulo
@@ -1518,9 +1515,10 @@ public class NewJFrame extends javax.swing.JFrame {
 						+ size.getWidth() / 2 - 5), (int) (loc.getY()
 						+ size.getHeight() / 2 + 5));
 			}
+			//TODO REVISAR LA CUENTA
 			if (i * dist_nodos + margen_derecho > mpdRecorrido.getWidth()) {
-				mpdRecorrido.setSize(i * dist_nodos + margen_derecho,
-						mpdRecorrido.getHeight());
+				mpdRecorrido.setPreferredSize(new Dimension(i * dist_nodos
+						+ margen_derecho, mpdRecorrido.getHeight()));
 			}
 		}
 	}
@@ -1530,7 +1528,8 @@ public class NewJFrame extends javax.swing.JFrame {
 		e.drawImage(background2, 0, 0, null);
 		if (arbol != null) {
 			if (niveles > 4)
-				mpdArbol.setSize(mpdArbol.getWidth(), niveles * 100 + 20);
+				mpdArbol.setPreferredSize(new Dimension(mpdArbol.getWidth(),
+						niveles * 100 + 20));
 			Dimension2D size = new Dimension(48, 48);
 			try {
 				Line2D arco;
