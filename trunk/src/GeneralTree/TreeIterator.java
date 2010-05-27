@@ -10,6 +10,10 @@ public class TreeIterator<E> implements Iterator<E> {
 	protected PositionList<E> list;
 	protected Position<E> cursor;
 
+	/**
+	 * Es utilizado para iterar sequencialmente sobre una colección de objetos.
+	 * @param L
+	 */
 	public TreeIterator(PositionList<E> L) {
 		list = L;
 		try {
@@ -19,10 +23,16 @@ public class TreeIterator<E> implements Iterator<E> {
 		}
 	}
 
+	/**
+	 * Determina si hay mas elementos para iterar.
+	 */
 	public boolean hasNext() {
 		return cursor != null;
 	}
 
+	/**
+	 * Retorna el siguiente  el siguiente objeto en la iteración
+	 */
 	public E next() throws NoSuchElementException {
 		if (cursor == null)
 			throw new NoSuchElementException(

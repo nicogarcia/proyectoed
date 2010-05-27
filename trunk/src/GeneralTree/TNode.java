@@ -98,11 +98,18 @@ public class TNode<E> implements Position<E> {
 		return toReturn;
 	}
 
-	// TODO JAVADOCAR
+	/**
+	 * Getter del corner
+	 * @return Ubicación del nodo en la representacion grafica.
+	 */
 	public Point2D getCorner() {
 		return corner;
 	}
 
+	/**
+	 * Setter del corner.
+	 * @param corner Ubicación del nodo en la representacion grafica.
+	 */
 	public void setCorner(Point2D corner) {
 		this.corner = corner;
 	}
