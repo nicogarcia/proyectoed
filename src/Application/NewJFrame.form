@@ -72,7 +72,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelOperaciones" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="panelGraficos" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -80,11 +80,11 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="panelGraficos" alignment="0" min="0" pref="685" max="32767" attributes="2"/>
                       <Component id="panelOperaciones" alignment="0" max="32767" attributes="1"/>
+                      <Component id="panelGraficos" alignment="0" min="0" pref="685" max="32767" attributes="2"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -105,15 +105,14 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnEliminarArbol" alignment="0" pref="227" max="32767" attributes="0"/>
-                          <Component id="btnLoadTree" alignment="0" pref="227" max="32767" attributes="1"/>
-                          <Component id="panelAdd" alignment="0" pref="227" max="32767" attributes="1"/>
-                          <Component id="panelEliminar" alignment="0" pref="227" max="32767" attributes="1"/>
                           <Component id="panelAncCam" alignment="0" max="32767" attributes="1"/>
-                          <Component id="jPanel10" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnEliminarArbol" alignment="0" pref="245" max="32767" attributes="0"/>
+                          <Component id="btnLoadTree" alignment="0" pref="245" max="32767" attributes="1"/>
+                          <Component id="panelAdd" alignment="0" pref="245" max="32767" attributes="1"/>
+                          <Component id="panelEliminar" alignment="0" pref="245" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -131,10 +130,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="panelEliminar" min="-2" pref="101" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panelAncCam" min="-2" pref="179" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel10" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="panelAncCam" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="84" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -172,7 +169,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnAddNode" alignment="0" pref="191" max="32767" attributes="1"/>
+                              <Component id="btnAddNode" alignment="0" pref="209" max="32767" attributes="1"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblRotulo" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -180,8 +177,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="txtRotulo" pref="60" max="32767" attributes="1"/>
-                                      <Component id="cbPadres" alignment="1" pref="60" max="32767" attributes="1"/>
+                                      <Component id="txtRotulo" pref="78" max="32767" attributes="1"/>
+                                      <Component id="cbPadres" alignment="1" pref="78" max="32767" attributes="1"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -273,9 +270,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnDeleteLevel" alignment="0" pref="191" max="32767" attributes="0"/>
+                              <Component id="btnDeleteLevel" alignment="0" pref="209" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="lblNivel" pref="111" max="32767" attributes="0"/>
+                                  <Component id="lblNivel" pref="129" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="cbNiveles" min="-2" pref="54" max="-2" attributes="0"/>
                               </Group>
@@ -344,20 +341,20 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" max="-2" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblDesde" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblHasta" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="93" max="32767" attributes="0"/>
+                                  <EmptySpace pref="111" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="cbHasta" max="32767" attributes="1"/>
                                       <Component id="cbDesde" alignment="1" pref="53" max="32767" attributes="1"/>
                                   </Group>
                               </Group>
-                              <Component id="panelMostrarAC" alignment="0" pref="203" max="32767" attributes="0"/>
+                              <Component id="panelMostrarAC" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -375,7 +372,7 @@
                               <Component id="lblHasta" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbHasta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="58" max="32767" attributes="0"/>
                           <Component id="panelMostrarAC" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -430,21 +427,21 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" max="-2" attributes="0">
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="chkAncestro" min="-2" max="-2" attributes="0"/>
                                   <Component id="chkCamino" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chkAncestro" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="48" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="chkAncestro" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="32767" attributes="1"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
                               <Component id="chkCamino" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -456,7 +453,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="DejaVu Sans" size="12" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Camino"/>
+                        <Property name="text" type="java.lang.String" value="Marcar camino"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkCaminoActionPerformed"/>
@@ -467,7 +464,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="DejaVu Sans" size="12" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Ancestro Comun"/>
+                        <Property name="text" type="java.lang.String" value="Ancestro comun"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAncestroActionPerformed"/>
@@ -485,81 +482,6 @@
                 <Property name="text" type="java.lang.String" value="Eliminar Arbol"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="jPanel10">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Mostrar altura">
-                      <Font PropertyName="font" name="Dialog" size="12" style="1"/>
-                    </TitledBorder>
-                  </Border>
-                </Property>
-                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new java.awt.Dimension(100, 32767)" type="code"/>
-                </Property>
-                <Property name="opaque" type="boolean" value="false"/>
-              </Properties>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblAltura" alignment="0" pref="191" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="95" max="32767" attributes="0"/>
-                                  <Component id="cbAltura" min="-2" pref="50" max="-2" attributes="1"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbAltura" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Component id="lblAltura" pref="39" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JComboBox" name="cbAltura">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbAlturaActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="DejaVu Sans" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Rotulo"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblAltura">
-                  <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Altura: "/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelGraficos">
@@ -578,7 +500,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="panelArbol" alignment="0" min="0" max="32767" attributes="2"/>
+                          <Component id="panelArbol" alignment="0" min="0" pref="699" max="32767" attributes="2"/>
                           <Component id="panelRecorridos" alignment="0" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -616,7 +538,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="panelTipoRecorrido" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scrollRecorrido" pref="572" max="32767" attributes="0"/>
+                          <Component id="scrollRecorrido" pref="548" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -742,16 +664,21 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
-                          <Component id="radioArbol" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Component id="radioNiveles" pref="136" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scrollArbol" pref="687" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="scrollArbol" pref="664" max="32767" attributes="0"/>
+                                  <EmptySpace min="34" pref="34" max="34" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="chkAltura" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                  <Component id="radioArbol" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioNiveles" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -764,6 +691,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="radioArbol" alignment="3" max="32767" attributes="0"/>
                               <Component id="radioNiveles" alignment="3" max="32767" attributes="0"/>
+                              <Component id="chkAltura" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -773,7 +701,7 @@
               <SubComponents>
                 <Container class="javax.swing.JScrollPane" name="scrollArbol">
                   <Properties>
-                    <Property name="horizontalScrollBarPolicy" type="int" value="32"/>
+                    <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
                     <Property name="autoscrolls" type="boolean" value="true"/>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
@@ -797,7 +725,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="396" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="412" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -825,6 +753,17 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioArbolActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="chkAltura">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="DejaVu Sans" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Mostrar altura"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAlturaActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
