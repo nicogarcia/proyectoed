@@ -6,12 +6,17 @@ import Excepciones.*;
 import TDALista.Position;
 import TDALista.PositionList;
 //TODO Faltan javadocs
-public class TreeIterator<E> implements Iterator<E> {
+
+/**
+ * Clase utilizado para iterar sequencialmente sobre una colección de objetos.
+ * @param <E> Tipo de objeto generico que se itera.
+ */
+ public class TreeIterator<E> implements Iterator<E> {
 	protected PositionList<E> list;
 	protected Position<E> cursor;
 
 	/**
-	 * Es utilizado para iterar sequencialmente sobre una colección de objetos.
+	 * 
 	 * @param L
 	 */
 	public TreeIterator(PositionList<E> L) {

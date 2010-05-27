@@ -1,5 +1,12 @@
 package TDAPila;
 
+/**
+ * Clase nodo utilizado para modelar una pila con estructura enlazada de tipo E.
+ * @author Martin Schiaffino [93718] 
+ * @author Nicolas Garcia [9307]
+ *
+ * @param <E> Tipo generico de objetos almacenados en la pila.
+ */
 public class Node<E> {
 	
 	//Atributos.

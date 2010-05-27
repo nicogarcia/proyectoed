@@ -11,7 +11,13 @@ import TDALista.PositionList;
 import Excepciones.InvalidKeyException;
 import Excepciones.InvalidPositionException;
 import Excepciones.ItemNotFoundException;
-
+/**
+ * Clase que define el comportamiento de un arbol binario 
+ * @author Martin
+ *
+ * @param <K>
+ * @param <V>
+ */
 public class ABB<K, V> {
 	protected NodoABB<Entry<K, V>> raiz;
 	protected Comparator<K> comp;

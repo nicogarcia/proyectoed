@@ -2,9 +2,18 @@ package TDACola;
 
 import Excepciones.EmptyQueueException;
 
+/**
+ * Esta clase define el comportamiento de una cola con objetos de tipo genérico E.
+ * 
+ * @author Martin Schiaffino [93718]
+ * @author Nicolas Garcia [9307]
+ * 
+ * @param <E>
+ *            Tipo generico de objetos de la cola.
+ */
 public class Cola<E> implements Queue<E> {
-	
-	//Atributos
+
+	// Atributos
 	private int front, rear;
 	private E[] array;
 	public int capacity;
@@ -21,7 +30,8 @@ public class Cola<E> implements Queue<E> {
 	/**
 	 * Constructor con capacidad determinada por el usuario.
 	 * 
-	 * @param capacity Capacidad inicial de la cola.
+	 * @param capacity
+	 *            Capacidad inicial de la cola.
 	 */
 	public Cola(int capacity) {
 		front = rear = 0;
@@ -34,7 +44,8 @@ public class Cola<E> implements Queue<E> {
 	 * 
 	 * @return elemento removido.
 	 * 
-	 * @exception EmptyQueueException si la cola esta vacia.
+	 * @exception EmptyQueueException
+	 *                si la cola esta vacia.
 	 */
 	public E dequeue() throws EmptyQueueException {
 		if (isEmpty())
@@ -49,7 +60,8 @@ public class Cola<E> implements Queue<E> {
 	/**
 	 * Inserta un elemento al final de la cola.
 	 * 
-	 * @param elemento nuevo que se desea insertar. 
+	 * @param elemento
+	 *            nuevo que se desea insertar.
 	 */
 	public void enqueue(E element) {
 		if (isArrayFull())
@@ -63,7 +75,8 @@ public class Cola<E> implements Queue<E> {
 	 * 
 	 * @return elemento al frente de la cola.
 	 * 
-	 * @exception EmptyQueueException si la cola esta vacia. 
+	 * @exception EmptyQueueException
+	 *                si la cola esta vacia.
 	 */
 	public E front() throws EmptyQueueException {
 		if (isEmpty())
@@ -71,7 +84,7 @@ public class Cola<E> implements Queue<E> {
 		return array[front];
 	}
 
-	// cambiar a privado
+	//TODO cambiar a privado
 	public void growArray(E[] array) {
 		final int incremento = 50;
 		E[] arrayNuevo = (E[]) new Object[capacity + incremento];
@@ -91,7 +104,7 @@ public class Cola<E> implements Queue<E> {
 	}
 
 	/**
-	 * Consulta si la cola esta vacia.	
+	 * Consulta si la cola esta vacia.
 	 * 
 	 * @return true si la cola esta vacia, falso en caso contrario.
 	 */
@@ -108,7 +121,7 @@ public class Cola<E> implements Queue<E> {
 		return (capacity - front + rear) % capacity;
 	}
 
-	// TODO Eliminar esto!!
+
 	public String toString() {
 		String ret = "[ ";
 		ret += array[front];
