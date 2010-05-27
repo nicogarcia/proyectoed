@@ -4,6 +4,13 @@ import java.awt.geom.Point2D;
 
 import TDALista.*;
 
+/**
+ * Clase nodo utilizada para modelar en comportamiento de un arbol de tipo generico E.
+ * @author Martin Schiaffino [93718] 
+ * @author Nicolas Garcia [9307]
+ *
+ * @param <E>
+ */
 public class TNode<E> implements Position<E> {
 	protected TNode<E> parent; // Nodo padre
 	protected PositionList<TNode<E>> children;// Lista de hijos

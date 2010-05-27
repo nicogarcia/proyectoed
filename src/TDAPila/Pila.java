@@ -2,6 +2,16 @@ package TDAPila;
 
 import Excepciones.EmptyStackException;
 
+/**
+ * Estructura que define el comportamiento de una pila de objetos genericos de
+ * tipo E.
+ * 
+ * @author Martin Schiaffino [93718]
+ * @author Nicolas Garcia [9307]
+ * 
+ * @param <E>
+ *            Tipo generico de objetos almacenados en la pila.
+ */
 public class Pila<E> implements Stack<E> {
 
 	// Atributos
