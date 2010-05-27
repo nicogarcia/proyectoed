@@ -120,13 +120,13 @@ public class TestingApplication {
 	// UNA PILA CON EL ELEMENTO DE LA RAIZ COMO SI HUBIESE SIDO ELIMINADO
 	public static Pila<Character> eliminarNivel(int nivel)
 			throws EmptyTreeException, InvalidLevelException {
-		if (nivel == 1)
+		if (nivel == 0)
 			throw new InvalidLevelException(
 					"eliminarNivel() :: No se puede eliminar el primer nivel, porque la ra�z no puede ser eliminada.");
 		Pila<Character> eliminados = new Pila<Character>();
 		if (!miArbol.isEmpty()) {
 			try {
-				int nivelActual = 1;
+				int nivelActual = 0;
 				for (Position<Character> pos : miArbol.listadoNiveles()
 						.positions()) {
 					if (pos.element() == null)
