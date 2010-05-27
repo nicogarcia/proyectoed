@@ -1354,37 +1354,39 @@ public class NewJFrame extends javax.swing.JFrame {
 	}// GEN-LAST:event_btnLoadTreeActionPerformed
 
 	private void btnAddNodeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAddNodeActionPerformed
-		if (!existeEnArbol(txtRotulo.getText().charAt(0))) {
-			// TODO CAMBIAR CHARAT 0
-			// FIXME DISPARA EXCEPCION CON EN CASILLERO VACIO
-			if (!txtRotulo.getText().equals("")) {
-				Character nuevo = txtRotulo.getText().charAt(0);
+		if (!txtRotulo.getText().equals("") && arbol != null) {
+			if (!existeEnArbol(txtRotulo.getText().charAt(0))) {
+				// TODO CAMBIAR CHARAT 0
+				// FIXME DISPARA EXCEPCION CON EN CASILLERO VACIO
+				if (!txtRotulo.getText().equals("")) {
+					Character nuevo = txtRotulo.getText().charAt(0);
 
-				TestingApplication.agregarNodo(nuevo, (Character) cbPadres
-						.getSelectedItem());
-				// TODO Revisar! Recalcula los centros de los nodos
-				try {
-					TestingApplication.calcularCentros(mpdArbol.getWidth(),
-							new Point2D.Double(0, 20), (TNode<Character>) arbol
-									.root());
-				} catch (InvalidPositionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (EmptyTreeException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					TestingApplication.agregarNodo(nuevo, (Character) cbPadres
+							.getSelectedItem());
+					// TODO Revisar! Recalcula los centros de los nodos
+					try {
+						TestingApplication.calcularCentros(mpdArbol.getWidth(),
+								new Point2D.Double(0, 20),
+								(TNode<Character>) arbol.root());
+					} catch (InvalidPositionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (EmptyTreeException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					TestingApplication.actualizarMapeo();
+					actualizarCombos();
+					cbPadres.setSelectedItem(nuevo);
+					txtRotulo.setText("");
+					mpdArbol.repaint();
+					mpdRecorrido.repaint();
 				}
-				TestingApplication.actualizarMapeo();
-				actualizarCombos();
-				cbPadres.setSelectedItem(nuevo);
-				txtRotulo.setText("");
-				mpdArbol.repaint();
-				mpdRecorrido.repaint();
+			} else {
+				JOptionPane.showMessageDialog(null,
+						"El rotulo ingresado ya pertenece al arbol.", "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
-		} else {
-			JOptionPane.showMessageDialog(null,
-					"El rotulo ingresado ya pertenece al arbol.", "Error",
-					JOptionPane.ERROR_MESSAGE);
 		}
 	}// GEN-LAST:event_btnAddNodeActionPerformed
 
@@ -1396,33 +1398,36 @@ public class NewJFrame extends javax.swing.JFrame {
 	}
 
 	private void btnDeleteLevelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDeleteLevelActionPerformed
-		try {
-			pila_a_pintar = TestingApplication
-					.eliminarNivel((Integer) cbNiveles.getSelectedItem());
-			// TODO Revisar! Recalcula los centros de los nodos
-			TestingApplication.calcularCentros(mpdArbol.getWidth(),
-					new Point2D.Double(0, 20), (TNode<Character>) arbol.root());
-			actualizarCombos();
-			mpdArbol.repaint();
-			mpdRecorrido.repaint();
-			TestingApplication.actualizarMapeo();
-			VentanaPila ventana = new VentanaPila(this) {
+		if (arbol != null) {
+			try {
+				pila_a_pintar = TestingApplication
+						.eliminarNivel((Integer) cbNiveles.getSelectedItem());
+				// TODO Revisar! Recalcula los centros de los nodos
+				TestingApplication.calcularCentros(mpdArbol.getWidth(),
+						new Point2D.Double(0, 20), (TNode<Character>) arbol
+								.root());
+				actualizarCombos();
+				mpdArbol.repaint();
+				mpdRecorrido.repaint();
+				TestingApplication.actualizarMapeo();
+				VentanaPila ventana = new VentanaPila(this) {
 
-				public void paint(Graphics e) {
-					e.drawImage(background, 0, 0, null);
-				}
-			};
-			ventana.setTitle("Elementos eliminados");
-			ventana.setVisible(true);
-		} catch (EmptyTreeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidLevelException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidPositionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+					public void paint(Graphics e) {
+						e.drawImage(background, 0, 0, null);
+					}
+				};
+				ventana.setTitle("Elementos eliminados");
+				ventana.setVisible(true);
+			} catch (EmptyTreeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidLevelException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidPositionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}// GEN-LAST:event_btnDeleteLevelActionPerformed
 
