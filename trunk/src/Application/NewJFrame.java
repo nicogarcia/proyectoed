@@ -160,18 +160,28 @@ public class NewJFrame extends javax.swing.JFrame {
 		panelArbol = new javax.swing.JPanel();
 		scrollArbol = new javax.swing.JScrollPane();
 		mpdArbol = new javax.swing.JPanel() {
-			public void paintComponent(Graphics e) {
+			public void paint(Graphics e) {
 				// super.paintComponent(e);
 				Graphics2D g = (Graphics2D) e;
 				g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 						RenderingHints.VALUE_ANTIALIAS_ON);
 				if (radioNiveles.isSelected()) {
-					mpdArbol.setPreferredSize(new Dimension(
-							mpdArbol.getWidth(), niveles * 56 + 20));
+					if (mpdArbol.getPreferredSize().getHeight() < niveles * 56 + 20) {
+						mpdArbol.setPreferredSize(new Dimension(mpdArbol
+								.getPreferredSize().width,
+								niveles* 56 + 20));
+						mpdArbol.updateUI();
+						mpdArbol.validate();
+					}
 					graficarNiveles((Graphics2D) e);
 				} else {
-					mpdArbol.setPreferredSize(new Dimension(
-							mpdArbol.getWidth(), niveles * 56 + 20));
+					if (mpdArbol.getPreferredSize().getHeight() < niveles * 100 + 20) {
+						mpdArbol.setPreferredSize(new Dimension(mpdArbol
+								.getPreferredSize().width,
+								niveles * 100 + 20));
+						mpdArbol.updateUI();
+						mpdArbol.validate();
+					}
 					graficarArbol((Graphics2D) e);
 				}
 			}
@@ -1552,7 +1562,7 @@ public class NewJFrame extends javax.swing.JFrame {
 						+ margen_derecho, mpdRecorrido.getHeight()));
 				mpdRecorrido.updateUI();
 				mpdRecorrido.validate();
-				
+
 			}
 		}
 	}
@@ -1561,12 +1571,6 @@ public class NewJFrame extends javax.swing.JFrame {
 		// TODO PRESTAR ATENCION CDO SE CAMBIEN LOS STATIC DE TESTING APP
 		e.drawImage(background2, 0, 0, null);
 		if (arbol != null) {
-			if (mpdArbol.getPreferredSize().getHeight() < (niveles+1) * 100 + 20) {
-				mpdArbol.setPreferredSize(new Dimension(mpdArbol.getPreferredSize().width,
-						(niveles+1) * 100 + 20));
-				mpdArbol.updateUI();
-				mpdArbol.validate();
-			}
 			Dimension2D size = new Dimension(48, 48);
 			try {
 				Line2D arco;
@@ -1710,24 +1714,24 @@ public class NewJFrame extends javax.swing.JFrame {
 	public void graficarNiveles(Graphics2D e) {
 		e.drawImage(background2, 0, 0, null);
 		if (arbol != null) {
-			int nivel = 1;
+			int nivel = 0;
 			int renglon = 56, margentxt = 20;
 			int index = 0;
 			int anchotxt = 100;
 			e.setFont(new Font(e.getFont().toString(), Font.BOLD, 20));
 			for (Position<Character> pos : arbol.listadoNiveles().positions()) {
-				if (nivel == 1) {
+				if (nivel == 0) {
 					e.setColor(Color.white);
 					e
 							.drawImage(green, margentxt + anchotxt,
 									renglon - 32, null);
-					e.drawString("Nivel 1:", margentxt, renglon);
+					e.drawString("Nivel 0:", margentxt, renglon);
 					e.setColor(Color.white);
 					e.drawString(pos.element().toString(), margentxt + anchotxt
 							+ 16, renglon);
 					nivel++;
 				} else if (pos.element() == null) {
-					Point2D txtLoc = new Point2D.Double(20, renglon * nivel);
+					Point2D txtLoc = new Point2D.Double(20, renglon * (nivel+1));
 					e.setColor(Color.white);
 					e.drawString("Nivel " + nivel + ":", (int) txtLoc.getX(),
 							(int) txtLoc.getY());
@@ -1735,18 +1739,13 @@ public class NewJFrame extends javax.swing.JFrame {
 					index = 0;
 				} else {
 					int locX = anchotxt + margentxt + index * 56, locY = renglon
-							* (nivel - 1);
+							* nivel;
 					e.drawImage(green, locX, locY - 32, null);
 					e.setColor(Color.white);
 					e.drawString(pos.element().toString(), locX + 16, locY);
 					index++;
 				}
-
 			}
-			mpdArbol.setPreferredSize(new Dimension(mpdArbol.getWidth(),
-					(niveles+1) * 56 + 20));
-			mpdArbol.updateUI();
-			mpdArbol.validate();
 		}
 
 	}
