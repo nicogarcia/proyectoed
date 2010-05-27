@@ -18,6 +18,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
@@ -168,8 +169,7 @@ public class NewJFrame extends javax.swing.JFrame {
 				if (radioNiveles.isSelected()) {
 					if (mpdArbol.getPreferredSize().getHeight() < niveles * 56 + 20) {
 						mpdArbol.setPreferredSize(new Dimension(mpdArbol
-								.getPreferredSize().width,
-								niveles* 56 + 20));
+								.getPreferredSize().width, niveles * 56 + 20));
 						mpdArbol.updateUI();
 						mpdArbol.validate();
 					}
@@ -177,8 +177,7 @@ public class NewJFrame extends javax.swing.JFrame {
 				} else {
 					if (mpdArbol.getPreferredSize().getHeight() < niveles * 100 + 20) {
 						mpdArbol.setPreferredSize(new Dimension(mpdArbol
-								.getPreferredSize().width,
-								niveles * 100 + 20));
+								.getPreferredSize().width, niveles * 100 + 20));
 						mpdArbol.updateUI();
 						mpdArbol.validate();
 					}
@@ -193,6 +192,7 @@ public class NewJFrame extends javax.swing.JFrame {
 		ctxAddSon.setText("Agregar hijo");
 		ctxAddSon.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				mpdArbol.setPreferredSize(new Dimension(0,0));
 				ctxAddSonActionPerformed(evt);
 			}
 		});
@@ -210,6 +210,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
 		panelDeFondo.setOpaque(false);
 
+		setResizable(false);
 		panelOperaciones.setBorder(new javax.swing.border.LineBorder(
 				new java.awt.Color(0, 0, 0), 1, true));
 		panelOperaciones.setOpaque(false);
@@ -586,6 +587,12 @@ public class NewJFrame extends javax.swing.JFrame {
 		btnEliminarArbol.setFont(new java.awt.Font("DejaVu Sans", 1, 13));
 		btnEliminarArbol.setText("Eliminar Arbol");
 
+		btnEliminarArbol.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				btnEliminarArbolActionPerformed(evt);
+			}
+		});
+
 		javax.swing.GroupLayout panelOperacionesLayout = new javax.swing.GroupLayout(
 				panelOperaciones);
 		panelOperaciones.setLayout(panelOperacionesLayout);
@@ -749,6 +756,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
 		mpdRecorrido.setOpaque(false);
 
+		mpdRecorrido.setPreferredSize(new Dimension(0,0));
+
 		javax.swing.GroupLayout mpdRecorridoLayout = new javax.swing.GroupLayout(
 				mpdRecorrido);
 		mpdRecorrido.setLayout(mpdRecorridoLayout);
@@ -814,8 +823,6 @@ public class NewJFrame extends javax.swing.JFrame {
 				new java.awt.Font("Dialog", 1, 12))); // NOI18N
 		panelArbol.setOpaque(false);
 
-		scrollArbol
-				.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollArbol.setAutoscrolls(true);
 		scrollArbol.setOpaque(false);
 
@@ -830,6 +837,7 @@ public class NewJFrame extends javax.swing.JFrame {
 						mpdArbolMouseMoved(evt);
 					}
 				});
+		mpdArbol.setPreferredSize(new Dimension(0,0));
 
 		javax.swing.GroupLayout mpdArbolLayout = new javax.swing.GroupLayout(
 				mpdArbol);
@@ -1054,6 +1062,13 @@ public class NewJFrame extends javax.swing.JFrame {
 
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
+
+	protected void btnEliminarArbolActionPerformed(ActionEvent evt) {
+		TestingApplication.miArbol = null;
+		arbol = null;
+		mpdArbol.repaint();
+		mpdRecorrido.repaint();
+	}
 
 	private void mpdArbolMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_mpdArbolMouseClicked
 		// Entra si el click es el derecho
@@ -1495,12 +1510,12 @@ public class NewJFrame extends javax.swing.JFrame {
 					Point2D loc = new Point2D.Double(margen_derecho,
 							margen_superior + dist_nodos * i);
 					i++;
-					e.drawImage(yellow, (int) loc.getX(), (int) loc.getY(),
+					e.drawImage(gray, (int) loc.getX(), (int) loc.getY(),
 							null);
 
 					e.setFont(new Font(e.getFont().toString(), Font.BOLD, 14));
 
-					e.setColor(Color.white);
+					e.setColor(Color.black);
 
 					e.drawString(rotulo.toString(), (int) (loc.getX()
 							+ size.getWidth() / 2 - 5), (int) (loc.getY()
@@ -1731,7 +1746,8 @@ public class NewJFrame extends javax.swing.JFrame {
 							+ 16, renglon);
 					nivel++;
 				} else if (pos.element() == null) {
-					Point2D txtLoc = new Point2D.Double(20, renglon * (nivel+1));
+					Point2D txtLoc = new Point2D.Double(20, renglon
+							* (nivel + 1));
 					e.setColor(Color.white);
 					e.drawString("Nivel " + nivel + ":", (int) txtLoc.getX(),
 							(int) txtLoc.getY());
