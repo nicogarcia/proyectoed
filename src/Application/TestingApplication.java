@@ -16,6 +16,13 @@ import TDAMapeo.Mapeo;
 import TDAMapeo.MapeoConABB;
 import TDAPila.Pila;
 
+/**
+ * Programa manejador de estructuras de datos
+ * 
+ * @author Martin Schiaffino [93718]
+ * @author Nicolas Garcia [93078]
+ * 
+ */
 public class TestingApplication {
 
 	protected static Arbol<Character> miArbol;
