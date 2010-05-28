@@ -9,7 +9,6 @@ import TDACola.Cola;
 import TDALista.*;
 import TDAPila.Pila;
 
-// TODO: Auto-generated Javadoc
 /**
  * Esta clase define el comportamiento de un arbol general con elementos
  * genericos de tipo E.
@@ -181,7 +180,6 @@ public class Arbol<E> implements GeneralTree<E> {
 		return preOrderPositions();
 	}
 
-	// FIXME PREGUNTAR SI SE PUEDE HACER UN POSITIONPRE Y OTRO POSITIONPOS
 	/**
 	 * Pre order positions.
 	 * 
@@ -414,30 +412,6 @@ public class Arbol<E> implements GeneralTree<E> {
 			if (pos.element().equals(rotulo))
 				return pos;
 		return null;
-	}
-
-	// FIXME cambiar nombre
-	/**
-	 * Find nodo piola.
-	 * 
-	 * @param rotulo
-	 *            the rotulo
-	 * @param inicio
-	 *            the inicio
-	 * @return the position
-	 * @throws InvalidPositionException
-	 *             the invalid position exception
-	 */
-	public Position<E> findNodoPiola(E rotulo, Position<E> inicio)
-			throws InvalidPositionException {
-		TNode<E> ini = checkPosition(inicio);
-		for (TNode<E> nodo : ini.getChildren()) {
-			if (nodo.element().equals(rotulo))
-				return (Position<E>) nodo;
-			else
-				return findNodoPiola(rotulo, nodo);
-		}
-		return ini;
 	}
 
 	/**

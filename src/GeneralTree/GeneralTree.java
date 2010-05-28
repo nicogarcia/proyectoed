@@ -3,7 +3,7 @@ import Excepciones.*;
 import TDALista.*;
 import java.util.Iterator;
 
-//TODO Traducir javadocs
+
 public interface GeneralTree<E> {
 	
 	  /** Returns the number of nodes in the tree. */

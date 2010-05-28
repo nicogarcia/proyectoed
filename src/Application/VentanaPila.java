@@ -53,9 +53,6 @@ public class VentanaPila extends javax.swing.JDialog {
 					Graphics2D g = (Graphics2D) e;
 					g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 							RenderingHints.VALUE_ANTIALIAS_ON);
-					// TODO REVISAR!
-					//setIgnoreRepaint(true);   TODO ESTO ROMPE TODO EN WINDOWS, CUANDO LA VENTANA SALE DE LA PANTALLA SE BORRA!
-					//********************
 					((NewJFrame) owner).graficarPila((Graphics2D) e);
 				}
 			};

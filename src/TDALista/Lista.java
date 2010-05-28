@@ -1,6 +1,5 @@
 package TDALista;
 
-//TODO Faltan javadocs
 import java.util.Iterator;
 
 import Excepciones.*;
