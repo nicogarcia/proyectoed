@@ -1,7 +1,6 @@
 package TDAPila;
 
 import Excepciones.EmptyStackException;
-//FIXME Hay que poner esto en las interfaces?
 /** 
  * Interface for a stack: a collection of objects that are inserted
  * and removed according to the last-in first-out principle.  This

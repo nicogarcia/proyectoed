@@ -3,10 +3,10 @@ package TDACola;
 import Excepciones.EmptyQueueException;
 
 /**
- * Esta clase define el comportamiento de una cola con objetos de tipo genérico E.
+ * Esta clase define el comportamiento de una cola con objetos de tipo genï¿½rico E.
  * 
  * @author Martin Schiaffino [93718]
- * @author Nicolas Garcia [9307]
+ * @author Nicolas Garcia [93078]
  * 
  * @param <E>
  *            Tipo generico de objetos de la cola.
