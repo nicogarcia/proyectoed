@@ -7,7 +7,7 @@ import TDALista.*;
 /**
  * Clase nodo utilizada para modelar en comportamiento de un arbol de tipo generico E.
  * @author Martin Schiaffino [93718] 
- * @author Nicolas Garcia [9307]
+ * @author Nicolas Garcia [93078]
  *
  * @param <E>
  */
@@ -107,7 +107,7 @@ public class TNode<E> implements Position<E> {
 
 	/**
 	 * Getter del corner
-	 * @return Ubicación del nodo en la representacion grafica.
+	 * @return Ubicaciï¿½n del nodo en la representacion grafica.
 	 */
 	public Point2D getCorner() {
 		return corner;
@@ -115,7 +115,7 @@ public class TNode<E> implements Position<E> {
 
 	/**
 	 * Setter del corner.
-	 * @param corner Ubicación del nodo en la representacion grafica.
+	 * @param corner Ubicaciï¿½n del nodo en la representacion grafica.
 	 */
 	public void setCorner(Point2D corner) {
 		this.corner = corner;

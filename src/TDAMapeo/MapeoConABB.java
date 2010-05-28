@@ -6,11 +6,14 @@ import java.util.Map.Entry;
 import Excepciones.InvalidKeyException;
 import Excepciones.ItemNotFoundException;
 
-//FIXME COPIADO EN CLASE!
+//FIXME COPIADO EN CLASE! FALTA JAVADOC DE CLASE
 public class MapeoConABB<K, V> implements Mapeo<K, V> {
-	protected ABB<K, V> abb;
+	protected ABB<K, V> abb; //arbol binario de busqueda que almacena las claves
 
-	// constructor
+	/**
+	 * Constructor
+	 * @param c Comparador de claves
+	 */
 	public MapeoConABB(Comparator<K> c) {
 		abb = new ABB<K, V>(c);
 	}
@@ -19,13 +22,11 @@ public class MapeoConABB<K, V> implements Mapeo<K, V> {
 		return abb.insertar(new Entrada<K, V>(k, v));
 	}
 
-	@Override
+	
 	public Iterable<Entry<K, V>> entries() {
 		return abb.entries();
 	}
-
-	// TODO PREGUNTAR SOBRE EL TRY
-	@Override
+	
 	public V get(K key) {
 		try {
 			return abb.find(key).getValue();
@@ -34,17 +35,17 @@ public class MapeoConABB<K, V> implements Mapeo<K, V> {
 		}
 	}
 
-	@Override
+	
 	public boolean isEmpty() {
 		return abb.isEmpty();
 	}
 
-	@Override
+	
 	public Iterable<K> keys() {
 		return abb.keys();
 	}
 
-	@Override
+	
 	public V remove(K key) {
 		try {
 			return abb.remove(key);
@@ -53,12 +54,12 @@ public class MapeoConABB<K, V> implements Mapeo<K, V> {
 		}
 	}
 
-	@Override
+	
 	public int size() {
 		return abb.size();
 	}
 
-	@Override
+	
 	public Iterable<V> values() {
 		return abb.values();
 	}

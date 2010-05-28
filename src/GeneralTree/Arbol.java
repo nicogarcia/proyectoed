@@ -17,7 +17,7 @@ import TDAPila.Pila;
  * @param <E>
  *            Objeto gen�rico.
  * @author Martin Schiaffino [93718]
- * @author Nicolas Garcia [9307]
+ * @author Nicolas Garcia [93078]
  */
 public class Arbol<E> implements GeneralTree<E> {
 

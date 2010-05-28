@@ -7,13 +7,13 @@ import Excepciones.*;
 
 public class Lista<E> implements PositionList<E> {
 
-	/**
-	 * @param args
-	 */
-	private Node<E> head;
-	private int size;
-	private Node<E> tail;
+	private Node<E> head;// almacena el primer nodo de la lista
+	private int size;// tamanio de la lista
+	private Node<E> tail;// almacena el ultimo nodo de la lista
 
+	/**
+	 * Constructor
+	 */
 	public Lista() {
 		head = tail = null;
 		size = 0;
@@ -63,6 +63,15 @@ public class Lista<E> implements PositionList<E> {
 		size++;
 	}
 
+	/**
+	 * Verifica si la posicion es valida y devuelve el nodo en esa posicion
+	 * 
+	 * @param p
+	 *            Posicion a verificar
+	 * @return Nodo ubicado en la posicion dada
+	 * @throws InvalidPositionException
+	 *             Si la posicion es nula, o no es un nodo
+	 */
 	private Node<E> checkPosition(Position<E> p)
 			throws InvalidPositionException {
 		if (p == null)
@@ -107,6 +116,11 @@ public class Lista<E> implements PositionList<E> {
 		return next;
 	}
 
+	/**
+	 * Retorna una coleccion iterable con las posiciones de la lista
+	 * 
+	 * @return Coleccion iterable con las posiciones de la lista
+	 */
 	public Iterable<Position<E>> positions() {
 		PositionList<Position<E>> P = new Lista<Position<E>>();
 		try {
@@ -131,6 +145,18 @@ public class Lista<E> implements PositionList<E> {
 		return P;
 	}
 
+	/**
+	 * Retorna la posicion anterior a la especificada
+	 * 
+	 * @param p
+	 *            Posicion de referencia
+	 * @return Posicion anterior
+	 * @throws BoundaryViolationException
+	 *             si la posicion recibida corresponde al primer elemento de la
+	 *             lista
+	 * @throws InvalidPositionException
+	 *             si la posicion recibida es invalida
+	 */
 	public Position<E> prev(Position<E> p) throws BoundaryViolationException,
 			InvalidPositionException {
 		Node<E> nodo = checkPosition(p);
@@ -175,25 +201,24 @@ public class Lista<E> implements PositionList<E> {
 		return ret;
 	}
 
-	/**
-	 * Devuelve el tama�o de la lista
-	 */
 	public int size() {
 		return size;
 	}
 
-	// TODO Borrar este metodo! xq no lo piden!
-	// FIXME NO ANDA!!
 	public String toString() {
-		String ret = "[";
-		Node<E> nodo = head;
-		ret += nodo.element();
-		nodo = nodo.getNext();
-		while (nodo != null) {
-			ret += ", " + nodo.element();
+		if (isEmpty())
+			return "[ ]";
+		else {
+			String ret = "[";
+			Node<E> nodo = head;
+			ret += nodo.element();
 			nodo = nodo.getNext();
+			while (nodo != null) {
+				ret += ", " + nodo.element();
+				nodo = nodo.getNext();
+			}
+			ret += "]";
+			return ret;
 		}
-		ret += "]";
-		return ret;
 	}
 }

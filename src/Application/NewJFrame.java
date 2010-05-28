@@ -1130,7 +1130,7 @@ public class NewJFrame extends javax.swing.JFrame {
 						JOptionPane
 								.showMessageDialog(
 										null,
-										"No se puede borrar la raiz. Intente crear un arbol nuevo.",
+										"No se puede borrar la raiz.",
 										"Error al borrar nodo",
 										JOptionPane.ERROR_MESSAGE);
 					else {
