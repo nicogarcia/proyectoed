@@ -23,8 +23,11 @@ import javax.swing.JFrame;
 import TDAPila.Pila;
 
 /**
+ * Ventana emergente que muestra la pila de elementos eliminados
  * 
- * @author nico
+ * @author Martin Schiaffino [93718]
+ * @author Nicolas Garcia [93078]
+ * 
  */
 public class VentanaPila extends javax.swing.JDialog {
 

@@ -3,8 +3,11 @@ package Application;
 import javax.swing.UIManager;
 
 /**
+ * Programa principal
  * 
- * @author nico
+ * @author Martin Schiaffino [93718]
+ * @author Nicolas Garcia [93078]
+ * 
  */
 public class Main {
 
