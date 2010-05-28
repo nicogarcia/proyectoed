@@ -2,7 +2,6 @@ package TDAMapeo;
 
 import java.util.Map.Entry;
 
-//FIXME COPIADO EN CLASE! FALTA EL JAVADOC DE CLASE!
 
 public class Entrada<K, V> implements Entry<K, V> {
 	private K key;//clave que almacena la entrada

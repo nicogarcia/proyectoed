@@ -42,12 +42,17 @@ import TDALista.PositionList;
 import TDAPila.Pila;
 
 /**
+ * Interfaz Grafica del programa
  * 
- * @author nico
+ * @author Martin Schiaffino [93718]
+ * @author Nicolas Garcia [93078]
+ * 
  */
 public class NewJFrame extends javax.swing.JFrame {
 
-	/** Creates new form NewJFrame */
+	/**
+	 * Constructor de la ventana
+	 */
 	public NewJFrame() {
 		try {
 			/*
@@ -61,12 +66,8 @@ public class NewJFrame extends javax.swing.JFrame {
 			initComponents();
 			green = ImageIO.read(getClass().getResource(
 					"/images/green_node.png"));
-			black = ImageIO.read(getClass().getResource(
-					"/images/black_glossy_small.png"));
 			flecha = ImageIO.read(getClass().getResource(
 					"/images/flecha_small_blue.png"));
-			yellow = ImageIO.read(getClass().getResource(
-					"/images/yellow_node.png"));
 			blue = ImageIO
 					.read(getClass().getResource("/images/blue_node.png"));
 			orange = ImageIO.read(getClass().getResource(
@@ -74,7 +75,7 @@ public class NewJFrame extends javax.swing.JFrame {
 			gray = ImageIO
 					.read(getClass().getResource("/images/gray_node.png"));
 			red = ImageIO.read(getClass().getResource("/images/red_node.png"));
-
+			setIconImage(green);
 			// Dimension de los nodos
 			nodoSize = new Dimension(48, 48);
 		} catch (IOException e) {
@@ -192,7 +193,7 @@ public class NewJFrame extends javax.swing.JFrame {
 		ctxAddSon.setText("Agregar hijo");
 		ctxAddSon.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				mpdArbol.setPreferredSize(new Dimension(0,0));
+				mpdArbol.setPreferredSize(new Dimension(0, 0));
 				ctxAddSonActionPerformed(evt);
 			}
 		});
@@ -756,7 +757,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
 		mpdRecorrido.setOpaque(false);
 
-		mpdRecorrido.setPreferredSize(new Dimension(0,0));
+		mpdRecorrido.setPreferredSize(new Dimension(0, 0));
 
 		javax.swing.GroupLayout mpdRecorridoLayout = new javax.swing.GroupLayout(
 				mpdRecorrido);
@@ -837,7 +838,7 @@ public class NewJFrame extends javax.swing.JFrame {
 						mpdArbolMouseMoved(evt);
 					}
 				});
-		mpdArbol.setPreferredSize(new Dimension(0,0));
+		mpdArbol.setPreferredSize(new Dimension(0, 0));
 
 		javax.swing.GroupLayout mpdArbolLayout = new javax.swing.GroupLayout(
 				mpdArbol);
@@ -1065,6 +1066,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
 	protected void btnEliminarArbolActionPerformed(ActionEvent evt) {
 		TestingApplication.miArbol = null;
+		btnLoadTree.setEnabled(true);
 		arbol = null;
 		mpdArbol.repaint();
 		mpdRecorrido.repaint();
@@ -1127,12 +1129,10 @@ public class NewJFrame extends javax.swing.JFrame {
 				try {
 					// muestra un mensaje de error si se quiere borrar la raiz
 					if (arbol.isRoot(pos))
-						JOptionPane
-								.showMessageDialog(
-										null,
-										"No se puede borrar la raiz.",
-										"Error al borrar nodo",
-										JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null,
+								"No se puede borrar la raiz.",
+								"Error al borrar nodo",
+								JOptionPane.ERROR_MESSAGE);
 					else {
 						// borra el nodo y oculta el menu
 						TestingApplication.borrarNodo(pos);
@@ -1156,7 +1156,6 @@ public class NewJFrame extends javax.swing.JFrame {
 						last_draw = null;
 						last_char = null;
 					}
-					// TODO Revisar excepciones
 				} catch (InvalidPositionException e) {
 					// las posiciones son validas porque las genera positions()
 					System.out
@@ -1213,6 +1212,15 @@ public class NewJFrame extends javax.swing.JFrame {
 		}
 	}// GEN-LAST:event_ctxAddSonActionPerformed
 
+	/**
+	 * Se encarga de dibujar el nodo que se encuentra debajo del puntero. Es
+	 * llamado por el evento MouseMoved del panel de dibujo
+	 * 
+	 * @param point
+	 *            Posicion del puntero
+	 * @param e
+	 *            Lugar donde se dibujara
+	 */
 	private void drawSelected(Point2D point, Graphics2D e) {
 		if (arbol != null && !arbol.isEmpty()) {
 			Ellipse2D elipse;
@@ -1277,6 +1285,19 @@ public class NewJFrame extends javax.swing.JFrame {
 		}
 	}
 
+	/**
+	 * Dibuja un nodo en una posicion determinada a partir de la esquina
+	 * superior izquierda
+	 * 
+	 * @param dibujo
+	 *            Imagen a dibujar
+	 * @param corner
+	 *            Esquina superior izquierda
+	 * @param texto
+	 *            Texto a dibujar
+	 * @param e
+	 *            Lugar donde se dibujara
+	 */
 	private void dibujarNodo(Image dibujo, Point2D corner, String texto,
 			Graphics2D e) {
 		// dibuja un nodo a partir de una esquina, con un determinado texto en
@@ -1341,78 +1362,69 @@ public class NewJFrame extends javax.swing.JFrame {
 		}
 	}// GEN-LAST:event_jRadioButton1ActionPerformed
 
-	// FIXME HASTA ACA ESTA COMENTADO
-
 	private void btnLoadTreeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLoadTreeActionPerformed
-		/*
-		 * String response = JOptionPane.showInputDialog(null,
-		 * "Rotulo de la raiz", "Ingrese el rotulo de la raiz",
-		 * JOptionPane.QUESTION_MESSAGE); if (response != null) {
-		 * TestingApplication.cargarArbol(response.charAt(0));
-		 * btnLoadTree.setEnabled(false);
-		 */
-		// Agregado para prueba automatica
-		// cbPadres.addItem(response.charAt(0));
+		// pide el rotulo de la raiz
+		String response = JOptionPane.showInputDialog(null,
+				"Rotulo de la raiz", "Ingrese el rotulo de la raiz",
+				JOptionPane.QUESTION_MESSAGE);
+		// si se escribio algo
+		if (response != null && !response.equals("")) {
+			TestingApplication.cargarArbol(response.charAt(0));
+			btnLoadTree.setEnabled(false);
 
-		TestingApplication.cargarArbol('A');
-		// FIXME ESTO TIENE QUE QDAR DESP DE CARGAR LA RAIZ
-		arbol = TestingApplication.miArbol;
-		// System.out.println(printPreOrder());
-		TestingApplication.agregarNodo('B', 'A');
-		TestingApplication.agregarNodo('C', 'B');
-		TestingApplication.agregarNodo('D', 'A');
-		TestingApplication.agregarNodo('E', 'A');
-		TestingApplication.agregarNodo('F', 'E');
-		TestingApplication.agregarNodo('G', 'E');
-		niveles = 2;
-		// cbNiveles.addItem(0);
-		// **********************************
-
-		txtRotulo.requestFocus();
-		// TODO Revisar! Recalcula los centros de los nodos
-		try {
-			TestingApplication.calcularCentros(mpdArbol.getWidth(),
-					new Point2D.Double(0, 20), (TNode<Character>) arbol.root());
-		} catch (InvalidPositionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EmptyTreeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			cbPadres.addItem(response.charAt(0));
+			// se inicializa el arbol
+			TestingApplication.cargarArbol(response.charAt(0));
+			arbol = TestingApplication.miArbol;
+			niveles = 0;
+			cbNiveles.addItem(0);
+			txtRotulo.requestFocus();
+			try {
+				// se calculan los centros de los nodos
+				TestingApplication.calcularCentros(mpdArbol.getWidth(),
+						new Point2D.Double(0, 20), (TNode<Character>) arbol
+								.root());
+			} catch (InvalidPositionException e) {
+				System.out.println("Esta excepcion no deberia dispararse");
+			} catch (EmptyTreeException e) {
+				System.out.println("Esta excepcion no deberia dispararse");
+			}
+			TestingApplication.actualizarMapeo();
+			actualizarCombos();
+			mpdArbol.repaint();
+			mpdRecorrido.repaint();
 		}
-		TestingApplication.actualizarMapeo();
-		actualizarCombos();
-		mpdArbol.repaint();
-		mpdRecorrido.repaint();
-		// }
 	}// GEN-LAST:event_btnLoadTreeActionPerformed
 
 	private void btnAddNodeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAddNodeActionPerformed
+		// si se escribio algo en el campo de texto y el arbol esta inicializado
 		if (!txtRotulo.getText().equals("") && arbol != null) {
+			// si no existe el rotulo
 			if (!existeEnArbol(txtRotulo.getText().charAt(0))) {
-				// TODO CAMBIAR CHARAT 0
-				// FIXME DISPARA EXCEPCION CON EN CASILLERO VACIO
 				if (!txtRotulo.getText().equals("")) {
 					Character nuevo = txtRotulo.getText().charAt(0);
-
+					// se agrega el nodo nuevo
 					TestingApplication.agregarNodo(nuevo, (Character) cbPadres
 							.getSelectedItem());
-					// TODO Revisar! Recalcula los centros de los nodos
 					try {
+						// se recalculan los centros
 						TestingApplication.calcularCentros(mpdArbol.getWidth(),
 								new Point2D.Double(0, 20),
 								(TNode<Character>) arbol.root());
 					} catch (InvalidPositionException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						System.out
+								.println("Esta excepcion no deberia dispararse");
 					} catch (EmptyTreeException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						System.out
+								.println("Esta excepcion no deberia dispararse");
+
 					}
+					// se actualiza el mapeo
 					TestingApplication.actualizarMapeo();
 					actualizarCombos();
 					cbPadres.setSelectedItem(nuevo);
 					txtRotulo.setText("");
+					// se repintan las areas de dibujo
 					mpdArbol.repaint();
 					mpdRecorrido.repaint();
 				}
@@ -1424,6 +1436,13 @@ public class NewJFrame extends javax.swing.JFrame {
 		}
 	}// GEN-LAST:event_btnAddNodeActionPerformed
 
+	/**
+	 * Verifica si el caracter ya existe en el arbol
+	 * 
+	 * @param caracter
+	 *            Caracter a buscar
+	 * @return true si ya existe, false en caso contrario
+	 */
 	private boolean existeEnArbol(Character caracter) {
 		for (Position<Character> pos : arbol.positions())
 			if (pos.element().equals(caracter))
@@ -1432,28 +1451,32 @@ public class NewJFrame extends javax.swing.JFrame {
 	}
 
 	private void btnDeleteLevelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDeleteLevelActionPerformed
+		// si el arbol esta inicializado
 		if (arbol != null) {
+			// si tiene solo la raiz
 			if (niveles == 1)
-				JOptionPane
-						.showMessageDialog(
-								null,
-								"No se puede borrar la raiz. Intente crear un arbol nuevo.",
-								"Error al borrar nodo",
-								JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,
+						"No se puede borrar la raiz.", "Error al borrar nodo",
+						JOptionPane.ERROR_MESSAGE);
 			else {
 				try {
+					// almacena la pila q debera pintarse
 					pila_a_pintar = TestingApplication
 							.eliminarNivel((Integer) cbNiveles
 									.getSelectedItem());
 					niveles--;
-					// TODO Revisar! Recalcula los centros de los nodos
+					// se recalculan los centros
 					TestingApplication.calcularCentros(mpdArbol.getWidth(),
 							new Point2D.Double(0, 20), (TNode<Character>) arbol
 									.root());
+					// se actualizan los combos
 					actualizarCombos();
+					// se repintan las areas de dibujo
 					mpdArbol.repaint();
 					mpdRecorrido.repaint();
+					// se actualiza el mapeo
 					TestingApplication.actualizarMapeo();
+					// lanza la nueva ventana mostrando los elementos eliminados
 					VentanaPila ventana = new VentanaPila(this) {
 
 						public void paint(Graphics e) {
@@ -1463,21 +1486,22 @@ public class NewJFrame extends javax.swing.JFrame {
 					ventana.setTitle("Elementos eliminados");
 					ventana.setVisible(true);
 				} catch (EmptyTreeException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("Esta excepcion no deberia dispararse");
+
 				} catch (InvalidLevelException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("Esta excepcion no deberia dispararse");
+
 				} catch (InvalidPositionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("Esta excepcion no deberia dispararse");
 				}
 			}
 		}
 	}// GEN-LAST:event_btnDeleteLevelActionPerformed
 
+	/**
+	 * Actualiza todos los comboboxes
+	 */
 	private void actualizarCombos() {
-		// TODO Auto-generated method stub
 		cbNiveles.removeAllItems();
 		int cantNiveles = arbol.contarNiveles();
 		for (int i = 1; i < cantNiveles; i++) {
@@ -1494,12 +1518,17 @@ public class NewJFrame extends javax.swing.JFrame {
 		}
 	}
 
+	/**
+	 * Dibuja la pila en una region determinada
+	 * 
+	 * @param e
+	 *            Region donde se dibujara
+	 */
 	public void graficarPila(Graphics2D e) {
 		e.drawImage(background2, 0, 0, null);
 		if (pila_a_pintar != null) {
 			try {
 				pila_temp = new Pila<Character>();
-				Dimension2D size = new Dimension(48, 48);
 				int dist_nodos = 56;
 				int i = 0; // indice de nodo actual para el for
 				int margen_derecho = 20, margen_superior = 20;
@@ -1510,16 +1539,15 @@ public class NewJFrame extends javax.swing.JFrame {
 					Point2D loc = new Point2D.Double(margen_derecho,
 							margen_superior + dist_nodos * i);
 					i++;
-					e.drawImage(gray, (int) loc.getX(), (int) loc.getY(),
-							null);
+					e.drawImage(gray, (int) loc.getX(), (int) loc.getY(), null);
 
 					e.setFont(new Font(e.getFont().toString(), Font.BOLD, 14));
 
 					e.setColor(Color.black);
 
 					e.drawString(rotulo.toString(), (int) (loc.getX()
-							+ size.getWidth() / 2 - 5), (int) (loc.getY()
-							+ size.getHeight() / 2 + 5));
+							+ nodoSize.getWidth() / 2 - 5), (int) (loc.getY()
+							+ nodoSize.getHeight() / 2 + 5));
 				}
 				if (i * dist_nodos + margen_derecho > getHeight()) {
 					setSize(getWidth(), i * dist_nodos + margen_superior);
@@ -1529,17 +1557,21 @@ public class NewJFrame extends javax.swing.JFrame {
 					pila_a_pintar.push(pila_temp.pop());
 				}
 			} catch (EmptyStackException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("Esta excepcion no deberia dispararse");
 			}
 		}
 
 	}
 
+	/**
+	 * Dibuja el recorrido del arbol en preorden o posorden segun corresponda
+	 * 
+	 * @param e
+	 *            Region donde se dibujara
+	 */
 	public void graficarRecorrido(Graphics2D e) {
 		e.drawImage(background2, 0, 0, null);
 		if (arbol != null && !arbol.isEmpty()) {
-			Dimension2D size = new Dimension(48, 48);
 			PositionList<Position<Character>> lista;
 			if (radioPre.isSelected()) {
 				lista = (PositionList<Position<Character>>) arbol
@@ -1562,16 +1594,15 @@ public class NewJFrame extends javax.swing.JFrame {
 				e.drawImage(green, (int) loc.getX(), (int) loc.getY(), null);
 				if (i != lista.size()) {
 					e.drawImage(flecha, (int) loc.getX()
-							+ (int) size.getWidth() + 12,
+							+ (int) nodoSize.getWidth() + 12,
 							(int) loc.getY() + 12, null);
 				}
 				e.setFont(new Font(e.getFont().toString(), Font.BOLD, 14));
 				e.setColor(Color.white);
 				e.drawString(pos.element().toString(), (int) (loc.getX()
-						+ size.getWidth() / 2 - 5), (int) (loc.getY()
-						+ size.getHeight() / 2 + 5));
+						+ nodoSize.getWidth() / 2 - 5), (int) (loc.getY()
+						+ nodoSize.getHeight() / 2 + 5));
 			}
-			// TODO REVISAR LA CUENTA
 			if (i * dist_nodos + margen_derecho > mpdRecorrido.getWidth()) {
 				mpdRecorrido.setPreferredSize(new Dimension(i * dist_nodos
 						+ margen_derecho, mpdRecorrido.getHeight()));
@@ -1582,14 +1613,17 @@ public class NewJFrame extends javax.swing.JFrame {
 		}
 	}
 
+	/**
+	 * Dibuja la vista tradicional del arbol
+	 * 
+	 * @param e
+	 *            Region donde se dibujara
+	 */
 	public void graficarArbol(Graphics2D e) {
-		// TODO PRESTAR ATENCION CDO SE CAMBIEN LOS STATIC DE TESTING APP
 		e.drawImage(background2, 0, 0, null);
 		if (arbol != null) {
-			Dimension2D size = new Dimension(48, 48);
 			try {
 				Line2D arco;
-				// TODO REDUCIR A UN FOR
 				// Se dibujan los arcos y luego se superponen los circulos
 				Point2D centropadre;
 				Point2D centro;
@@ -1600,12 +1634,14 @@ public class NewJFrame extends javax.swing.JFrame {
 					if (!arbol.isRoot(pos)) {
 						arco = new Line2D.Double();
 						centro = new Point2D.Double(nodo.getCorner().getX()
-								+ size.getWidth() / 2, nodo.getCorner().getY()
-								+ size.getHeight() / 2);
+								+ nodoSize.getWidth() / 2, nodo.getCorner()
+								.getY()
+								+ nodoSize.getHeight() / 2);
 						centropadre = new Point2D.Double(padre.getCorner()
 								.getX()
-								+ size.getWidth() / 2, padre.getCorner().getY()
-								+ size.getHeight() / 2);
+								+ nodoSize.getWidth() / 2, padre.getCorner()
+								.getY()
+								+ nodoSize.getHeight() / 2);
 						e.setColor(Color.blue);
 						e.setStroke(new BasicStroke(5));
 						arco.setLine(centro, centropadre);
@@ -1620,14 +1656,13 @@ public class NewJFrame extends javax.swing.JFrame {
 					e.setColor(Color.white);
 					e.drawString(nodo.element().toString(), (int) (nodo
 							.getCorner().getX()
-							+ size.getWidth() / 2 - 5), (int) (nodo.getCorner()
-							.getY()
-							+ size.getHeight() / 2 + 5));
+							+ nodoSize.getWidth() / 2 - 5), (int) (nodo
+							.getCorner().getY()
+							+ nodoSize.getHeight() / 2 + 5));
 				}
 
 			} catch (InvalidPositionException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("Esta excepcion no deberia dispararse");
 			}
 			if (chkCamino.isSelected()) {
 				resaltarCamino(e);
@@ -1638,9 +1673,15 @@ public class NewJFrame extends javax.swing.JFrame {
 		}
 	}
 
+	/**
+	 * Resalta el camino de un nodo a otro a partir de los comboboxes "desde" y
+	 * "hasta"
+	 * 
+	 * @param e
+	 *            Region donde se dibujara
+	 */
 	private void resaltarCamino(Graphics2D e) {
 		Lista<Character> lista;
-		Dimension2D size = new Dimension(48, 48);
 		try {
 			lista = TestingApplication.route((Character) cbDesde
 					.getSelectedItem(), (Character) cbHasta.getSelectedItem());
@@ -1656,17 +1697,15 @@ public class NewJFrame extends javax.swing.JFrame {
 				if (!last) {
 					TNode<Character> siguiente = (TNode<Character>) arbol
 							.findNodo(lista.next(pos).element());
-					// supone que si el siguiente es el padre entonces pertenece
-					// a
-					// la lista
 					arco = new Line2D.Double();
 					centro = new Point2D.Double(nodo.getCorner().getX()
-							+ size.getWidth() / 2, nodo.getCorner().getY()
-							+ size.getHeight() / 2);
+							+ nodoSize.getWidth() / 2, nodo.getCorner().getY()
+							+ nodoSize.getHeight() / 2);
 					centropadre = new Point2D.Double(siguiente.getCorner()
 							.getX()
-							+ size.getWidth() / 2, siguiente.getCorner().getY()
-							+ size.getHeight() / 2);
+							+ nodoSize.getWidth() / 2, siguiente.getCorner()
+							.getY()
+							+ nodoSize.getHeight() / 2);
 					e.setColor(Color.red);
 					e.setStroke(new BasicStroke(5));
 					arco.setLine(centro, centropadre);
@@ -1677,9 +1716,9 @@ public class NewJFrame extends javax.swing.JFrame {
 						.getCorner().getY(), null);
 				e.drawString(nodo.element().toString(), (int) (nodo.getCorner()
 						.getX()
-						+ size.getWidth() / 2 - 5), (int) (nodo.getCorner()
+						+ nodoSize.getWidth() / 2 - 5), (int) (nodo.getCorner()
 						.getY()
-						+ size.getHeight() / 2 + 5));
+						+ nodoSize.getHeight() / 2 + 5));
 				if (!last) {
 					pos = lista.next(pos);
 				} else {
@@ -1687,22 +1726,24 @@ public class NewJFrame extends javax.swing.JFrame {
 				}
 			}
 		} catch (InvalidPositionException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println("Esta excepcion no deberia dispararse");
 		} catch (EmptyTreeException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println("Esta excepcion no deberia dispararse");
 		} catch (EmptyListException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println("Esta excepcion no deberia dispararse");
 		} catch (BoundaryViolationException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println("Esta excepcion no deberia dispararse");
 		}
 	}
 
+	/**
+	 * Resalta el nodo que es ancestro comun de los seleccionados en los
+	 * comboboxes "desde" y "hasta"
+	 * 
+	 * @param e
+	 *            Region donde se dibujara
+	 */
 	private void resaltarAncestro(Graphics2D e) {
-		Dimension2D size = new Dimension(48, 48);
 		TNode<Character> nodo;
 		try {
 			nodo = (TNode<Character>) arbol.findNodo(TestingApplication
@@ -1714,18 +1755,21 @@ public class NewJFrame extends javax.swing.JFrame {
 					.getCorner().getY(), null);
 			e.drawString(nodo.element().toString(), (int) (nodo.getCorner()
 					.getX()
-					+ size.getWidth() / 2 - 5), (int) (nodo.getCorner().getY()
-					+ size.getHeight() / 2 + 5));
-		} catch (InvalidPositionException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+					+ nodoSize.getWidth() / 2 - 5), (int) (nodo.getCorner()
+					.getY()
+					+ nodoSize.getHeight() / 2 + 5));
 		} catch (EmptyTreeException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println("Esta excepcion no deberia dispararse");
 		}
 
 	}
 
+	/**
+	 * Dibuja el arbol por niveles
+	 * 
+	 * @param e
+	 *            Region donde se dibujara
+	 */
 	public void graficarNiveles(Graphics2D e) {
 		e.drawImage(background2, 0, 0, null);
 		if (arbol != null) {
@@ -1806,14 +1850,19 @@ public class NewJFrame extends javax.swing.JFrame {
 	private javax.swing.JScrollPane scrollRecorrido;
 	private javax.swing.JTextField txtRotulo;
 	// End of variables declaration//GEN-END:variables
-	private static Image green, black, orange, blue, gray, yellow, red, flecha,
-			background, background2;
+	private static Image green, orange, blue, gray, red, flecha, background,
+			background2;
 	private Pila<Character> pila_temp;
-	private Pila<Character> pila_a_pintar;
-	private static Arbol<Character> arbol;
-	private Point2D last_draw;
-	private Character last_char;
-	private Point2D mousePoint;
-	private int niveles;
-	private Dimension nodoSize;
+	private Pila<Character> pila_a_pintar; // pilas para no perder la que se
+	// grafica
+	private static Arbol<Character> arbol; // representara el arbol estatico de
+	// TestingApplication
+	private Point2D last_draw; // almacena la esquina superior izquierda del
+	// ultimo nodo que se dibujo para no dibujarlo
+	// cada vez q se mueve el puntero sobre el
+	private Character last_char; // allmacena el caracter del ultimo nodo
+	// dibujado
+	private Point2D mousePoint;// almacena la posicion del puntero
+	private int niveles;// indica la cantidad de niveles del arbol
+	private Dimension nodoSize; // dimension de los nodos
 }

@@ -6,7 +6,6 @@ import java.util.Map.Entry;
 import Excepciones.InvalidKeyException;
 import Excepciones.ItemNotFoundException;
 
-//FIXME COPIADO EN CLASE! FALTA JAVADOC DE CLASE
 public class MapeoConABB<K, V> implements Mapeo<K, V> {
 	protected ABB<K, V> abb; //arbol binario de busqueda que almacena las claves
 

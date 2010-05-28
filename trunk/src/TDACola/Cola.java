@@ -84,8 +84,7 @@ public class Cola<E> implements Queue<E> {
 		return array[front];
 	}
 
-	//TODO cambiar a privado
-	public void growArray(E[] array) {
+	private void growArray(E[] array) {
 		final int incremento = 50;
 		E[] arrayNuevo = (E[]) new Object[capacity + incremento];
 

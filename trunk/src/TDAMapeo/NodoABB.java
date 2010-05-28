@@ -2,7 +2,6 @@ package TDAMapeo;
 
 import TDALista.Position;
 
-//FIXME COPIADO EN CLASE! FALTA JAVADOC DE CLASE
 public class NodoABB<E> implements Position<E> {
 	protected NodoABB<E> padre; //almacena el padre del nodo
 	protected E rotulo;//almacena el rotulo del nodo

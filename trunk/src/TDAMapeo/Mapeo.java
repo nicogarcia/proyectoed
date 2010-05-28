@@ -1,7 +1,7 @@
 package TDAMapeo;
 
 import java.util.Map.Entry;
-//FIXME FALTA JAVADOC DE INTERFAZ
+
 public interface Mapeo<K, V> {
 	/**
 	 * Retorna el tamaño del mapeo

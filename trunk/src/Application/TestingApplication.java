@@ -21,7 +21,10 @@ public class TestingApplication {
 	protected static Arbol<Character> miArbol;
 	protected static Mapeo<Character, Integer> mapeo;
 	protected static Comparator<Character> comp;
-
+/**
+ * Inicializa el arbol y el comparador del mapeo
+ * @param rotuloRaiz Rotulo de la raiz
+ */
 	public static void cargarArbol(Character rotuloRaiz) {
 		miArbol = new Arbol<Character>(rotuloRaiz);
 		comp = new Comparator<Character>() {
@@ -30,11 +33,18 @@ public class TestingApplication {
 			}
 		};
 	}
-
+/**
+ * Agrega un nodo al arbol
+ * @param rotulo Rotulo del nodo
+ * @param rPadre Rotulo del padre
+ */
 	public static void agregarNodo(Character rotulo, Character rPadre) {
 		miArbol.insertar(rotulo, rPadre);
 	}
-
+/**
+ * Elimina uno nodo
+ * @param pos Posicion del nodo a eliminar
+ */
 	public static void borrarNodo(Position<Character> pos) {
 		try {
 			if (!miArbol.isEmpty())
@@ -45,7 +55,9 @@ public class TestingApplication {
 			System.out.println("Esta excepcion no deberia dispararse.");
 		}
 	}
-
+/**
+ * Actualiza el mapeo con las nuevas alturas
+ */
 	public static void actualizarMapeo() {
 		mapeo = new MapeoConABB<Character, Integer>(comp);
 		for (Position<Character> pos : miArbol.positions()) {
@@ -57,7 +69,10 @@ public class TestingApplication {
 			}
 		}
 	}
-
+/**
+ * Devuelve una cadena con los elementos del arbol en preorden
+ * @return Cadena con los elementos del arbol en preorden
+ */
 	public static String printPreOrder() {
 		String ret = "[ ";
 		for (Position<Character> pos : miArbol.preOrderPositions())
@@ -65,7 +80,10 @@ public class TestingApplication {
 		ret = ret.substring(0, ret.length() - 2) + " ]";
 		return ret;
 	}
-
+	/**
+	 * Devuelve una cadena con los elementos del arbol en posorden
+	 * @return Cadena con los elementos del arbol en posorden
+	 */
 	public static String printPosOrder() {
 		String ret = "[ ";
 		for (Position<Character> pos : miArbol.posOrderPositions())
@@ -73,7 +91,10 @@ public class TestingApplication {
 		ret = ret.substring(0, ret.length() - 2) + " ]";
 		return ret;
 	}
-
+/**
+ * Devuelve una cadena con los elementos del arbol por niveles
+ * @return Cadena con los elementos del arbol por niveles
+ */
 	public static String printNiveles() {
 		String ret = "[ ";
 		for (Character pos : miArbol.listadoNiveles()) {
@@ -87,13 +108,13 @@ public class TestingApplication {
 	}
 
 	/**
-	 * 
+	 * Elimina un nodo
 	 * @param c
 	 *            Caracter del nodo a eliminar.
 	 * @return El caracter del nodo eliminado, o null en caso de que no se haya
 	 *         encontrado ning�n nodo con el caracter recibido.
-	 * @throws InvalidPositionException
-	 * @throws EmptyTreeException
+	 * @throws InvalidPositionException si la posicion es invalida
+	 * @throws EmptyTreeException si el arbol esta vacio
 	 */
 	public static Character eliminarNodo(Character c)
 			throws InvalidPositionException, EmptyTreeException {
@@ -108,16 +129,14 @@ public class TestingApplication {
 	}
 
 	/**
-	 * 
+	 * Elimina un nivel del arbol
 	 * @param nivel
 	 *            Nivel que se desea eliminar.
 	 * @return Una pila con los rotulos de los nodos eliminados.
 	 * 
-	 * @throws EmptyTreeException
-	 * @throws InvalidLevelException
+	 * @throws EmptyTreeException si el arbol esta vacio
+	 * @throws InvalidLevelException si el nivel no existe
 	 */
-	// FIXME EN CASO DE QUE EL NIVEL SEA 1, LA RAIZ NO SE ELIMINA, PERO DEVUELVE
-	// UNA PILA CON EL ELEMENTO DE LA RAIZ COMO SI HUBIESE SIDO ELIMINADO
 	public static Pila<Character> eliminarNivel(int nivel)
 			throws EmptyTreeException, InvalidLevelException {
 		if (nivel == 0)
@@ -150,24 +169,33 @@ public class TestingApplication {
 
 		return eliminados;
 	}
-
+/**
+ * Devuelve una cadena con el camino de un nodo a otro
+ * @param r1 Caracter nodo 1
+ * @param r2 Caracter nodo 2
+ * @return Cadena con el camino
+ */
 	public static String camino(Character r1, Character r2) {
-		Lista<Character> lista;
-		try {
-			lista = route(r1, r2);
-			return lista.toString();
-		} catch (InvalidPositionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EmptyTreeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (miArbol != null) {
+			Lista<Character> lista;
+			try {
+				lista = route(r1, r2);
+				return lista.toString();
+			} catch (EmptyTreeException e) {
+				System.out.println("Esta excepcion no deberia dispararse");
+			}
 		}
 		return null;
 	}
-
+/**
+ * Devuelve el ancestro comun mas cercano a dos nodos
+ * @param rot1 Caracter nodo 1
+ * @param rot2 Caracter nodo 2
+ * @return Devuelve el ancestro
+ * @throws EmptyTreeException si el arbol esta vacio
+ */
 	public static Character ancestroComun(Character rot1, Character rot2)
-			throws InvalidPositionException, EmptyTreeException {
+			throws EmptyTreeException {
 		TNode<Character> nodo1 = (TNode<Character>) miArbol.findNodo(rot1);
 		TNode<Character> nodo2 = (TNode<Character>) miArbol.findNodo(rot2);
 		Pila<Character> ancestros1 = miArbol.ancestros(nodo1);
@@ -205,9 +233,15 @@ public class TestingApplication {
 		return AC;
 
 	}
-
+/**
+ * Devuelve una lista con los rotulos de los nodos del camino
+ * @param rotulo1 Caracter del nodo 1
+ * @param rotulo2 Caracter del nodo 2
+ * @return Devuelve una lista con los rotulos de los nodos del camino
+ * @throws EmptyTreeException
+ */
 	public static Lista<Character> route(Character rotulo1, Character rotulo2)
-			throws InvalidPositionException, EmptyTreeException {
+			throws EmptyTreeException {
 		TNode<Character> nodo1 = (TNode<Character>) miArbol.findNodo(rotulo1);
 		TNode<Character> nodo2 = (TNode<Character>) miArbol.findNodo(rotulo2);
 
@@ -236,14 +270,18 @@ public class TestingApplication {
 				lista.addLast(pila2.pop());
 
 		} catch (EmptyStackException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Esta excepcion no deberia dispararse");
 		}
 
 		return lista;
 	}
-
-	// TODO MIRAR LAS EXCEPCIONES
+/**
+ * Calcula la ubicacion de los nodos para graficarlos
+ * @param ancho Ancho del area de graficos
+ * @param position Margenes
+ * @param inicio Nodo de inicio
+ * @throws InvalidPositionException
+ */
 	public static void calcularCentros(int ancho, Point2D position,
 			TNode<Character> inicio) throws InvalidPositionException {
 		int dif = 100;
